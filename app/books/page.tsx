@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import BooksHero from "@/components/books/BooksHero";
 import BooksIntro from "@/components/books/BooksIntro";
 import BookFeature from "@/components/books/BookFeature";
+import BooksCarousel from "@/components/books/BooksCarousel";
 import BooksSignedCopies from "@/components/books/BooksSignedCopies";
 import BooksFinalCTA from "@/components/books/BooksFinalCTA";
 
@@ -64,9 +65,12 @@ export default function BooksPage() {
     <>
       <BooksHero />
       <BooksIntro />
-      {books.map((book) => (
-        <BookFeature key={book.title} {...book} />
-      ))}
+      <BooksCarousel books={books} />
+      <div className="hidden md:block">
+        {books.map((book) => (
+          <BookFeature key={book.title} {...book} />
+        ))}
+      </div>
       <BooksSignedCopies />
       <BooksFinalCTA />
     </>

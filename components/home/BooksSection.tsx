@@ -35,12 +35,12 @@ const books = [
 export default function BooksSection() {
   return (
     <section
-      className="py-20 md:py-28 px-5 md:px-8 lg:px-12 bg-cream-deep"
+      className="py-12 md:py-16 px-5 md:px-8 lg:px-12 bg-cream-deep"
       aria-label="Books"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-14">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8 md:mb-10">
           <div>
             <FadeInView>
               <p className="font-body text-xs text-charcoal-muted tracking-[0.18em] uppercase mb-4">
@@ -48,7 +48,7 @@ export default function BooksSection() {
               </p>
             </FadeInView>
             <FadeInView delay={0.1}>
-              <h2 className="font-heading text-3xl md:text-4xl text-charcoal max-w-sm">
+              <h2 className="font-heading text-2xl md:text-3xl text-charcoal max-w-sm">
                 Books that sit behind the work
               </h2>
             </FadeInView>
@@ -62,7 +62,7 @@ export default function BooksSection() {
         </div>
 
         {/* Book grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 lg:gap-10 mb-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-6 lg:gap-8 mb-8">
           {books.map((book, i) => (
             <motion.div
               key={book.title}
@@ -81,7 +81,7 @@ export default function BooksSection() {
         </div>
 
         {/* Signed copies note + CTA */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 pt-8 border-t border-border">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 pt-6 border-t border-border">
           <FadeInView>
             <p className="font-body text-xs text-charcoal-muted italic">
               Signed copies are included in selected coaching packages.

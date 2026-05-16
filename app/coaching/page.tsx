@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import CoachingHero from "@/components/coaching/CoachingHero";
 import CoachingPullQuote from "@/components/coaching/CoachingPullQuote";
 import CoachingLensMovement from "@/components/coaching/CoachingLensMovement";
-import CoachingShiftMovement from "@/components/coaching/CoachingShiftMovement";
-import CoachingWhyDifferent from "@/components/coaching/CoachingWhyDifferent";
+import CoachingPracticeFlow from "@/components/coaching/CoachingPracticeFlow";
+import CoachingWhySam from "@/components/coaching/CoachingWhySam";
+import CoachingJourneyTimeline from "@/components/coaching/CoachingJourneyTimeline";
 import CoachingPackagesSection from "@/components/coaching/CoachingPackagesSection";
+import CoachingFinalCTA from "@/components/coaching/CoachingFinalCTA";
 
 export const metadata: Metadata = {
   title: "Coaching | Perception 47 — Sam Murgatroyd",
@@ -24,9 +26,11 @@ export default function CoachingPage() {
       <CoachingHero />
       <CoachingPullQuote />
       <CoachingLensMovement />
-      <CoachingShiftMovement />
-      <CoachingWhyDifferent />
+      <CoachingPracticeFlow />
+      <CoachingWhySam />
+      <CoachingJourneyTimeline />
       <CoachingPackagesSection />
+      <CoachingFinalCTA />
     </>
   );
 }

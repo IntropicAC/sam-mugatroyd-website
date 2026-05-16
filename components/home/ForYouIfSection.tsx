@@ -13,7 +13,7 @@ const statements = [
 
 export default function ForYouIfSection() {
   return (
-    <section className="py-20 md:py-28 px-5 md:px-8 lg:px-12" aria-label="Who this is for">
+    <section className="pt-8 pb-20 md:pt-12 md:pb-28 px-5 md:px-8 lg:px-12" aria-label="Who this is for">
       <div className="max-w-7xl mx-auto">
         <div className="max-w-2xl">
           <FadeInView>

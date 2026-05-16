@@ -13,7 +13,7 @@ export default function BookCard({ title, description, coverImage, href }: BookC
   const cardContent = (
     <div className="group flex flex-col h-full">
       {/* Cover */}
-      <div className="relative aspect-[2/3] overflow-hidden mb-5 bg-surface">
+      <div className="relative aspect-[2/3] overflow-hidden mb-4 bg-surface">
         <Image
           src={coverImage}
           alt={`${title} book cover`}

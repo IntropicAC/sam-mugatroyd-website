@@ -40,7 +40,7 @@ export default function PackageCard({
 }: PackageCardProps) {
   return (
     <div
-      className={`flex flex-col h-full border p-7 md:p-8 transition-shadow duration-300 hover:shadow-sm ${
+      className={`flex w-full flex-col h-full border p-7 md:p-8 transition-shadow duration-300 hover:shadow-sm ${
         featured
           ? "border-green bg-green/5"
           : "border-border bg-cream"

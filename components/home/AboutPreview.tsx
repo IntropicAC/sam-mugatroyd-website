@@ -18,7 +18,7 @@ const closingLine = `The books came from that place. The coaching came from that
 
 export default function AboutPreview() {
   return (
-    <section className="py-20 md:py-28 px-5 md:px-8 lg:px-12" aria-label="About Sam">
+    <section className="pt-10 pb-20 md:pt-14 md:pb-28 px-5 md:px-8 lg:px-12" aria-label="About Sam">
       <div className="max-w-7xl mx-auto">
 
         {/* ── Mobile: byline header ─────────────────────────────────── */}

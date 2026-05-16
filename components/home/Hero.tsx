@@ -6,6 +6,63 @@ import Image from "next/image";
 
 const CALENDLY_URL = "https://calendly.com/samuel-a-murg/free-discovery-call";
 
+function AmazonBestsellerBadge() {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, delay: 1.5, ease: "easeOut" }}
+      className="mt-5 flex items-center gap-3"
+    >
+      <div className="h-px w-6 bg-border" aria-hidden="true" />
+      <span className="font-body text-[10px] tracking-[0.22em] uppercase text-charcoal-muted">
+        Bestselling Author on
+      </span>
+      <svg
+        viewBox="0 0 72 28"
+        className="h-[20px] w-auto"
+        fill="none"
+        aria-label="Amazon"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <text
+          x="1"
+          y="16"
+          fontSize="16"
+          fontFamily="Arial, Helvetica, sans-serif"
+          fontWeight="600"
+          fill="#2A2722"
+          letterSpacing="0.5"
+        >
+          amazon
+        </text>
+        {/* Arc from under first "a" to end of "z" */}
+        <motion.path
+          d="M3 21 Q22 28 41 21"
+          stroke="#FF9900"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          fill="none"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 1.8, delay: 1.9, ease: [0.16, 1, 0.3, 1] }}
+        />
+        <motion.path
+          d="M36 18.5 L41 21 L37 24.5"
+          stroke="#FF9900"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.5, delay: 3.65, ease: "easeOut" }}
+        />
+      </svg>
+    </motion.div>
+  );
+}
+
 export default function Hero() {
   return (
     <section
@@ -14,7 +71,7 @@ export default function Hero() {
     >
       {/* Background logo motif */}
       <div
-        className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.03]"
+        className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.06]"
         aria-hidden="true"
       >
         <div className="w-[80vw] max-w-xl relative aspect-square">
@@ -35,13 +92,13 @@ export default function Hero() {
         aria-hidden="true"
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto w-full px-5 md:px-8 lg:px-12 pt-20 md:pt-32 pb-10 md:pb-20">
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-5 md:px-8 lg:px-12 pt-20 pb-10">
         {/* Eyebrow */}
         <motion.p
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-          className="font-body text-xs text-charcoal-muted tracking-[0.18em] uppercase mb-5 md:mb-8"
+          className="font-body text-xs text-charcoal-muted tracking-[0.18em] uppercase mb-4 md:mb-5"
         >
           Authenticity Coaching
         </motion.p>
@@ -51,7 +108,7 @@ export default function Hero() {
           initial={{ opacity: 0, filter: "blur(8px)", y: 8 }}
           animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
           transition={{ duration: 1.1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="font-heading font-normal text-[1.7rem] sm:text-4xl md:text-5xl lg:text-6xl text-charcoal leading-[1.18] max-w-3xl mb-6 md:mb-8"
+          className="font-heading font-normal text-[1.7rem] sm:text-4xl md:text-5xl lg:text-6xl text-charcoal leading-[1.18] max-w-3xl mb-5"
         >
           Most people are not lost.
           <br />
@@ -68,7 +125,7 @@ export default function Hero() {
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
           style={{ originX: 0 }}
-          className="h-px w-10 bg-border mb-5 md:mb-8"
+          className="h-px w-10 bg-border mb-4 md:mb-5"
           aria-hidden="true"
         />
 
@@ -77,7 +134,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.05, ease: "easeOut" }}
-          className="font-body text-sm md:text-lg text-charcoal-mid max-w-md leading-relaxed mb-7 md:mb-10"
+          className="font-body text-sm md:text-lg text-charcoal-mid max-w-md leading-relaxed mb-6"
         >
           I change the way people see the world and in turn change the world they see.
         </motion.p>
@@ -103,6 +160,8 @@ export default function Hero() {
             </span>
           </Link>
         </motion.div>
+
+        <AmazonBestsellerBadge />
       </div>
     </section>
   );
