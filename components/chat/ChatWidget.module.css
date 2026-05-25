@@ -112,6 +112,8 @@
 .newButton,
 .iconButton,
 .sendButton,
+.chatTabButton,
+.closeChatButton,
 .promptButton,
 .mobileClose {
   font: inherit;
@@ -137,6 +139,11 @@
   border-color: rgba(245, 240, 234, 0.42);
 }
 
+.newButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
 .iconButton {
   width: 2rem;
   height: 2rem;
@@ -155,8 +162,103 @@
   background: rgba(245, 240, 234, 0.16);
 }
 
+.chatShelf {
+  flex-shrink: 0;
+  border-bottom: 1px solid #d8d0c6;
+  background: #eee8df;
+}
+
+.chatTabs {
+  display: flex;
+  gap: 0.45rem;
+  overflow-x: auto;
+  padding: 0.55rem 0.75rem;
+  scrollbar-width: thin;
+}
+
+.chatTabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.chatTabs::-webkit-scrollbar-thumb {
+  background: #c8c0b6;
+}
+
+.chatTab {
+  flex: 0 0 auto;
+  display: inline-flex;
+  width: min(8.9rem, 40vw);
+  height: 2rem;
+  overflow: hidden;
+  border: 1px solid #d8d0c6;
+  background: #f5f0ea;
+}
+
+.chatTab[data-active="true"] {
+  border-color: #3d5948;
+  background: #fffaf3;
+}
+
+.chatTabButton {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: #514d49;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.72rem;
+  line-height: 2rem;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chatTab[data-active="true"] .chatTabButton {
+  color: #2a2722;
+  font-weight: 500;
+}
+
+.closeChatButton {
+  width: 1.75rem;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-left: 1px solid #d8d0c6;
+  background: transparent;
+  color: #8a6f62;
+  cursor: pointer;
+  padding: 0;
+}
+
+.chatTabButton:disabled,
+.closeChatButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.closeChatButton:hover:not(:disabled) {
+  background: #ede8df;
+  color: #2a2722;
+}
+
+.chatNotice {
+  margin: 0;
+  border-top: 1px solid #d8d0c6;
+  color: #6b4c3f;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-dm-sans), sans-serif;
+  font-size: 0.74rem;
+  line-height: 1.35;
+}
+
 .iconButton svg,
 .sendButton svg,
+.closeChatButton svg,
 .mobileClose svg {
   width: 1.05rem;
   height: 1.05rem;
@@ -408,6 +510,8 @@
 
 .newButton:focus-visible,
 .iconButton:focus-visible,
+.chatTabButton:focus-visible,
+.closeChatButton:focus-visible,
 .promptButton:focus-visible,
 .bookCard:focus-visible,
 .input:focus-visible,

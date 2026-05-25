@@ -7,7 +7,7 @@ import Footer from "@/components/layout/Footer";
 import StickyMobileCTA from "@/components/layout/StickyMobileCTA";
 import PageAnimationProvider from "@/components/layout/PageAnimationProvider";
 import ChatWidget from "@/components/chat/ChatWidget";
-import { SITE_URL } from "@/lib/site";
+import { AUTHOR_NAME, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -26,18 +26,15 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  applicationName: SITE_NAME,
   title: "Perception 47 Coaching | Sam Murgatroyd",
   description:
     "Sam Murgatroyd is a Life Coach and Author helping people understand the patterns they have been living inside. Book a free 20-minute discovery call.",
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    title: "Perception 47 Coaching | Sam Murgatroyd",
-    description:
-      "Life coaching that begins with a conversation. Book your free 20-minute discovery call.",
-    type: "website",
-    url: "/",
+  authors: [{ name: AUTHOR_NAME }],
+  creator: AUTHOR_NAME,
+  publisher: SITE_NAME,
+  appleWebApp: {
+    title: SITE_NAME,
   },
 };
 

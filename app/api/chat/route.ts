@@ -12,6 +12,99 @@ const MAX_REQUESTS_PER_WINDOW = 15;
 const MAX_THREADS_PER_DAY = 10;
 const MAX_MESSAGE_LENGTH = 500;
 const TOKEN_EXPIRY = 5 * 60 * 1000;
+const OUT_OF_SCOPE_RESPONSE =
+  "I'm here as Sam's website guide, so I stick to Sam's books, coaching, honesty, authenticity, self-belief, and the ideas on this site. If you're exploring whether Sam's work could help, ask me about the books, coaching, or what you're dealing with.";
+const GUIDE_HELP_RESPONSE =
+  "I can help you understand Sam's books, his coaching, and the honesty philosophy behind both. If you're feeling stuck, low on confidence, out of place, or unsure whether coaching fits, tell me a bit about that and I'll point you toward the most useful next step.";
+
+const INTERNAL_QUESTION_PATTERNS = [
+  /\b(?:uploaded|attached)\s+(?:files?|documents?)\b/i,
+  /\b(?:files?|documents?)\s+(?:i|i've|you|you've|we|we've)\s+(?:uploaded|attached|shared|sent)\b/i,
+  /\b(?:files?|documents?)\s+(?:you|u)\s+(?:have|can|could|do|will|would)?\s*(?:access|see|read|search|use)\b/i,
+  /\b(?:what|which|how many)\s+(?:files?|documents?)\b/i,
+  /\bfile[_ -]?search\b/i,
+  /\bvector\s+stores?\b/i,
+  /\b(?:system|developer)\s+(?:prompt|message|instructions?)\b/i,
+  /\b(?:prompt|instructions?)\s+(?:are you|were you|have you|do you|you were|you have)\b/i,
+  /\bignore\s+(?:all\s+)?(?:previous|above|your)\s+instructions?\b/i,
+  /\b(?:model|version)\s+(?:are you|do you|running|using|is this|am i talking to)\b/i,
+  /\b(?:chatgpt|openai|gpt[-\w]*|claude|gemini)\b/i,
+  /\b(?:api|configuration)\b/i,
+  /\b(?:your|this\s+(?:chat|bot|assistant|ai))\s+setup\b/i,
+  /\btools?\s+(?:do you|are you|can you|you use|available|access)\b/i,
+  /\bhow\s+(?:do|does)\s+(?:you|this\s+(?:chat|bot|assistant|ai))\s+work\b/i,
+  /\b(?:website|site|chat|bot|assistant|ai)\s+(?:built|made|coded|developed)\b/i,
+];
+
+const SAM_RELATED_PATTERNS = [
+  /\bsam(?:uel)?\b/i,
+  /\bmurgatroyd\b/i,
+  /\bperception\s*47\b/i,
+  /\bbooks?\b/i,
+  /\bcoaching\b/i,
+  /\bcoach\b/i,
+  /\bthe\s+honesty\s+philosophy\b/i,
+  /\bhonesty\b/i,
+  /\bauthentic(?:ity|ally)?\b/i,
+  /\bself[-\s]?belief\b/i,
+  /\bself[-\s]?esteem\b/i,
+  /\bconfidence\b/i,
+  /\bidentity\b/i,
+  /\bbelong(?:ing)?\b/i,
+  /\bpurpose\b/i,
+  /\bpeople[-\s]?pleas(?:e|ing|er|ers)\b/i,
+  /\bresilien(?:ce|t)\b/i,
+  /\bfear\b/i,
+  /\bego\b/i,
+  /\bhabits?\b/i,
+  /\balignment\b/i,
+  /\bthe\s+policy\b/i,
+  /\balienated\b/i,
+  /\brobin'?s\s+bench\b/i,
+  /\bthe\s+genius\s+we\s+ignored\b/i,
+  /\bcontact\b/i,
+  /\bdiscovery\s+call\b/i,
+  /\bprogramme\b/i,
+  /\bprogram\b/i,
+  /\bcourse\b/i,
+  /\bpricing\b/i,
+  /\bprice\b/i,
+  /\bcost\b/i,
+  /\bstress(?:ed)?\b/i,
+  /\banxi(?:ety|ous)\b/i,
+  /\blost\b/i,
+  /\bstuck\b/i,
+  /\bmotivation\b/i,
+  /\bmindset\b/i,
+];
+
+const GUIDE_HELP_PATTERNS = [
+  /\bwhat\s+can\s+you\s+(?:do|help\s+with)\b/i,
+  /\bhow\s+can\s+you\s+help(?:\s+me)?\b/i,
+  /\bwhat\s+do\s+you\s+know\b/i,
+  /\bwho\s+are\s+you\b/i,
+];
+
+const UNRELATED_REQUEST_PATTERNS = [
+  /\bcapital\s+of\b/i,
+  /\bweather\b/i,
+  /\bforecast\b/i,
+  /\bstock\s+price\b/i,
+  /\bcrypto\b/i,
+  /\bbitcoin\b/i,
+  /\bfootball\s+score\b/i,
+  /\bsports?\s+score\b/i,
+  /\blatest\s+news\b/i,
+  /\b(?:president|prime\s+minister)\s+of\b/i,
+  /\b(?:write|debug|fix|build)\s+(?:code|a\s+program|a\s+website|javascript|typescript|python|react|next\.?js|sql)\b/i,
+  /\b(?:recipe|cook|restaurant|movie|song|lyrics|game|homework|math|equation)\b/i,
+  /\btell\s+me\s+(?:a|an|some)?\s*(?:joke|riddle|story)\b/i,
+  /\bwrite\s+(?:a|an|some)\s+(?:poem|story|song|email|letter|essay)\b/i,
+  /\bplan\s+(?:a|my)\s+(?:trip|holiday|vacation)\b/i,
+  /\b(?:flight|hotel|travel)\b/i,
+  /\b(?:translate|summari[sz]e|rewrite|proofread)\b/i,
+  /\b(?:what|who|when|where)\s+is\s+(?!sam\b|sam's\b|murgatroyd\b|perception\s*47\b|the\s+policy\b|alienated\b|robin'?s\s+bench\b|the\s+genius\s+we\s+ignored\b)/i,
+];
 
 type ChatRequestBody = {
   action?: unknown;
@@ -191,6 +284,34 @@ function extractRequestedWordCount(message: string) {
   return Number.isFinite(value) ? value : null;
 }
 
+function isSamRelatedMessage(message: string) {
+  return SAM_RELATED_PATTERNS.some((pattern) => pattern.test(message));
+}
+
+function shouldRedirectToScope(message: string) {
+  if (INTERNAL_QUESTION_PATTERNS.some((pattern) => pattern.test(message))) {
+    return true;
+  }
+
+  if (isSamRelatedMessage(message)) {
+    return false;
+  }
+
+  return UNRELATED_REQUEST_PATTERNS.some((pattern) => pattern.test(message));
+}
+
+function getPresetScopeResponse(message: string) {
+  if (shouldRedirectToScope(message)) {
+    return OUT_OF_SCOPE_RESPONSE;
+  }
+
+  if (GUIDE_HELP_PATTERNS.some((pattern) => pattern.test(message))) {
+    return GUIDE_HELP_RESPONSE;
+  }
+
+  return null;
+}
+
 function validateInput(body: ChatRequestBody) {
   if (body.message !== undefined) {
     if (typeof body.message !== "string" || body.message.trim().length === 0) {
@@ -359,6 +480,26 @@ function encodeSse(payload: unknown) {
 
 function sendSse(controller: ReadableStreamDefaultController<Uint8Array>, payload: unknown) {
   controller.enqueue(new TextEncoder().encode(encodeSse(payload)));
+}
+
+function streamTextResponse(request: Request, threadId: string, text: string) {
+  const stream = new ReadableStream<Uint8Array>({
+    start(controller) {
+      sendSse(controller, { text });
+      sendSse(controller, { seqToken: setNextToken(threadId) });
+      sendSse(controller, "[DONE]");
+      controller.close();
+    },
+  });
+
+  return new Response(stream, {
+    headers: {
+      ...corsHeaders(request),
+      "Cache-Control": "no-cache",
+      Connection: "keep-alive",
+      "Content-Type": "text/event-stream; charset=utf-8",
+    },
+  });
 }
 
 function parseSseEvent(rawEvent: string) {
@@ -598,29 +739,19 @@ export async function POST(request: Request) {
     );
   }
 
+  const presetScopeResponse = getPresetScopeResponse(body.message);
+  if (presetScopeResponse) {
+    return streamTextResponse(request, body.threadId, presetScopeResponse);
+  }
+
   const requestedWordCount = extractRequestedWordCount(body.message);
   if (requestedWordCount && requestedWordCount > MAX_RESPONSE_WORDS) {
-    const stream = new ReadableStream<Uint8Array>({
-      start(controller) {
-        sendSse(controller, {
-          text:
-            `I keep replies under ${MAX_RESPONSE_WORDS} words so they stay complete and readable. ` +
-            "I can give you a shorter summary, or split it into parts and continue if you want. Which would you prefer?",
-        });
-        sendSse(controller, { seqToken: setNextToken(body.threadId as string) });
-        sendSse(controller, "[DONE]");
-        controller.close();
-      },
-    });
-
-    return new Response(stream, {
-      headers: {
-        ...corsHeaders(request),
-        "Cache-Control": "no-cache",
-        Connection: "keep-alive",
-        "Content-Type": "text/event-stream; charset=utf-8",
-      },
-    });
+    return streamTextResponse(
+      request,
+      body.threadId,
+      `I keep replies under ${MAX_RESPONSE_WORDS} words so they stay complete and readable. ` +
+        "I can give you a shorter summary, or split it into parts and continue if you want. Which would you prefer?",
+    );
   }
 
   const stream = new ReadableStream<Uint8Array>({

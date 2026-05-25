@@ -3,19 +3,48 @@ import BooksHero from "@/components/books/BooksHero";
 import BookFeature from "@/components/books/BookFeature";
 import BooksThread from "@/components/books/BooksThread";
 import BooksClosingCTA from "@/components/books/BooksClosingCTA";
-import { BOOKS } from "@/lib/books";
+import { BOOKS, bookList } from "@/lib/books";
+import {
+  AUTHOR_NAME,
+  DEFAULT_SOCIAL_IMAGE,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Books | Perception 47 — Sam Murgatroyd",
   description:
     "Three books by Sam Murgatroyd exploring identity, honesty, belonging, and what becomes possible when you stop living as the version of yourself the world taught you to be.",
+  alternates: {
+    canonical: "/books",
+  },
   openGraph: {
     title: "Books | Perception 47 — Sam Murgatroyd",
     description:
       "Three books exploring identity, honesty, and belonging — the work behind the coaching.",
     type: "website",
+    url: "/books",
+    images: [
+      {
+        url: DEFAULT_SOCIAL_IMAGE,
+        width: 1200,
+        height: 1200,
+        alt: AUTHOR_NAME,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Books | Perception 47 — Sam Murgatroyd",
+    description:
+      "Three books exploring identity, honesty, and belonging — the work behind the coaching.",
+    images: [DEFAULT_SOCIAL_IMAGE],
   },
 };
+
+function absoluteUrl(path: string) {
+  return new URL(path, SITE_URL).toString();
+}
 
 const books = [
   {
@@ -71,9 +100,51 @@ const books = [
   },
 ];
 
+const booksJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": `${SITE_URL}/books#webpage`,
+      name: "Books by Sam Murgatroyd",
+      url: `${SITE_URL}/books`,
+      description:
+        "Three books by Sam Murgatroyd exploring identity, honesty, belonging, and authenticity.",
+      isPartOf: {
+        "@id": `${SITE_URL}/#website`,
+      },
+    },
+    ...bookList.map((book) => ({
+      "@type": "Book",
+      "@id": `${SITE_URL}/books#${book.id}`,
+      name: book.title,
+      author: {
+        "@type": "Person",
+        name: AUTHOR_NAME,
+        url: SITE_URL,
+      },
+      image: absoluteUrl(book.coverImage),
+      description: book.shortDescription,
+      url: `${SITE_URL}/books`,
+      sameAs: book.amazonUrl,
+      publisher: {
+        "@type": "Organization",
+        name: SITE_NAME,
+        url: SITE_URL,
+      },
+    })),
+  ],
+};
+
 export default function BooksPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(booksJsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
       <BooksHero />
 
       {/* The three books — each its own editorial spread */}

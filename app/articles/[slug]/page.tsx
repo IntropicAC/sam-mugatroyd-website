@@ -10,12 +10,16 @@ import {
   getArticleBook,
   getRelatedArticles,
 } from "@/lib/journal";
-import { AUTHOR_NAME, SITE_NAME, SITE_URL } from "@/lib/site";
+import {
+  AUTHOR_NAME,
+  DEFAULT_SOCIAL_IMAGE,
+  LOGO_IMAGE,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
 
 const PUBLISHED_DATE = "2026-05-18";
 const MODIFIED_DATE = "2026-05-21";
-const ARTICLE_IMAGE = `${SITE_URL}/images/sam-headshot.jpg`;
-const LOGO_IMAGE = `${SITE_URL}/images/perception-47-logo.png`;
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -100,7 +104,7 @@ function jsonLdFor(entry: NonNullable<ReturnType<typeof getArticle>>) {
         mainEntityOfPage: articleUrl,
         headline: entry.title,
         description: entry.metaDescription,
-        image: [ARTICLE_IMAGE],
+        image: [DEFAULT_SOCIAL_IMAGE],
         datePublished: PUBLISHED_DATE,
         dateModified: MODIFIED_DATE,
         author: {

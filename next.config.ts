@@ -8,6 +8,17 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "sam-murgatroyd.co.uk",
+          },
+        ],
+        destination: "https://www.sam-murgatroyd.co.uk/:path*",
+        permanent: true,
+      },
+      {
         source: "/journal",
         destination: "/articles",
         permanent: true,

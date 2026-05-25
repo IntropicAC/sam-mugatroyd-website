@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { articleEntries, CALENDLY_URL } from "@/lib/journal";
 import JournalCard from "@/components/journal/JournalCard";
+import { AUTHOR_NAME, DEFAULT_SOCIAL_IMAGE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Articles | Perception 47 - Sam Murgatroyd",
@@ -17,6 +18,21 @@ export const metadata: Metadata = {
       "Question-led articles on the patterns underneath overthinking, burnout, people pleasing, and self-trust.",
     type: "website",
     url: "/articles",
+    images: [
+      {
+        url: DEFAULT_SOCIAL_IMAGE,
+        width: 1200,
+        height: 1200,
+        alt: AUTHOR_NAME,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Articles | Perception 47 - Sam Murgatroyd",
+    description:
+      "Question-led articles on the patterns underneath overthinking, burnout, people pleasing, and self-trust.",
+    images: [DEFAULT_SOCIAL_IMAGE],
   },
 };
 

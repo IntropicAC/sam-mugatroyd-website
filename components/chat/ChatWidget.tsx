@@ -8,8 +8,11 @@ import { SAM_CHAT_OPEN_EVENT } from "@/lib/sam-chat-events";
 import styles from "./ChatWidget.module.css";
 
 const STORAGE_KEY = "samAiChat";
+const MAX_CHATS = 5;
 const MAX_MESSAGES = 20;
 const MAX_INPUT_CHARS = 500;
+const MAX_CHATS_NOTICE =
+  "You can keep up to 5 chats. Close one of your saved chats before starting another.";
 const WELCOME_MESSAGE =
   "Hi there. I'm Sam AI. I can answer questions about Sam's books, coaching, or anything on this site. What would you like to know?";
 
@@ -36,12 +39,32 @@ type ChatMessage = {
   role: ChatRole;
 };
 
+type ChatSession = {
+  createdAt: number;
+  id: string;
+  messages: ChatMessage[];
+  seqToken: string | null;
+  threadId: string | null;
+  updatedAt: number;
+};
+
 type StoredChatMessage = {
   content: string;
   role: ChatRole;
 };
 
+type StoredChatSession = {
+  createdAt?: unknown;
+  id?: unknown;
+  messages?: unknown;
+  seqToken?: unknown;
+  threadId?: unknown;
+  updatedAt?: unknown;
+};
+
 type StoredChatState = {
+  activeChatId?: unknown;
+  chats?: unknown;
   messages?: StoredChatMessage[];
   seqToken?: string | null;
   threadId?: string | null;
@@ -59,12 +82,29 @@ type ChatStreamEvent = {
   text?: string;
 };
 
+type ThreadPromise = {
+  chatId: string;
+  promise: Promise<string>;
+};
+
 function createId() {
   if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
     return crypto.randomUUID();
   }
 
   return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+}
+
+function createChatSession(): ChatSession {
+  const now = Date.now();
+  return {
+    createdAt: now,
+    id: createId(),
+    messages: [],
+    seqToken: null,
+    threadId: null,
+    updatedAt: now,
+  };
 }
 
 function isStoredMessage(message: unknown): message is StoredChatMessage {
@@ -77,6 +117,78 @@ function isStoredMessage(message: unknown): message is StoredChatMessage {
     typeof candidate.content === "string" &&
     (candidate.role === "assistant" || candidate.role === "user")
   );
+}
+
+function normalizeStoredMessages(messages: unknown) {
+  if (!Array.isArray(messages)) {
+    return [];
+  }
+
+  return messages
+    .filter(isStoredMessage)
+    .slice(-MAX_MESSAGES)
+    .map((message) => ({ ...message, id: createId() }));
+}
+
+function normalizeStoredChatSession(session: unknown): ChatSession | null {
+  if (!session || typeof session !== "object") {
+    return null;
+  }
+
+  const candidate = session as StoredChatSession;
+  const id = typeof candidate.id === "string" ? candidate.id : createId();
+  const createdAt = typeof candidate.createdAt === "number" ? candidate.createdAt : Date.now();
+  const updatedAt = typeof candidate.updatedAt === "number" ? candidate.updatedAt : createdAt;
+  const seqToken = typeof candidate.seqToken === "string" ? candidate.seqToken : null;
+  const threadId = typeof candidate.threadId === "string" ? candidate.threadId : null;
+
+  return {
+    createdAt,
+    id,
+    messages: normalizeStoredMessages(candidate.messages),
+    seqToken,
+    threadId,
+    updatedAt,
+  };
+}
+
+function loadStoredChatState(raw: string) {
+  const parsed = JSON.parse(raw) as StoredChatState;
+
+  if (Array.isArray(parsed.chats)) {
+    const chats = parsed.chats
+      .map(normalizeStoredChatSession)
+      .filter((chat): chat is ChatSession => Boolean(chat))
+      .sort((a, b) => a.createdAt - b.createdAt)
+      .slice(-MAX_CHATS);
+    const activeChatId =
+      typeof parsed.activeChatId === "string" && chats.some((chat) => chat.id === parsed.activeChatId)
+        ? parsed.activeChatId
+        : chats.at(-1)?.id ?? null;
+
+    return { activeChatId, chats };
+  }
+
+  const legacyMessages = normalizeStoredMessages(parsed.messages);
+  if (!parsed.threadId && legacyMessages.length === 0) {
+    return { activeChatId: null, chats: [] };
+  }
+
+  const legacyChat = createChatSession();
+  legacyChat.messages = legacyMessages;
+  legacyChat.seqToken = typeof parsed.seqToken === "string" ? parsed.seqToken : null;
+  legacyChat.threadId = typeof parsed.threadId === "string" ? parsed.threadId : null;
+
+  return { activeChatId: legacyChat.id, chats: [legacyChat] };
+}
+
+function getChatTitle(chat: ChatSession, index: number) {
+  const firstUserMessage = chat.messages.find((message) => message.role === "user")?.content.trim();
+  if (!firstUserMessage) {
+    return chat.messages.length > 0 ? `Chat ${index + 1}` : "New chat";
+  }
+
+  return firstUserMessage.length > 30 ? `${firstUserMessage.slice(0, 29)}...` : firstUserMessage;
 }
 
 function stripCitations(text: string, trim = false) {
@@ -176,22 +288,40 @@ function renderAssistantMessage(content: string) {
 }
 
 export default function ChatWidget() {
+  const [activeChatId, setActiveChatId] = useState<string | null>(null);
+  const [chats, setChats] = useState<ChatSession[]>([]);
+  const [chatNotice, setChatNotice] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [seqToken, setSeqToken] = useState<string | null>(null);
-  const [threadId, setThreadId] = useState<string | null>(null);
+
+  const activeChat = useMemo(
+    () => chats.find((chat) => chat.id === activeChatId) ?? null,
+    [activeChatId, chats],
+  );
+  const messages = useMemo(() => activeChat?.messages ?? [], [activeChat]);
+  const seqToken = activeChat?.seqToken ?? null;
+  const threadId = activeChat?.threadId ?? null;
 
   const abortRef = useRef<AbortController | null>(null);
-  const createThreadPromiseRef = useRef<Promise<string> | null>(null);
+  const activeChatIdRef = useRef(activeChatId);
+  const chatsRef = useRef(chats);
+  const createThreadPromiseRef = useRef<ThreadPromise | null>(null);
   const honeypotRef = useRef<HTMLInputElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const messagesRef = useRef(messages);
   const seqTokenRef = useRef(seqToken);
   const threadIdRef = useRef(threadId);
+
+  useEffect(() => {
+    activeChatIdRef.current = activeChatId;
+  }, [activeChatId]);
+
+  useEffect(() => {
+    chatsRef.current = chats;
+  }, [chats]);
 
   useEffect(() => {
     messagesRef.current = messages;
@@ -210,23 +340,17 @@ export default function ChatWidget() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (raw) {
-          const parsed = JSON.parse(raw) as StoredChatState;
-          if (parsed.threadId && typeof parsed.threadId === "string") {
-            threadIdRef.current = parsed.threadId;
-            setThreadId(parsed.threadId);
-          }
-          if (parsed.seqToken && typeof parsed.seqToken === "string") {
-            seqTokenRef.current = parsed.seqToken;
-            setSeqToken(parsed.seqToken);
-          }
-          if (Array.isArray(parsed.messages)) {
-            setMessages(
-              parsed.messages
-                .filter(isStoredMessage)
-                .slice(-MAX_MESSAGES)
-                .map((message) => ({ ...message, id: createId() })),
-            );
-          }
+          const stored = loadStoredChatState(raw);
+          const active = stored.chats.find((chat) => chat.id === stored.activeChatId) ?? null;
+
+          chatsRef.current = stored.chats;
+          activeChatIdRef.current = stored.activeChatId;
+          messagesRef.current = active?.messages ?? [];
+          seqTokenRef.current = active?.seqToken ?? null;
+          threadIdRef.current = active?.threadId ?? null;
+
+          setChats(stored.chats);
+          setActiveChatId(stored.activeChatId);
         }
       } catch {
         localStorage.removeItem(STORAGE_KEY);
@@ -243,19 +367,25 @@ export default function ChatWidget() {
       return;
     }
 
-    const stored: StoredChatState = {
-      messages: messages.map(({ content, role }) => ({ content, role })),
-      seqToken,
-      threadId,
-    };
-
-    if (!threadId && messages.length === 0) {
+    if (chats.length === 0) {
       localStorage.removeItem(STORAGE_KEY);
       return;
     }
 
+    const stored: StoredChatState = {
+      activeChatId,
+      chats: chats.map((chat) => ({
+        createdAt: chat.createdAt,
+        id: chat.id,
+        messages: chat.messages.map(({ content, role }) => ({ content, role })),
+        seqToken: chat.seqToken,
+        threadId: chat.threadId,
+        updatedAt: chat.updatedAt,
+      })),
+    };
+
     localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
-  }, [hydrated, messages, seqToken, threadId]);
+  }, [activeChatId, chats, hydrated]);
 
   useEffect(() => {
     const openChat = () => setIsOpen(true);
@@ -329,16 +459,97 @@ export default function ChatWidget() {
     };
   }, [isOpen]);
 
-  const createThread = useCallback(async () => {
-    if (threadIdRef.current) {
-      return threadIdRef.current;
+  const ensureActiveChat = useCallback(() => {
+    const existingId = activeChatIdRef.current;
+    if (existingId && chatsRef.current.some((chat) => chat.id === existingId)) {
+      return existingId;
     }
 
-    if (createThreadPromiseRef.current) {
-      return createThreadPromiseRef.current;
+    if (chatsRef.current.length >= MAX_CHATS) {
+      setChatNotice(MAX_CHATS_NOTICE);
+      return null;
     }
 
-    createThreadPromiseRef.current = fetch("/api/chat", {
+    const session = createChatSession();
+    activeChatIdRef.current = session.id;
+    chatsRef.current = [...chatsRef.current, session];
+    messagesRef.current = [];
+    seqTokenRef.current = null;
+    threadIdRef.current = null;
+
+    setChatNotice(null);
+    setActiveChatId(session.id);
+    setChats(chatsRef.current);
+
+    return session.id;
+  }, []);
+
+  const updateChatMessages = useCallback(
+    (chatId: string, updater: (messages: ChatMessage[]) => ChatMessage[]) => {
+      const updatedChats = chatsRef.current.map((chat) => {
+        if (chat.id !== chatId) {
+          return chat;
+        }
+
+        const nextMessages = updater(chat.messages).slice(-MAX_MESSAGES);
+        const updatedChat = {
+          ...chat,
+          messages: nextMessages,
+          updatedAt: Date.now(),
+        };
+
+        if (activeChatIdRef.current === chatId) {
+          messagesRef.current = nextMessages;
+        }
+
+        return updatedChat;
+      });
+
+      chatsRef.current = updatedChats;
+      setChats(updatedChats);
+    },
+    [],
+  );
+
+  const updateChatConnection = useCallback(
+    (chatId: string, connection: { seqToken?: string | null; threadId?: string | null }) => {
+      const updatedChats = chatsRef.current.map((chat) => {
+        if (chat.id !== chatId) {
+          return chat;
+        }
+
+        const updatedChat = {
+          ...chat,
+          seqToken: connection.seqToken !== undefined ? connection.seqToken : chat.seqToken,
+          threadId: connection.threadId !== undefined ? connection.threadId : chat.threadId,
+          updatedAt: Date.now(),
+        };
+
+        if (activeChatIdRef.current === chatId) {
+          seqTokenRef.current = updatedChat.seqToken;
+          threadIdRef.current = updatedChat.threadId;
+        }
+
+        return updatedChat;
+      });
+
+      chatsRef.current = updatedChats;
+      setChats(updatedChats);
+    },
+    [],
+  );
+
+  const createThread = useCallback(async (chatId: string) => {
+    const existingChat = chatsRef.current.find((chat) => chat.id === chatId);
+    if (existingChat?.threadId) {
+      return existingChat.threadId;
+    }
+
+    if (createThreadPromiseRef.current?.chatId === chatId) {
+      return createThreadPromiseRef.current.promise;
+    }
+
+    const promise = fetch("/api/chat", {
       body: JSON.stringify({
         action: "create_thread",
         honeypot: honeypotRef.current?.value || "",
@@ -352,28 +563,21 @@ export default function ChatWidget() {
           throw new Error(data.error || "Could not start the chat.");
         }
 
-        threadIdRef.current = data.threadId;
-        seqTokenRef.current = data.seqToken || null;
-        setThreadId(data.threadId);
-        setSeqToken(data.seqToken || null);
+        updateChatConnection(chatId, {
+          seqToken: data.seqToken || null,
+          threadId: data.threadId,
+        });
         return data.threadId;
       })
       .finally(() => {
-        createThreadPromiseRef.current = null;
+        if (createThreadPromiseRef.current?.chatId === chatId) {
+          createThreadPromiseRef.current = null;
+        }
       });
 
-    return createThreadPromiseRef.current;
-  }, []);
-
-  useEffect(() => {
-    if (!isOpen || !hydrated || threadIdRef.current) {
-      return;
-    }
-
-    void createThread().catch((error) => {
-      console.error("Sam AI: failed to start chat", error);
-    });
-  }, [createThread, hydrated, isOpen]);
+    createThreadPromiseRef.current = { chatId, promise };
+    return promise;
+  }, [updateChatConnection]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -401,11 +605,14 @@ export default function ChatWidget() {
     return BOOK_DATA.filter((book) => book.pattern.test(latestAssistant.content));
   }, [messages]);
 
-  const updateAssistantMessage = useCallback((id: string, content: string) => {
-    setMessages((current) =>
-      current.map((message) => (message.id === id ? { ...message, content } : message)),
-    );
-  }, []);
+  const updateAssistantMessage = useCallback(
+    (chatId: string, id: string, content: string) => {
+      updateChatMessages(chatId, (current) =>
+        current.map((message) => (message.id === id ? { ...message, content } : message)),
+      );
+    },
+    [updateChatMessages],
+  );
 
   const sendMessage = useCallback(
     async (overrideMessage?: string) => {
@@ -414,13 +621,20 @@ export default function ChatWidget() {
         return;
       }
 
-      const userCount = messagesRef.current.filter((message) => message.role === "user").length;
+      const chatId = ensureActiveChat();
+      if (!chatId) {
+        return;
+      }
+
+      const currentChat = chatsRef.current.find((chat) => chat.id === chatId);
+      const currentMessages = currentChat?.messages ?? [];
+      const userCount = currentMessages.filter((message) => message.role === "user").length;
       if (userCount >= MAX_MESSAGES / 2) {
-        setMessages((current) => [
+        updateChatMessages(chatId, (current) => [
           ...current,
           {
             content:
-              "You've reached the chat limit for this session. Press New to start again, or use the contact form for a deeper conversation.",
+              "You've reached the chat limit for this session. Start a new saved chat, or use the contact form for a deeper conversation.",
             id: createId(),
             role: "assistant",
           },
@@ -443,10 +657,11 @@ export default function ChatWidget() {
         role: "assistant",
       };
 
-      setMessages((current) => [...current, userMessage, assistantMessage]);
+      updateChatMessages(chatId, (current) => [...current, userMessage, assistantMessage]);
 
       try {
-        const conversationId = await createThread();
+        const conversationId = await createThread(chatId);
+        const latestChat = chatsRef.current.find((chat) => chat.id === chatId);
         abortRef.current?.abort();
         const controller = new AbortController();
         abortRef.current = controller;
@@ -455,7 +670,7 @@ export default function ChatWidget() {
           body: JSON.stringify({
             honeypot: honeypotRef.current?.value || "",
             message: text,
-            seqToken: seqTokenRef.current || "",
+            seqToken: latestChat?.seqToken || "",
             threadId: conversationId,
           }),
           headers: { "Content-Type": "application/json" },
@@ -466,11 +681,10 @@ export default function ChatWidget() {
         if (!response.ok) {
           const data = (await response.json()) as ChatApiJson;
           if (data.seqToken) {
-            seqTokenRef.current = data.seqToken;
-            setSeqToken(data.seqToken);
+            updateChatConnection(chatId, { seqToken: data.seqToken });
           }
 
-          updateAssistantMessage(assistantId, data.error || "Sorry, something went wrong.");
+          updateAssistantMessage(chatId, assistantId, data.error || "Sorry, something went wrong.");
           return;
         }
 
@@ -502,16 +716,15 @@ export default function ChatWidget() {
 
             if (event.text) {
               fullText += event.text;
-              updateAssistantMessage(assistantId, stripCitations(fullText));
+              updateAssistantMessage(chatId, assistantId, stripCitations(fullText));
             }
 
             if (event.seqToken) {
-              seqTokenRef.current = event.seqToken;
-              setSeqToken(event.seqToken);
+              updateChatConnection(chatId, { seqToken: event.seqToken });
             }
 
             if (event.error) {
-              updateAssistantMessage(assistantId, event.error);
+              updateAssistantMessage(chatId, assistantId, event.error);
             }
           }
         }
@@ -519,16 +732,15 @@ export default function ChatWidget() {
         if (buffer.trim()) {
           const event = parseStreamEvent(buffer);
           if (event?.seqToken) {
-            seqTokenRef.current = event.seqToken;
-            setSeqToken(event.seqToken);
+            updateChatConnection(chatId, { seqToken: event.seqToken });
           }
           if (event?.error) {
-            updateAssistantMessage(assistantId, event.error);
+            updateAssistantMessage(chatId, assistantId, event.error);
           }
         }
 
         if (fullText) {
-          updateAssistantMessage(assistantId, stripCitations(fullText, true));
+          updateAssistantMessage(chatId, assistantId, stripCitations(fullText, true));
         }
       } catch (error) {
         if (error instanceof DOMException && error.name === "AbortError") {
@@ -536,12 +748,20 @@ export default function ChatWidget() {
         }
 
         console.error("Sam AI: send failed", error);
-        updateAssistantMessage(assistantId, "Sorry, something went wrong. Please try again.");
+        updateAssistantMessage(chatId, assistantId, "Sorry, something went wrong. Please try again.");
       } finally {
         setIsLoading(false);
       }
     },
-    [createThread, input, isLoading, updateAssistantMessage],
+    [
+      createThread,
+      ensureActiveChat,
+      input,
+      isLoading,
+      updateAssistantMessage,
+      updateChatConnection,
+      updateChatMessages,
+    ],
   );
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -550,19 +770,81 @@ export default function ChatWidget() {
   };
 
   const handleNewChat = () => {
-    abortRef.current?.abort();
+    if (isLoading) {
+      return;
+    }
+
+    const currentChat = chatsRef.current.find((chat) => chat.id === activeChatIdRef.current);
+    if (currentChat && currentChat.messages.length === 0 && !currentChat.threadId) {
+      setInput("");
+      setChatNotice(null);
+      return;
+    }
+
+    if (chatsRef.current.length >= MAX_CHATS) {
+      setChatNotice(MAX_CHATS_NOTICE);
+      return;
+    }
+
+    const session = createChatSession();
     createThreadPromiseRef.current = null;
-    threadIdRef.current = null;
+    activeChatIdRef.current = session.id;
+    chatsRef.current = [...chatsRef.current, session];
+    messagesRef.current = [];
     seqTokenRef.current = null;
+    threadIdRef.current = null;
+
     setInput("");
-    setIsLoading(false);
-    setMessages([]);
-    setSeqToken(null);
-    setThreadId(null);
-    localStorage.removeItem(STORAGE_KEY);
-    void createThread().catch((error) => {
-      console.error("Sam AI: failed to start new chat", error);
-    });
+    setChatNotice(null);
+    setActiveChatId(session.id);
+    setChats(chatsRef.current);
+  };
+
+  const handleSwitchChat = (chatId: string) => {
+    if (isLoading || chatId === activeChatIdRef.current) {
+      return;
+    }
+
+    const nextChat = chatsRef.current.find((chat) => chat.id === chatId);
+    if (!nextChat) {
+      return;
+    }
+
+    createThreadPromiseRef.current = null;
+    activeChatIdRef.current = chatId;
+    messagesRef.current = nextChat.messages;
+    seqTokenRef.current = nextChat.seqToken;
+    threadIdRef.current = nextChat.threadId;
+
+    setInput("");
+    setChatNotice(null);
+    setActiveChatId(chatId);
+  };
+
+  const handleCloseChat = (chatId: string) => {
+    if (isLoading) {
+      return;
+    }
+
+    const nextChats = chatsRef.current.filter((chat) => chat.id !== chatId);
+    const shouldMoveActive = activeChatIdRef.current === chatId;
+    const nextActiveChat = shouldMoveActive
+      ? nextChats.at(-1) ?? null
+      : nextChats.find((chat) => chat.id === activeChatIdRef.current) ?? null;
+
+    if (shouldMoveActive) {
+      createThreadPromiseRef.current = null;
+      activeChatIdRef.current = nextActiveChat?.id ?? null;
+      messagesRef.current = nextActiveChat?.messages ?? [];
+      seqTokenRef.current = nextActiveChat?.seqToken ?? null;
+      threadIdRef.current = nextActiveChat?.threadId ?? null;
+      setInput("");
+      setActiveChatId(nextActiveChat?.id ?? null);
+    }
+
+    chatsRef.current = nextChats;
+    setChatNotice(null);
+    setChats(nextChats);
   };
 
   return (
@@ -586,7 +868,12 @@ export default function ChatWidget() {
           </div>
 
           <div className={styles.headerActions}>
-            <button type="button" className={styles.newButton} onClick={handleNewChat}>
+            <button
+              type="button"
+              className={styles.newButton}
+              onClick={handleNewChat}
+              disabled={isLoading}
+            >
               New
             </button>
             <button
@@ -599,6 +886,49 @@ export default function ChatWidget() {
             </button>
           </div>
         </header>
+
+        {(chats.length > 0 || chatNotice) && (
+          <div className={styles.chatShelf}>
+            {chats.length > 0 && (
+              <div className={styles.chatTabs} aria-label="Saved chats">
+                {chats.map((chat, index) => {
+                  const title = getChatTitle(chat, index);
+                  const isActive = chat.id === activeChatId;
+
+                  return (
+                    <div
+                      key={chat.id}
+                      className={styles.chatTab}
+                      data-active={isActive ? "true" : "false"}
+                    >
+                      <button
+                        type="button"
+                        className={styles.chatTabButton}
+                        onClick={() => handleSwitchChat(chat.id)}
+                        disabled={isLoading}
+                        aria-current={isActive ? "true" : undefined}
+                        title={title}
+                      >
+                        {title}
+                      </button>
+                      <button
+                        type="button"
+                        className={styles.closeChatButton}
+                        onClick={() => handleCloseChat(chat.id)}
+                        disabled={isLoading}
+                        aria-label={`Close ${title}`}
+                      >
+                        <CloseIcon />
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {chatNotice && <p className={styles.chatNotice}>{chatNotice}</p>}
+          </div>
+        )}
 
         <div className={styles.messages} aria-live="polite">
           <div className={`${styles.message} ${styles.assistantMessage}`}>
