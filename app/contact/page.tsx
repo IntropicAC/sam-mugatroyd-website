@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import ContactHero from "@/components/contact/ContactHero";
 import ContactWaysToReach from "@/components/contact/ContactWaysToReach";
-import ContactForm from "@/components/contact/ContactForm";
 import ContactChatPrompt from "@/components/contact/ContactChatPrompt";
 import ContactFindSam from "@/components/contact/ContactFindSam";
 import ContactFinalCTA from "@/components/contact/ContactFinalCTA";
@@ -23,7 +22,6 @@ export default function ContactPage() {
     <>
       <ContactHero />
       <ContactWaysToReach />
-      <ContactForm />
       <ContactChatPrompt />
       <ContactFindSam />
       <ContactFinalCTA />

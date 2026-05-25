@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from "framer-motion";
+import { OnceMotion } from "@/components/ui/OnceMotion";
 
 export default function LensSection() {
   return (
@@ -31,7 +31,8 @@ export default function LensSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 lg:px-12">
         <div className="max-w-xl mx-auto text-center">
           {/* Primary line — blur-to-focus on scroll */}
-          <motion.p
+          <OnceMotion.p
+            seenId="home-lens-primary"
             initial={{ filter: "blur(8px)", opacity: 0 }}
             whileInView={{ filter: "blur(0px)", opacity: 1 }}
             transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
@@ -39,10 +40,11 @@ export default function LensSection() {
             className="font-heading text-2xl md:text-3xl lg:text-4xl text-cream leading-snug mb-4"
           >
             The problem is not always the life you are living.
-          </motion.p>
+          </OnceMotion.p>
 
           {/* Secondary line — delayed blur-to-focus */}
-          <motion.p
+          <OnceMotion.p
+            seenId="home-lens-secondary"
             initial={{ filter: "blur(8px)", opacity: 0 }}
             whileInView={{ filter: "blur(0px)", opacity: 1 }}
             transition={{ duration: 1.4, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
@@ -50,9 +52,10 @@ export default function LensSection() {
             className="font-heading italic text-2xl md:text-3xl lg:text-4xl text-green leading-snug mb-12 md:mb-16"
           >
             Sometimes it is the lens you are looking through.
-          </motion.p>
+          </OnceMotion.p>
 
-          <motion.div
+          <OnceMotion.div
+            seenId="home-lens-body"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.7, ease: "easeOut" }}
@@ -64,7 +67,7 @@ export default function LensSection() {
               helping them understand the patterns they have been living inside for so long
               that they stopped noticing them.
             </p>
-          </motion.div>
+          </OnceMotion.div>
         </div>
       </div>
     </section>

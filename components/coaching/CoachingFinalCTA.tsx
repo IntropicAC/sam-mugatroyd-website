@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from "framer-motion";
 import Link from "next/link";
+import { OnceMotion } from "@/components/ui/OnceMotion";
 
 const CALENDLY_URL = "https://calendly.com/samuel-a-murg/free-discovery-call";
 
@@ -28,7 +28,8 @@ export default function CoachingFinalCTA() {
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="max-w-xl">
 
-          <motion.h2
+          <OnceMotion.h2
+            seenId="coaching-final-cta-heading"
             initial={{ opacity: 0, filter: "blur(6px)", y: 8 }}
             whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
             transition={{ duration: 1.0, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -37,9 +38,10 @@ export default function CoachingFinalCTA() {
           >
             You do not have to know exactly what is wrong to start a
             conversation.
-          </motion.h2>
+          </OnceMotion.h2>
 
-          <motion.p
+          <OnceMotion.p
+            seenId="coaching-final-cta-body"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
@@ -47,9 +49,10 @@ export default function CoachingFinalCTA() {
             className="font-body text-base text-charcoal-mid mb-10 leading-relaxed"
           >
             If something here feels familiar, the next step is simple.
-          </motion.p>
+          </OnceMotion.p>
 
-          <motion.div
+          <OnceMotion.div
+            seenId="coaching-final-cta-button"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.45, ease: "easeOut" }}
@@ -70,10 +73,11 @@ export default function CoachingFinalCTA() {
                 →
               </span>
             </Link>
-          </motion.div>
+          </OnceMotion.div>
 
           {/* Contact details */}
-          <motion.div
+          <OnceMotion.div
+            seenId="coaching-final-cta-contact"
             initial={{ opacity: 0, y: 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
@@ -92,7 +96,7 @@ export default function CoachingFinalCTA() {
             >
               07804 743 725
             </a>
-          </motion.div>
+          </OnceMotion.div>
         </div>
       </div>
     </section>

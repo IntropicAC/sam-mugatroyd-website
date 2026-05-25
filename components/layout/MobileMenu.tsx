@@ -9,6 +9,7 @@ const CALENDLY_URL = "https://calendly.com/samuel-a-murg/free-discovery-call";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Coaching", href: "/coaching" },
+  { label: "Articles", href: "/articles" },
   { label: "Books", href: "/books" },
   { label: "Contact", href: "/contact" },
 ];

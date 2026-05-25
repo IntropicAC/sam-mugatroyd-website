@@ -1,9 +1,10 @@
 'use client';
 
-import { motion } from "framer-motion";
 import BookCard from "./BookCard";
 import FadeInView from "@/components/ui/FadeInView";
 import CTAButton from "@/components/ui/CTAButton";
+import { OnceMotion } from "@/components/ui/OnceMotion";
+import { BOOKS } from "@/lib/books";
 
 const books = [
   {
@@ -11,24 +12,21 @@ const books = [
     description:
       "Most people are performing a version of themselves without realising it. This book follows one man's moment of reckoning and the conversation that changes the way he sees everything.",
     coverImage: "/images/the-policy-new-cover.jpg",
-    // TODO: Replace with real Amazon link
-    href: "#",
+    href: BOOKS.thePolicy.amazonUrl,
   },
   {
     title: "Robin's Bench",
     description:
       "For anyone who has ever felt like they do not quite belong anywhere. This book explores what it means to belong not to other people but to yourself.",
     coverImage: "/images/robins-bench-new-cover.jpg",
-    // TODO: Replace with real Amazon link
-    href: "#",
+    href: BOOKS.robinsBench.amazonUrl,
   },
   {
     title: "Alienated",
     description:
       "For the people who see the world differently and have spent years wondering if that is a problem. It is not.",
     coverImage: "/images/alienated-new-cover.png",
-    // TODO: Replace with real Amazon link
-    href: "#",
+    href: BOOKS.alienated.amazonUrl,
   },
 ];
 
@@ -64,8 +62,9 @@ export default function BooksSection() {
         {/* Book grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-5 md:gap-6 lg:gap-8 mb-8">
           {books.map((book, i) => (
-            <motion.div
+            <OnceMotion.div
               key={book.title}
+              seenId={`home-book-${book.title}`}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
@@ -76,7 +75,7 @@ export default function BooksSection() {
               viewport={{ once: true, margin: "-100px" }}
             >
               <BookCard {...book} />
-            </motion.div>
+            </OnceMotion.div>
           ))}
         </div>
 

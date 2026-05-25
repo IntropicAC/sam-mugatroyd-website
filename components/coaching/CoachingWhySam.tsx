@@ -1,8 +1,8 @@
 'use client';
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import FadeInView from "@/components/ui/FadeInView";
+import { OnceMotion } from "@/components/ui/OnceMotion";
 
 export default function CoachingWhySam() {
   return (
@@ -33,7 +33,8 @@ export default function CoachingWhySam() {
         </FadeInView>
 
         <div className="flow-root max-w-4xl">
-          <motion.figure
+          <OnceMotion.figure
+            seenId="coaching-why-sam-portrait"
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.04, ease: [0.16, 1, 0.3, 1] }}
@@ -44,7 +45,7 @@ export default function CoachingWhySam() {
               <div className="relative overflow-hidden">
                 <Image
                   src="/images/sam-headshot.jpg"
-                  alt="Sam Murgatroyd - Authenticity Coach and Author"
+                  alt="Sam Murgatroyd - Life Coach and Author"
                   width={640}
                   height={800}
                   className="h-auto w-full object-cover object-top"
@@ -62,13 +63,13 @@ export default function CoachingWhySam() {
                 Sam Murgatroyd
               </p>
               <p className="mt-1 font-body text-[10px] leading-snug text-cream/45 md:text-xs">
-                Authenticity Coach &middot; Author
+                Life Coach &middot; Author
               </p>
               <p className="mt-1 font-body text-[10px] leading-snug text-green-hover md:text-xs">
                 Amazon Bestseller
               </p>
             </figcaption>
-          </motion.figure>
+          </OnceMotion.figure>
 
           <div className="space-y-5 md:space-y-6">
             <FadeInView delay={0.08}>

@@ -2,6 +2,7 @@
 
 import { useRef, useState, useLayoutEffect, useEffect, useCallback, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { useElementIntroAnimation } from '@/components/layout/PageAnimationProvider';
 
 // ── Timing ──────────────────────────────────────────────────────────────────
 const STEM_DUR   = 0.9;  // vertical stem draws over this many seconds
@@ -147,6 +148,7 @@ export default function BranchRevealText({
   className = '',
   delay = 0,
 }: BranchRevealTextProps) {
+  const { shouldAnimate, markSeen } = useElementIntroAnimation();
   const containerRef = useRef<HTMLDivElement>(null);
   const animStarted  = useRef(false); // prevents re-measuring after animation begins
 
@@ -193,6 +195,7 @@ export default function BranchRevealText({
 
     const startAnim = () => {
       animStarted.current = true;
+      markSeen();
       setStarted(true);
 
       if (reduced) return; // no SVG for reduced-motion users
@@ -214,7 +217,7 @@ export default function BranchRevealText({
       return () => clearTimeout(tid);
     }
     return startAnim() ?? undefined;
-  }, [inView, delay, layoutData.reveals]);
+  }, [inView, delay, layoutData.reveals, markSeen]);
 
   // ── Per-word reveal times lookup ───────────────────────────────────────────
   const revealTimes = useMemo(() => {
@@ -228,6 +231,10 @@ export default function BranchRevealText({
   const reduced       =
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!shouldAnimate) {
+    return <div className={`relative ${className}`}>{text}</div>;
+  }
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>

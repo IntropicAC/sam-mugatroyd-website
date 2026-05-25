@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from "framer-motion";
+import { OnceMotion } from "@/components/ui/OnceMotion";
 
 export default function CoachingPullQuote() {
   return (
@@ -25,7 +25,8 @@ export default function CoachingPullQuote() {
 
       <div className="relative max-w-4xl mx-auto text-center">
 
-        <motion.div
+        <OnceMotion.div
+          seenId="coaching-pullquote-top-line"
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
@@ -35,7 +36,8 @@ export default function CoachingPullQuote() {
           aria-hidden="true"
         />
 
-        <motion.p
+        <OnceMotion.p
+          seenId="coaching-pullquote-line-1"
           initial={{ opacity: 0, filter: "blur(10px)" }}
           whileInView={{ opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 1.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -43,9 +45,10 @@ export default function CoachingPullQuote() {
           className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] text-cream leading-[1.4]"
         >
           What I do changes the way you see the world
-        </motion.p>
+        </OnceMotion.p>
 
-        <motion.p
+        <OnceMotion.p
+          seenId="coaching-pullquote-line-2"
           initial={{ opacity: 0, filter: "blur(10px)" }}
           whileInView={{ opacity: 1, filter: "blur(0px)" }}
           transition={{ duration: 1.5, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
@@ -53,9 +56,10 @@ export default function CoachingPullQuote() {
           className="font-heading italic text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] text-green-hover leading-[1.4]"
         >
           and in turn changes the world you see.
-        </motion.p>
+        </OnceMotion.p>
 
-        <motion.div
+        <OnceMotion.div
+          seenId="coaching-pullquote-bottom-line"
           initial={{ scaleX: 0 }}
           whileInView={{ scaleX: 1 }}
           transition={{ duration: 1, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -65,7 +69,8 @@ export default function CoachingPullQuote() {
           aria-hidden="true"
         />
 
-        <motion.p
+        <OnceMotion.p
+          seenId="coaching-pullquote-caption"
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.8, ease: "easeOut" }}
@@ -73,7 +78,7 @@ export default function CoachingPullQuote() {
           className="font-body text-xs text-cream/30 tracking-[0.15em] uppercase"
         >
           Once that shift happens, you cannot unsee it.
-        </motion.p>
+        </OnceMotion.p>
       </div>
     </section>
   );

@@ -4,7 +4,7 @@ import Image from "next/image";
 import FadeInView from "@/components/ui/FadeInView";
 import BranchRevealText from "@/components/ui/BranchRevealText";
 import CTAButton from "@/components/ui/CTAButton";
-import { motion } from "framer-motion";
+import { OnceMotion } from "@/components/ui/OnceMotion";
 
 const bioParagraphs = [
   `Sam grew up feeling like he never quite fit in. He saw the world differently to the people around him and spent years wondering if that was something to fix. He was what he describes as a “why” kid, someone who could never simply accept the way things were because that is how they had always been. That feeling of being slightly outside of everything, of observing the world rather than just living in it, was uncomfortable for a long time.`,
@@ -22,7 +22,8 @@ export default function AboutPreview() {
       <div className="max-w-7xl mx-auto">
 
         {/* ── Mobile: byline header ─────────────────────────────────── */}
-        <motion.div
+        <OnceMotion.div
+          seenId="home-about-mobile-byline"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
@@ -50,19 +51,20 @@ export default function AboutPreview() {
               Sam Murgatroyd
             </h2>
             <p className="font-body text-sm text-charcoal-mid mt-1">
-              Authenticity Coach and Author
+              Life Coach and Author
             </p>
             <p className="font-body text-xs text-green mt-1">
               Amazon Bestselling Author
             </p>
           </div>
-        </motion.div>
+        </OnceMotion.div>
 
         {/* ── Two-column grid (desktop only layout) ────────────────── */}
         <div className="md:grid md:grid-cols-12 md:gap-16 md:items-start">
 
           {/* Desktop left column — sticky portrait */}
-          <motion.div
+          <OnceMotion.div
+            seenId="home-about-desktop-portrait"
             initial={{ opacity: 0, scale: 0.97 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
@@ -72,7 +74,7 @@ export default function AboutPreview() {
             <div className="relative w-full aspect-[3/4] overflow-hidden">
               <Image
                 src="/images/sam-headshot.jpg"
-                alt="Sam Murgatroyd — Authenticity Coach and Author"
+                alt="Sam Murgatroyd — Life Coach and Author"
                 fill
                 className="object-cover object-top grayscale-[15%]"
                 sizes="(max-width: 1024px) 33vw, 25vw"
@@ -84,13 +86,13 @@ export default function AboutPreview() {
             <div className="mt-5">
               <h2 className="font-heading text-xl text-charcoal">Sam Murgatroyd</h2>
               <p className="font-body text-sm text-charcoal-mid mt-1">
-                Authenticity Coach and Author
+                Life Coach and Author
               </p>
               <p className="font-body text-xs text-green mt-1.5">
                 Amazon Bestselling Author
               </p>
             </div>
-          </motion.div>
+          </OnceMotion.div>
 
           {/* Right column — eyebrow + bio + CTA (all viewports on mobile, right col on desktop) */}
           <div className="md:col-span-8 lg:col-span-9">

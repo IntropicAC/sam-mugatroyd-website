@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { openSamChat } from "@/lib/sam-chat-events";
 
 function ChatIcon() {
   return (
@@ -35,6 +36,8 @@ export default function StickyMobileCTA() {
     <AnimatePresence>
       {visible && (
         <motion.button
+          type="button"
+          onClick={openSamChat}
           initial={{ opacity: 0, scale: 0.85, y: 12 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.85, y: 12 }}

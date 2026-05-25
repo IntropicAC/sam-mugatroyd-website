@@ -1,0 +1,34 @@
+Chat conversation creation failed: fetch failed
+Chat conversation creation failed: fetch failed
+Chat conversation creation failed: fetch failed
+[browser] Sam AI: failed to start new chat Error: API Error: fetch failed
+    at ChatWidget.useCallback[createThread] (components/chat/ChatWidget.tsx:367:17)
+  365 |         const data = (await response.json()) as ChatApiJson;
+  366 |         if (!response.ok || !data.threadId || data.threadId === "ok") {
+> 367 |           throw new Error(data.error || "Could not start the chat.");
+      |                 ^
+  368 |         }
+  369 |
+  370 |         threadIdRef.current = data.threadId; (components/chat/ChatWidget.tsx:579:15)
+Chat conversation creation failed: fetch failed
+[browser] Sam AI: send failed Error: API Error: fetch failed
+    at ChatWidget.useCallback[createThread] (components/chat/ChatWidget.tsx:367:17)
+    at async ChatWidget.useCallback[sendMessage] (components/chat/ChatWidget.tsx:464:32)
+  365 |         const data = (await response.json()) as ChatApiJson;
+  366 |         if (!response.ok || !data.threadId || data.threadId === "ok") {
+> 367 |           throw new Error(data.error || "Could not start the chat.");
+      |                 ^
+  368 |         }
+  369 |
+  370 |         threadIdRef.current = data.threadId; (components/chat/ChatWidget.tsx:553:17)
+Chat conversation creation failed: fetch failed
+[browser] Sam AI: send failed Error: API Error: fetch failed
+    at ChatWidget.useCallback[createThread] (components/chat/ChatWidget.tsx:367:17)
+    at async ChatWidget.useCallback[sendMessage] (components/chat/ChatWidget.tsx:464:32)
+  365 |         const data = (await response.json()) as ChatApiJson;
+  366 |         if (!response.ok || !data.threadId || data.threadId === "ok") {
+> 367 |           throw new Error(data.error || "Could not start the chat.");
+      |                 ^
+  368 |         }
+  369 |
+  370 |         threadIdRef.current = data.threadId; (components/chat/ChatWidget.tsx:553:17)

@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from "framer-motion";
 import FadeInView from "@/components/ui/FadeInView";
+import { OnceMotion } from "@/components/ui/OnceMotion";
 
 const statements = [
   "You are functioning, but something still feels off.",
@@ -24,8 +24,9 @@ export default function ForYouIfSection() {
 
           <div className="space-y-0 divide-y divide-border/60">
             {statements.map((statement, i) => (
-              <motion.div
+              <OnceMotion.div
                 key={i}
+                seenId={`home-for-you-${i}`}
                 initial={{ opacity: 0, x: -12 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{
@@ -45,7 +46,7 @@ export default function ForYouIfSection() {
                 >
                   {statement}
                 </p>
-              </motion.div>
+              </OnceMotion.div>
             ))}
           </div>
         </div>

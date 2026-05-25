@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from "framer-motion";
+import { useElementIntroAnimation } from "@/components/layout/PageAnimationProvider";
 
 interface FadeInViewProps {
   children: React.ReactNode;
@@ -19,6 +20,12 @@ export default function FadeInView({
   blur = false,
   y = 22,
 }: FadeInViewProps) {
+  const { shouldAnimate, markSeen } = useElementIntroAnimation();
+
+  if (!shouldAnimate) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       initial={{
@@ -36,6 +43,7 @@ export default function FadeInView({
         delay,
         ease: [0.16, 1, 0.3, 1],
       }}
+      onViewportEnter={markSeen}
       viewport={{ once: true, margin: "-120px" }}
       className={className}
     >

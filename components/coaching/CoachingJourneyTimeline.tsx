@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from "framer-motion";
 import FadeInView from "@/components/ui/FadeInView";
+import { OnceMotion } from "@/components/ui/OnceMotion";
 
 const stages = [
   {
@@ -58,7 +58,8 @@ export default function CoachingJourneyTimeline() {
             className="absolute top-[22px] left-[22px] right-[22px] h-px bg-border"
             aria-hidden="true"
           >
-            <motion.div
+            <OnceMotion.div
+              seenId="coaching-journey-desktop-track"
               className="h-full bg-green/50 origin-left"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
@@ -69,8 +70,9 @@ export default function CoachingJourneyTimeline() {
 
           <div className="grid grid-cols-4 gap-10">
             {stages.map((stage, i) => (
-              <motion.div
+              <OnceMotion.div
                 key={stage.number}
+                seenId={`coaching-journey-desktop-stage-${stage.number}`}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{
@@ -81,7 +83,8 @@ export default function CoachingJourneyTimeline() {
                 viewport={{ once: true, margin: "-80px" }}
               >
                 {/* Node */}
-                <motion.div
+                <OnceMotion.div
+                  seenId={`coaching-journey-desktop-node-${stage.number}`}
                   className="w-11 h-11 rounded-full border border-green bg-cream flex items-center justify-center mb-8 relative z-10"
                   initial={{ scale: 0, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
@@ -95,7 +98,7 @@ export default function CoachingJourneyTimeline() {
                   <span className="font-heading text-sm text-green leading-none">
                     {stage.number}
                   </span>
-                </motion.div>
+                </OnceMotion.div>
 
                 <h3 className="font-heading text-lg text-charcoal mb-3 leading-snug">
                   {stage.title}
@@ -103,7 +106,7 @@ export default function CoachingJourneyTimeline() {
                 <p className="font-body text-sm text-charcoal-mid leading-relaxed">
                   {stage.description}
                 </p>
-              </motion.div>
+              </OnceMotion.div>
             ))}
           </div>
         </div>
@@ -116,7 +119,8 @@ export default function CoachingJourneyTimeline() {
             className="absolute left-[18px] top-1 bottom-1 w-px bg-border"
             aria-hidden="true"
           >
-            <motion.div
+            <OnceMotion.div
+              seenId="coaching-journey-mobile-track"
               className="w-full bg-green/50 origin-top"
               style={{ height: "100%" }}
               initial={{ scaleY: 0 }}
@@ -128,8 +132,9 @@ export default function CoachingJourneyTimeline() {
 
           <div className="space-y-12">
             {stages.map((stage, i) => (
-              <motion.div
+              <OnceMotion.div
                 key={stage.number}
+                seenId={`coaching-journey-mobile-stage-${stage.number}`}
                 initial={{ opacity: 0, x: 16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{
@@ -153,7 +158,7 @@ export default function CoachingJourneyTimeline() {
                 <p className="font-body text-sm text-charcoal-mid leading-relaxed">
                   {stage.description}
                 </p>
-              </motion.div>
+              </OnceMotion.div>
             ))}
           </div>
         </div>

@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
+import CurrentYear from "@/components/layout/CurrentYear";
 
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Coaching", href: "/coaching" },
+  { label: "Articles", href: "/articles" },
   { label: "Books", href: "/books" },
   { label: "Testimonials", href: "/testimonials" },
   { label: "Contact", href: "/contact" },
@@ -54,7 +56,7 @@ export default function Footer() {
               Sam Murgatroyd
             </p>
             <p className="font-body text-xs text-charcoal-muted mb-6">
-              Authenticity Coach and Author
+              Life Coach and Author
             </p>
 
             <div className="space-y-1.5">
@@ -111,7 +113,7 @@ export default function Footer() {
 
         <div className="mt-10 pt-6 border-t border-border/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
           <p className="font-body text-xs text-charcoal-muted">
-            © {new Date().getFullYear()} Perception 47 Coaching. All rights reserved.
+            &copy; <CurrentYear /> Perception 47 Coaching. All rights reserved.
           </p>
           <p className="font-body text-xs text-charcoal-muted">
             Authenticity is not a destination. It is a direction.

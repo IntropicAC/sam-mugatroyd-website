@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from "framer-motion";
 import FadeInView from "@/components/ui/FadeInView";
+import { OnceMotion } from "@/components/ui/OnceMotion";
 
 const before = [
   "Saying yes when you mean no",
@@ -52,8 +52,9 @@ export default function CoachingBeforeAfter() {
 
           <div className="space-y-6">
             {before.map((item, i) => (
-              <motion.div
+              <OnceMotion.div
                 key={i}
+                seenId={`coaching-before-${i}`}
                 initial={{ opacity: 0, x: -14 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.75, delay: 0.1 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -67,7 +68,7 @@ export default function CoachingBeforeAfter() {
                 <p className="font-heading italic text-lg md:text-xl text-charcoal-mid leading-snug">
                   {item}
                 </p>
-              </motion.div>
+              </OnceMotion.div>
             ))}
           </div>
         </div>
@@ -77,7 +78,8 @@ export default function CoachingBeforeAfter() {
           className="hidden md:flex items-center justify-center absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
           aria-hidden="true"
         >
-          <motion.div
+          <OnceMotion.div
+            seenId="coaching-before-after-lens"
             initial={{ opacity: 0, scale: 0 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -89,7 +91,7 @@ export default function CoachingBeforeAfter() {
               <circle cx="32" cy="32" r="11" stroke="#3D5948" strokeWidth="1.2" opacity="0.85" />
               <circle cx="32" cy="32" r="3" fill="#3D5948" opacity="0.85" />
             </svg>
-          </motion.div>
+          </OnceMotion.div>
         </div>
 
         {/* Right — The lens you choose */}
@@ -102,8 +104,9 @@ export default function CoachingBeforeAfter() {
 
           <div className="space-y-6">
             {after.map((item, i) => (
-              <motion.div
+              <OnceMotion.div
                 key={i}
+                seenId={`coaching-after-${i}`}
                 initial={{ opacity: 0, x: 14 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.75, delay: 0.1 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -117,7 +120,7 @@ export default function CoachingBeforeAfter() {
                 <p className="font-heading italic text-lg md:text-xl text-cream leading-snug">
                   {item}
                 </p>
-              </motion.div>
+              </OnceMotion.div>
             ))}
           </div>
         </div>

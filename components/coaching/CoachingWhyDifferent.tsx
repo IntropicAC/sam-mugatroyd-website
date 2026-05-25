@@ -1,8 +1,8 @@
 'use client';
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import FadeInView from "@/components/ui/FadeInView";
+import { OnceMotion } from "@/components/ui/OnceMotion";
 
 function LensDivider() {
   return (
@@ -97,8 +97,9 @@ export default function CoachingWhyDifferent() {
                     "I am not going to tell you to journal your limiting beliefs or repeat affirmations until something shifts.",
                     "I am not interested in a version of you that feels good for three weeks and then quietly drifts back to the same patterns with a different name.",
                   ].map((item, i) => (
-                    <motion.div
+                    <OnceMotion.div
                       key={i}
+                      seenId={`coaching-why-different-not-${i}`}
                       initial={{ opacity: 0, y: 12 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{
@@ -125,7 +126,7 @@ export default function CoachingWhyDifferent() {
                       <p className="font-body text-base text-charcoal-mid leading-relaxed">
                         {item}
                       </p>
-                    </motion.div>
+                    </OnceMotion.div>
                   ))}
                 </div>
               </div>
@@ -292,7 +293,8 @@ export default function CoachingWhyDifferent() {
           </FadeInView>
 
           <div className="overflow-hidden">
-            <motion.div
+            <OnceMotion.div
+              seenId="coaching-why-different-portrait"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
@@ -302,7 +304,7 @@ export default function CoachingWhyDifferent() {
               <div className="relative aspect-[3/4] overflow-hidden">
                 <Image
                   src="/images/sam-headshot.jpg"
-                  alt="Sam Murgatroyd - Authenticity Coach and Author"
+                  alt="Sam Murgatroyd - Life Coach and Author"
                   fill
                   className="object-cover object-top"
                   sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, (max-width: 1024px) 176px, 208px"
@@ -318,13 +320,13 @@ export default function CoachingWhyDifferent() {
                   Sam Murgatroyd
                 </p>
                 <p className="font-body text-[10px] text-cream/45 mt-0.5 leading-snug">
-                  Authenticity Coach · Author
+                  Life Coach · Author
                 </p>
                 <p className="font-body text-[10px] text-green-hover mt-1 leading-snug">
                   Amazon Bestseller
                 </p>
               </div>
-            </motion.div>
+            </OnceMotion.div>
 
             <FadeInView className="mb-4 md:mb-5">
               <h2 className="font-heading text-2xl md:text-3xl text-cream leading-tight">

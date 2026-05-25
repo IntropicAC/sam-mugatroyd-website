@@ -1,14 +1,15 @@
 'use client';
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { OnceMotion } from "@/components/ui/OnceMotion";
 
 const CALENDLY_URL = "https://calendly.com/samuel-a-murg/free-discovery-call";
 
 function AmazonBestsellerBadge() {
   return (
-    <motion.div
+    <OnceMotion.div
+      seenId="home-amazon-bestseller-badge"
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, delay: 1.5, ease: "easeOut" }}
@@ -37,7 +38,8 @@ function AmazonBestsellerBadge() {
           amazon
         </text>
         {/* Arc from under first "a" to end of "z" */}
-        <motion.path
+        <OnceMotion.path
+          seenId="home-amazon-bestseller-smile"
           d="M3 21 Q22 28 41 21"
           stroke="#FF9900"
           strokeWidth="2.5"
@@ -47,7 +49,8 @@ function AmazonBestsellerBadge() {
           animate={{ pathLength: 1 }}
           transition={{ duration: 1.8, delay: 1.9, ease: [0.16, 1, 0.3, 1] }}
         />
-        <motion.path
+        <OnceMotion.path
+          seenId="home-amazon-bestseller-arrow"
           d="M36 18.5 L41 21 L37 24.5"
           stroke="#FF9900"
           strokeWidth="2.5"
@@ -59,7 +62,7 @@ function AmazonBestsellerBadge() {
           transition={{ duration: 0.5, delay: 3.65, ease: "easeOut" }}
         />
       </svg>
-    </motion.div>
+    </OnceMotion.div>
   );
 }
 
@@ -94,17 +97,19 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-7xl mx-auto w-full px-5 md:px-8 lg:px-12 pt-20 pb-10">
         {/* Eyebrow */}
-        <motion.p
+        <OnceMotion.p
+          seenId="home-hero-eyebrow"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
           className="font-body text-xs text-charcoal-muted tracking-[0.18em] uppercase mb-4 md:mb-5"
         >
-          Authenticity Coaching
-        </motion.p>
+          Life Coaching
+        </OnceMotion.p>
 
         {/* Headline */}
-        <motion.h1
+        <OnceMotion.h1
+          seenId="home-hero-heading"
           initial={{ opacity: 0, filter: "blur(8px)", y: 8 }}
           animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
           transition={{ duration: 1.1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
@@ -117,10 +122,11 @@ export default function Hero() {
           <em className="not-italic text-green">everything through a lens</em>
           <br />
           they did not choose.
-        </motion.h1>
+        </OnceMotion.h1>
 
         {/* Divider */}
-        <motion.div
+        <OnceMotion.div
+          seenId="home-hero-divider"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
@@ -130,17 +136,19 @@ export default function Hero() {
         />
 
         {/* Positioning line */}
-        <motion.p
+        <OnceMotion.p
+          seenId="home-hero-positioning"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.05, ease: "easeOut" }}
           className="font-body text-sm md:text-lg text-charcoal-mid max-w-md leading-relaxed mb-6"
         >
           I change the way people see the world and in turn change the world they see.
-        </motion.p>
+        </OnceMotion.p>
 
         {/* CTA */}
-        <motion.div
+        <OnceMotion.div
+          seenId="home-hero-cta"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1.25, ease: "easeOut" }}
@@ -149,7 +157,7 @@ export default function Hero() {
             href={CALENDLY_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-green text-cream px-7 py-3.5 md:px-8 md:py-4 font-body text-sm font-medium tracking-wide hover:bg-green-hover transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green group"
+            className="inline-flex items-center gap-3 bg-green text-cream px-5 py-3.5 md:px-8 md:py-4 font-body text-sm font-medium tracking-wide hover:bg-green-hover transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green group"
           >
             Book your free 20-minute call
             <span
@@ -159,7 +167,7 @@ export default function Hero() {
               →
             </span>
           </Link>
-        </motion.div>
+        </OnceMotion.div>
 
         <AmazonBestsellerBadge />
       </div>

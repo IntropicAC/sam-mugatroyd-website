@@ -5,7 +5,6 @@ interface BookCardProps {
   title: string;
   description: string;
   coverImage: string;
-  // TODO: Replace with real Amazon/purchase links when available
   href?: string;
 }
 
@@ -45,7 +44,8 @@ export default function BookCard({ title, description, coverImage, href }: BookC
     return (
       <Link
         href={href}
-        // TODO: Add target="_blank" rel="noopener noreferrer" when Amazon links are real
+        target="_blank"
+        rel="noopener noreferrer"
         className="block focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green"
       >
         {cardContent}

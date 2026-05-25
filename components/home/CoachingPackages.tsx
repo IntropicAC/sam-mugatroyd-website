@@ -1,9 +1,9 @@
 'use client';
 
-import { motion } from "framer-motion";
 import PackageCard from "./PackageCard";
 import FadeInView from "@/components/ui/FadeInView";
 import Link from "next/link";
+import { OnceMotion } from "@/components/ui/OnceMotion";
 
 const CALENDLY_URL = "https://calendly.com/samuel-a-murg/free-discovery-call";
 
@@ -79,8 +79,9 @@ export default function CoachingPackages() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 mb-12">
           {packages.map((pkg, i) => (
-            <motion.div
+            <OnceMotion.div
               key={pkg.title}
+              seenId={`home-package-${pkg.title}`}
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{
@@ -92,7 +93,7 @@ export default function CoachingPackages() {
               className="flex"
             >
               <PackageCard {...pkg} />
-            </motion.div>
+            </OnceMotion.div>
           ))}
         </div>
 

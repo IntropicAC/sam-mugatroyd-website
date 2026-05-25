@@ -2,178 +2,192 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { OnceMotion } from "@/components/ui/OnceMotion";
+import FadeInView from "@/components/ui/FadeInView";
 
 interface BookFeatureProps {
-  index: number;
   title: string;
-  theme: string;
-  description: string;
-  connectionLine: string;
-  image: string;
+  themes: string[];
+  forWhom: string;
+  paragraphs: string[];
+  pullQuote: string;
+  coverImage: string;
+  coverAlt: string;
   amazonUrl: string;
   reversed?: boolean;
-}
-
-function getBookMood(index: number) {
-  if (index === 1) {
-    return {
-      bg: "bg-cream",
-      rule: "bg-charcoal",
-      wash: "rgba(42,39,34,0.055)",
-    };
-  }
-
-  if (index === 2) {
-    return {
-      bg: "bg-cream-deep/65",
-      rule: "bg-green",
-      wash: "rgba(61,89,72,0.075)",
-    };
-  }
-
-  return {
-    bg: "bg-cream",
-    rule: "bg-charcoal-mid",
-    wash: "rgba(81,77,73,0.06)",
-  };
+  seenIdPrefix: string;
 }
 
 export default function BookFeature({
-  index,
   title,
-  theme,
-  description,
-  connectionLine,
-  image,
+  themes,
+  forWhom,
+  paragraphs,
+  pullQuote,
+  coverImage,
+  coverAlt,
   amazonUrl,
   reversed = false,
+  seenIdPrefix,
 }: BookFeatureProps) {
-  const mood = getBookMood(index);
-
   return (
     <section
-      className={`relative overflow-hidden py-16 md:py-24 lg:py-32 px-5 md:px-8 lg:px-12 ${mood.bg} border-t border-border/40`}
-      aria-label={title}
+      className="relative px-5 py-12 md:px-8 md:py-20 lg:px-12 lg:py-24"
+      aria-label={`Book — ${title}`}
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.28]"
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(42,39,34,0.04) 0 1px, transparent 1px 100%)",
-          backgroundSize: "72px 72px",
-        }}
-        aria-hidden="true"
-      />
-
-      <div
-        className="pointer-events-none absolute right-0 top-1/2 h-64 w-64 -translate-y-1/2 translate-x-1/2 rounded-full blur-3xl"
-        style={{ backgroundColor: mood.wash }}
-        aria-hidden="true"
-      />
-
-      <div className="relative max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 gap-9 md:grid-cols-12 md:gap-12 lg:gap-16 md:items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
+      <div className="mx-auto max-w-5xl">
+        <div className="grid gap-8 md:gap-12 lg:gap-16 items-center md:grid-cols-12">
+          {/* COVER COLUMN */}
+          <OnceMotion.div
+            seenId={`${seenIdPrefix}-cover`}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-            viewport={{ once: true, margin: "-100px" }}
-            className={`md:col-span-5 ${reversed ? "md:order-last" : "md:order-first"}`}
+            transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true, margin: "-80px" }}
+            className={`md:col-span-5 ${
+              reversed ? "md:order-2 md:col-start-8" : "md:order-1"
+            }`}
           >
-            <div className="relative mx-auto max-w-[250px] md:mx-0 md:max-w-[300px]">
+            <div className="relative mx-auto w-[10rem] sm:w-[12rem] md:w-auto md:max-w-[18rem]">
+              {/* Outer border frame */}
               <div
-                className="absolute left-5 right-3 bottom-[-16px] h-4 border-y border-charcoal/10 bg-charcoal/[0.045]"
+                className="absolute -inset-2.5 md:-inset-3 border border-charcoal/10"
                 aria-hidden="true"
               />
-              <div className="relative aspect-[2/3] overflow-hidden border border-charcoal/10 bg-cream shadow-[12px_18px_45px_rgba(42,39,34,0.16)] before:absolute before:inset-y-0 before:left-0 before:z-10 before:w-[11px] before:bg-[linear-gradient(to_right,rgba(26,24,20,0.38),rgba(255,255,255,0.14),transparent)] after:absolute after:inset-y-4 after:right-0 after:z-10 after:w-[6px] after:bg-cream/35">
+
+              {/* Soft tonal glow behind cover */}
+              <div
+                className={`pointer-events-none absolute h-28 w-28 md:h-44 md:w-44 rounded-full bg-green/15 blur-3xl ${
+                  reversed
+                    ? "-right-6 -bottom-6"
+                    : "-left-6 -bottom-6"
+                }`}
+                aria-hidden="true"
+              />
+
+              {/* Cover */}
+              <div className="relative aspect-[2/3] overflow-hidden bg-surface shadow-[0_20px_45px_-25px_rgba(42,39,34,0.5)]">
                 <Image
-                  src={image}
-                  alt={`${title} book cover`}
+                  src={coverImage}
+                  alt={coverAlt}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 768px) 250px, 300px"
+                  sizes="(max-width: 768px) 12rem, (max-width: 1280px) 30vw, 288px"
                 />
               </div>
+
+              {/* Caption ribbon under cover */}
+              <div className="mt-3 flex items-center justify-between border-t border-charcoal/10 pt-2">
+                <p className="font-body text-[9px] tracking-[0.22em] uppercase text-charcoal-muted">
+                  Sam Murgatroyd
+                </p>
+                <p className="font-body text-[9px] tracking-[0.22em] uppercase text-green">
+                  On Amazon
+                </p>
+              </div>
             </div>
-          </motion.div>
+          </OnceMotion.div>
 
+          {/* TEXT COLUMN */}
           <div
-            className={`md:col-span-7 ${reversed ? "md:order-first" : "md:order-last"}`}
+            className={`md:col-span-7 ${
+              reversed
+                ? "md:order-1 md:col-start-1 md:row-start-1"
+                : "md:order-2"
+            }`}
           >
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="font-body text-[11px] text-charcoal-muted tracking-[0.15em] uppercase mb-4"
-            >
-              {theme}
-            </motion.p>
+            {/* Theme strip */}
+            <FadeInView>
+              <div className="flex flex-wrap gap-x-2 gap-y-1 mb-3 md:mb-4">
+                {themes.map((theme, i) => (
+                  <span
+                    key={theme}
+                    className="font-body text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-charcoal-muted"
+                  >
+                    {theme}
+                    {i < themes.length - 1 && (
+                      <span
+                        className="ml-2 text-charcoal/25"
+                        aria-hidden="true"
+                      >
+                        /
+                      </span>
+                    )}
+                  </span>
+                ))}
+              </div>
+            </FadeInView>
 
-            <motion.h2
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="font-heading text-3xl md:text-4xl lg:text-[2.75rem] text-charcoal leading-tight mb-5"
+            {/* Title */}
+            <OnceMotion.h2
+              seenId={`${seenIdPrefix}-title`}
+              initial={{ opacity: 0, filter: "blur(10px)", y: 12 }}
+              whileInView={{ opacity: 1, filter: "blur(0px)", y: 0 }}
+              transition={{ duration: 1.1, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, margin: "-80px" }}
+              className="font-heading text-charcoal leading-[1.04] tracking-[-0.015em] text-[clamp(1.75rem,5.5vw,3rem)] mb-3 md:mb-4"
             >
               {title}
-            </motion.h2>
+            </OnceMotion.h2>
 
-            <motion.div
-              initial={{ scaleX: 0 }}
-              whileInView={{ scaleX: 1 }}
-              transition={{ duration: 0.7, delay: 0.3 }}
-              style={{ originX: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className={`h-px w-12 ${mood.rule} opacity-35 mb-6`}
-              aria-hidden="true"
-            />
-
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="border border-border bg-cream/70 px-5 py-6 md:px-7 md:py-7 mb-5"
-            >
-              <p className="font-body text-base text-charcoal-mid leading-relaxed">
-                {description}
+            {/* "For" line */}
+            <FadeInView delay={0.1}>
+              <p className="font-heading italic text-sm md:text-base text-green leading-snug mb-5 md:mb-6">
+                {forWhom}
               </p>
-            </motion.div>
+            </FadeInView>
 
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.48 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="font-heading italic text-base text-charcoal leading-snug mb-9 pl-5 border-l-2 border-green/30"
-            >
-              {connectionLine}
-            </motion.p>
+            {/* Body paragraphs */}
+            <div className="space-y-3 md:space-y-4">
+              {paragraphs.map((p, i) => (
+                <FadeInView key={i} delay={0.18 + i * 0.08}>
+                  <p className="font-body text-sm md:text-[0.95rem] text-charcoal-mid leading-[1.7]">
+                    {p}
+                  </p>
+                </FadeInView>
+              ))}
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
+            {/* Pull quote */}
+            <OnceMotion.figure
+              seenId={`${seenIdPrefix}-pullquote`}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.58 }}
-              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.95, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              viewport={{ once: true, margin: "-80px" }}
+              className="mt-6 md:mt-8 border-l-2 border-green pl-4 md:pl-6"
             >
-              <Link
-                href={amazonUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-transparent text-green border border-green px-7 py-3.5 font-body text-sm font-medium tracking-wide hover:bg-green hover:text-cream transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green group"
-              >
-                Buy on Amazon
-                <span
-                  className="inline-block transition-transform duration-300 group-hover:translate-x-1"
-                  aria-hidden="true"
+              <blockquote className="font-heading italic text-base md:text-lg text-charcoal leading-[1.45]">
+                &ldquo;{pullQuote}&rdquo;
+              </blockquote>
+              <figcaption className="mt-2 font-body text-[9px] md:text-[10px] tracking-[0.22em] uppercase text-charcoal-muted">
+                From {title}
+              </figcaption>
+            </OnceMotion.figure>
+
+            {/* CTA */}
+            <FadeInView delay={0.25}>
+              <div className="mt-6 md:mt-8 flex flex-wrap items-center gap-x-5 gap-y-2">
+                <Link
+                  href={amazonUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2.5 border border-charcoal text-charcoal px-5 py-2.5 md:px-6 md:py-3 font-body text-xs md:text-sm font-medium tracking-wide hover:bg-charcoal hover:text-cream transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green"
+                  aria-label={`Find ${title} on Amazon`}
                 >
-                  {"\u2192"}
+                  Find on Amazon
+                  <span
+                    aria-hidden="true"
+                    className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+                  >
+                    →
+                  </span>
+                </Link>
+                <span className="font-body text-[11px] md:text-xs text-charcoal-muted italic">
+                  Paperback &middot; Kindle
                 </span>
-              </Link>
-            </motion.div>
+              </div>
+            </FadeInView>
           </div>
         </div>
       </div>

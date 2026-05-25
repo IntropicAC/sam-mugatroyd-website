@@ -11,6 +11,7 @@ const CALENDLY_URL = "https://calendly.com/samuel-a-murg/free-discovery-call";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Coaching", href: "/coaching" },
+  { label: "Articles", href: "/articles" },
   { label: "Books", href: "/books" },
   { label: "Contact", href: "/contact" },
 ];
@@ -66,7 +67,7 @@ export default function Header() {
 
             {/* Desktop nav */}
             <nav
-              className="hidden md:flex items-center gap-7 lg:gap-9"
+              className="hidden md:flex items-center gap-6 lg:gap-8"
               aria-label="Primary navigation"
             >
               {navLinks.map((link) => (

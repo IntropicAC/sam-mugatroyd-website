@@ -11,11 +11,6 @@ const links = [
     display: "Perception 47 Coaching",
     href: "https://www.facebook.com/Perception47Coaching",
   },
-  {
-    label: "Website",
-    display: "sam-murgatroyd.co.uk",
-    href: "https://sam-murgatroyd.co.uk",
-  },
 ];
 
 export default function ContactFindSam() {

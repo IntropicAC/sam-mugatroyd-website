@@ -8,6 +8,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import { OnceMotion } from "@/components/ui/OnceMotion";
 
 const STEPS = [
   {
@@ -196,7 +197,8 @@ export default function CoachingLensMovement() {
       <div className="relative z-10 mx-auto max-w-5xl">
         {/* FRAME HEADER */}
         <header className="flex items-end justify-between gap-6 border-b border-charcoal/10 pb-5">
-          <motion.div
+          <OnceMotion.div
+            seenId="coaching-lens-header-left"
             initial={{ opacity: 0, x: reduceMotion ? 0 : -8 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -206,8 +208,9 @@ export default function CoachingLensMovement() {
             <span className="font-body text-[0.6rem] uppercase tracking-[0.3em] text-charcoal-muted md:text-[0.62rem]">
               The Lens
             </span>
-          </motion.div>
-          <motion.div
+          </OnceMotion.div>
+          <OnceMotion.div
+            seenId="coaching-lens-header-right"
             initial={{ opacity: 0, x: reduceMotion ? 0 : 8 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -215,13 +218,14 @@ export default function CoachingLensMovement() {
             className="flex items-center gap-4 md:gap-5"
           >
             <FocusMark className="h-5 w-5 text-green/70" />
-          </motion.div>
+          </OnceMotion.div>
         </header>
 
         {/* HERO TYPOGRAPHY — centred */}
         <div className="mt-16 md:mt-20">
           <h2 className="text-center font-heading text-charcoal">
-            <motion.span
+            <OnceMotion.span
+              seenId="coaching-lens-title-you-are"
               initial={{ opacity: 0, y: reduceMotion ? 0 : 20, filter: reduceMotion ? "blur(0px)" : "blur(10px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 1.1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -229,12 +233,13 @@ export default function CoachingLensMovement() {
               className="block text-[clamp(2.75rem,10vw,6.5rem)] leading-[0.96] tracking-[-0.02em]"
             >
               You Are
-            </motion.span>
+            </OnceMotion.span>
 
-            {/* "Not" — italic green, with an animated strikethrough that
+            {/* "Not" — italic green, with an animated underline that
                 draws in once the word is in view. */}
             <span className="block text-green">
-              <motion.span
+              <OnceMotion.span
+                seenId="coaching-lens-title-not"
                 initial={{ opacity: 0, filter: reduceMotion ? "blur(0px)" : "blur(10px)" }}
                 whileInView={{ opacity: 1, filter: "blur(0px)" }}
                 transition={{ duration: 1.1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
@@ -243,24 +248,26 @@ export default function CoachingLensMovement() {
               >
                 <span className="relative inline-block px-1 md:px-2">
                   Not
-                  <motion.span
+                  <OnceMotion.span
+                    seenId="coaching-lens-title-strike"
                     initial={{ scaleX: reduceMotion ? 1 : 0 }}
                     whileInView={{ scaleX: 1 }}
                     transition={{
-                      duration: reduceMotion ? 0 : 1.1,
+                      duration: reduceMotion ? 0 : 1.8,
                       delay: 0.85,
                       ease: [0.65, 0, 0.35, 1],
                     }}
                     viewport={{ once: true, margin: "-100px" }}
                     style={{ originX: 0 }}
-                    className="absolute left-[-6%] top-[58%] block h-[3px] w-[112%] origin-left rounded-full bg-green md:h-[5px]"
+                    className="absolute left-[-6%] bottom-[0.01em] block h-[3px] w-[112%] origin-left rounded-full bg-green md:h-[5px]"
                     aria-hidden="true"
                   />
                 </span>
-              </motion.span>
+              </OnceMotion.span>
             </span>
 
-            <motion.span
+            <OnceMotion.span
+              seenId="coaching-lens-title-broken"
               initial={{ opacity: 0, y: reduceMotion ? 0 : 20, filter: reduceMotion ? "blur(0px)" : "blur(10px)" }}
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               transition={{ duration: 1.1, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
@@ -268,10 +275,11 @@ export default function CoachingLensMovement() {
               className="block text-[clamp(2.75rem,10vw,6.5rem)] leading-[0.96] tracking-[-0.02em]"
             >
               Broken<span ref={periodRef}>.</span>
-            </motion.span>
+            </OnceMotion.span>
           </h2>
 
-          <motion.figure
+          <OnceMotion.figure
+            seenId="coaching-lens-quote"
             initial={{ opacity: 0, y: reduceMotion ? 0 : 12 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
@@ -282,12 +290,13 @@ export default function CoachingLensMovement() {
             <blockquote className="font-heading text-lg italic leading-[1.4] text-charcoal-mid md:text-xl">
               The map was not wrong. It was just old.
             </blockquote>
-          </motion.figure>
+          </OnceMotion.figure>
         </div>
 
         {/* REFLECTIVE BODY — single cohesive reading column */}
         <div className="mx-auto mt-24 max-w-[40rem] md:mt-28">
-          <motion.div
+          <OnceMotion.div
+            seenId="coaching-lens-field-note"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -299,9 +308,10 @@ export default function CoachingLensMovement() {
               Field Note — On the Lens
             </span>
             <span className="block h-px w-6 bg-green/45" aria-hidden="true" />
-          </motion.div>
+          </OnceMotion.div>
 
-          <motion.p
+          <OnceMotion.p
+            seenId="coaching-lens-body-1"
             initial={{ opacity: 0, y: reduceMotion ? 0 : 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -312,8 +322,9 @@ export default function CoachingLensMovement() {
             everything through a lens you did not choose. The way you see
             yourself. The way you see other people. The way you decide what is
             acceptable, what is expected, what is possible for someone like you.
-          </motion.p>
-          <motion.p
+          </OnceMotion.p>
+          <OnceMotion.p
+            seenId="coaching-lens-body-2"
             initial={{ opacity: 0, y: reduceMotion ? 0 : 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
@@ -324,7 +335,7 @@ export default function CoachingLensMovement() {
             liked, avoid judgment, keep people close. It made sense then. It is
             just that you have been looking through it for so long that it
             stopped feeling like a lens and started feeling like reality.
-          </motion.p>
+          </OnceMotion.p>
         </div>
 
         {/* SHIFTS — text stays centred, markers alternate sides on
@@ -355,7 +366,8 @@ export default function CoachingLensMovement() {
                     <span className="absolute inset-0 rounded-full bg-green" />
                   </span>
 
-                  <motion.div
+                  <OnceMotion.div
+                    seenId={`coaching-lens-step-${i}`}
                     initial={{ opacity: 0, y: reduceMotion ? 0 : 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{
@@ -372,7 +384,7 @@ export default function CoachingLensMovement() {
                     <p className="font-body text-base leading-[1.7] text-charcoal-mid md:text-[1.0625rem]">
                       {step.body}
                     </p>
-                  </motion.div>
+                  </OnceMotion.div>
                 </div>
               </article>
             );
@@ -383,14 +395,20 @@ export default function CoachingLensMovement() {
         <div className="mt-24 text-center md:mt-28">
           <div className="relative mx-auto flex h-20 w-20 items-center justify-center">
             {!reduceMotion && (
-              <motion.span
+              <OnceMotion.span
+                seenId="coaching-lens-focus-pulse"
                 className="absolute inset-0 rounded-full border border-green/40"
-                animate={{ scale: [1, 2.1, 1], opacity: [0.45, 0, 0.45] }}
+                initial={{ scale: 1, opacity: 0.45 }}
+                whileInView={{ scale: [1, 2.1, 1], opacity: [0.45, 0, 0.45] }}
+                seenAnimate={{ scale: 1, opacity: 0 }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeOut" }}
+                seenTransition={{ duration: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
                 aria-hidden="true"
               />
             )}
-            <motion.span
+            <OnceMotion.span
+              seenId="coaching-lens-focus-ring"
               initial={{ opacity: 0, scale: reduceMotion ? 1 : 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
@@ -405,7 +423,8 @@ export default function CoachingLensMovement() {
             />
           </div>
 
-          <motion.div
+          <OnceMotion.div
+            seenId="coaching-lens-here-label"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1.1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
@@ -417,9 +436,10 @@ export default function CoachingLensMovement() {
               Here
             </span>
             <span className="block h-px w-8 bg-green/45" aria-hidden="true" />
-          </motion.div>
+          </OnceMotion.div>
 
-          <motion.p
+          <OnceMotion.p
+            seenId="coaching-lens-closing"
             initial={{ opacity: 0, filter: reduceMotion ? "blur(0px)" : "blur(8px)" }}
             whileInView={{ opacity: 1, filter: "blur(0px)" }}
             transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
@@ -431,7 +451,7 @@ export default function CoachingLensMovement() {
               It is coming from seeing the world in a way that was never really
               yours.
             </span>
-          </motion.p>
+          </OnceMotion.p>
         </div>
       </div>
     </section>

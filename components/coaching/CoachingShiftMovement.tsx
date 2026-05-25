@@ -1,7 +1,7 @@
 'use client';
 
-import { motion } from "framer-motion";
 import FadeInView from "@/components/ui/FadeInView";
+import { OnceMotion } from "@/components/ui/OnceMotion";
 
 const reasons = [
   "There is a reason you say yes when you mean no.",
@@ -50,8 +50,9 @@ export default function CoachingShiftMovement() {
           <div>
             <div className="grid gap-4 md:gap-5 mb-6 md:mb-8" role="list">
               {reasons.map((reason, i) => (
-                <motion.div
+                <OnceMotion.div
                   key={reason}
+                  seenId={`coaching-shift-reason-${i}`}
                   role="listitem"
                   initial={{ opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +71,7 @@ export default function CoachingShiftMovement() {
                   <p className="font-heading italic text-lg md:text-2xl text-charcoal leading-snug pl-3 md:pl-4">
                     {reason}
                   </p>
-                </motion.div>
+                </OnceMotion.div>
               ))}
             </div>
 

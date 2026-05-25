@@ -8,7 +8,12 @@ import {
   type ReactNode,
 } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import FadeInView from "@/components/ui/FadeInView";
+import {
+  hasSeenAnimationForPath,
+  useElementIntroAnimation,
+} from "@/components/layout/PageAnimationProvider";
 
 const steps = [
   {
@@ -262,16 +267,27 @@ function FlowItem({
   onBorderDone: () => void;
   reduceMotion: boolean;
 }) {
+  const { shouldAnimate, markSeen } = useElementIntroAnimation(
+    `coaching-practice-step-${step.number}`,
+  );
   const wrapperRef = useRef<HTMLDivElement>(null);
   const inView = useInView(wrapperRef, {
     once: true,
     margin: "0px 0px -12% 0px",
   });
-  const [connectorDone, setConnectorDone] = useState(false);
+  const [connectorDone, setConnectorDone] = useState(!shouldAnimate);
+
+  useEffect(() => {
+    if (shouldAnimate && inView) {
+      markSeen();
+    }
+  }, [inView, markSeen, shouldAnimate]);
 
   const isFirst = index === 0;
-  const borderActive = isFirst ? inView : connectorDone;
-  const connectorActive = !isFirst && inView && prevBorderDone;
+  const borderActive = !shouldAnimate || (isFirst ? inView : connectorDone);
+  const connectorActive =
+    !shouldAnimate || (!isFirst && inView && prevBorderDone);
+  const showContent = !shouldAnimate || inView;
 
   return (
     <div ref={wrapperRef}>
@@ -279,7 +295,7 @@ function FlowItem({
         <Connector
           active={connectorActive}
           onComplete={() => setConnectorDone(true)}
-          reduceMotion={reduceMotion}
+          reduceMotion={reduceMotion || !shouldAnimate}
         />
       )}
 
@@ -287,12 +303,12 @@ function FlowItem({
         dark={step.dark}
         active={borderActive}
         onBorderComplete={onBorderDone}
-        reduceMotion={reduceMotion}
+        reduceMotion={reduceMotion || !shouldAnimate}
       >
         {/* ───────── existing card content (unchanged copy / classes) ───────── */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+          initial={shouldAnimate ? { opacity: 0, y: 12 } : false}
+          animate={showContent ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
           transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
           <p
@@ -341,12 +357,18 @@ function FlowItem({
 
 export default function CoachingPracticeFlow() {
   const reduceMotion = !!useReducedMotion();
+  const pathname = usePathname();
 
   // borderDone[i] flips true once card i's border has finished drawing.
   // Passed to card i+1 as `prevBorderDone` so it knows when to start the
   // connector that leads into it.
   const [borderDone, setBorderDone] = useState<boolean[]>(() =>
-    steps.map(() => false),
+    steps.map((step) =>
+      hasSeenAnimationForPath(
+        pathname,
+        `coaching-practice-step-${step.number}`,
+      ),
+    ),
   );
 
   const markBorderDone = useCallback((i: number) => {

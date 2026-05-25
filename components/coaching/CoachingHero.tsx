@@ -1,8 +1,8 @@
 'use client';
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { OnceMotion } from "@/components/ui/OnceMotion";
 
 const CALENDLY_URL = "https://calendly.com/samuel-a-murg/free-discovery-call";
 
@@ -16,7 +16,8 @@ export default function CoachingHero() {
         className="pointer-events-none absolute right-0 bottom-0 select-none overflow-hidden"
         aria-hidden="true"
       >
-        <motion.span
+        <OnceMotion.span
+          seenId="coaching-hero-background-number"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 2.2, delay: 0.3, ease: "easeOut" }}
@@ -24,7 +25,7 @@ export default function CoachingHero() {
           style={{ fontSize: "clamp(160px, 28vw, 420px)" }}
         >
           47
-        </motion.span>
+        </OnceMotion.span>
       </div>
 
       <div
@@ -36,7 +37,8 @@ export default function CoachingHero() {
         aria-hidden="true"
       />
 
-      <motion.div
+      <OnceMotion.div
+        seenId="coaching-hero-top-line"
         initial={{ scaleX: 0 }}
         animate={{ scaleX: 1 }}
         transition={{ duration: 1.4, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
@@ -48,16 +50,18 @@ export default function CoachingHero() {
       <div className="relative z-10 max-w-7xl mx-auto w-full px-5 md:px-8 lg:px-24 xl:px-32 pt-[clamp(5.25rem,12svh,7rem)] pb-[clamp(2rem,6svh,4rem)]">
         <div className="grid lg:grid-cols-[minmax(0,1.08fr)_minmax(280px,0.62fr)] gap-9 lg:gap-12 xl:gap-16 items-center">
           <div>
-            <motion.p
+            <OnceMotion.p
+              seenId="coaching-hero-eyebrow"
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
               className="font-body text-[10px] text-cream/35 tracking-[0.22em] uppercase mb-[clamp(1.25rem,4svh,2rem)]"
             >
               One-to-One Coaching · Perception 47 · Sam Murgatroyd
-            </motion.p>
+            </OnceMotion.p>
 
-            <motion.h1
+            <OnceMotion.h1
+              seenId="coaching-hero-heading"
               initial={{ opacity: 0, filter: "blur(14px)", y: 10 }}
               animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
               transition={{ duration: 1.4, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
@@ -69,9 +73,10 @@ export default function CoachingHero() {
               <em className="not-italic text-green-hover">
                 You need a new lens.
               </em>
-            </motion.h1>
+            </OnceMotion.h1>
 
-            <motion.div
+            <OnceMotion.div
+              seenId="coaching-hero-divider"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.7, delay: 1.15, ease: "easeOut" }}
@@ -80,25 +85,28 @@ export default function CoachingHero() {
               aria-hidden="true"
             />
 
-            <motion.p
+            <OnceMotion.p
+              seenId="coaching-hero-copy"
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.3, ease: "easeOut" }}
               className="font-body text-sm md:text-base text-cream/55 max-w-lg leading-relaxed mb-2"
             >
               Most coaches offer motivation. Techniques. Frameworks. Things you can apply on a good day and forget on a bad one.
-            </motion.p>
+            </OnceMotion.p>
 
-            <motion.p
+            <OnceMotion.p
+              seenId="coaching-hero-different"
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.45, ease: "easeOut" }}
               className="font-heading italic text-base md:text-lg text-cream/80 mb-[clamp(1.5rem,4svh,2.5rem)]"
             >
               This is different.
-            </motion.p>
+            </OnceMotion.p>
 
-            <motion.div
+            <OnceMotion.div
+              seenId="coaching-hero-cta"
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 1.65, ease: "easeOut" }}
@@ -121,10 +129,11 @@ export default function CoachingHero() {
               <span className="font-body text-xs text-cream/30 tracking-wide">
                 No pitch. Just a conversation.
               </span>
-            </motion.div>
+            </OnceMotion.div>
           </div>
 
-          <motion.div
+          <OnceMotion.div
+            seenId="coaching-hero-graphic"
             initial={{ opacity: 0, y: 22, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1.1, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
@@ -187,7 +196,7 @@ export default function CoachingHero() {
                 />
               </div>
             </div>
-          </motion.div>
+          </OnceMotion.div>
         </div>
       </div>
     </section>

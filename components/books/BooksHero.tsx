@@ -1,147 +1,231 @@
 'use client';
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { OnceMotion } from "@/components/ui/OnceMotion";
+import FadeInView from "@/components/ui/FadeInView";
+
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 export default function BooksHero() {
   return (
     <section
-      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-cream"
-      aria-label="Books hero"
+      className="relative min-h-[100svh] lg:h-[100svh] flex flex-col justify-center overflow-hidden bg-cream px-5 md:px-8 lg:px-12 pt-20 pb-6 md:pt-24 md:pb-10"
+      aria-label="Books — Sam Murgatroyd"
     >
+      {/* Faint horizontal rule grid — editorial page texture */}
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-b from-cream-deep/55 via-cream to-cream"
-        aria-hidden="true"
-      />
-
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.038]"
+        className="pointer-events-none absolute inset-0 opacity-[0.035]"
         style={{
           backgroundImage:
-            "repeating-linear-gradient(to bottom, transparent, transparent 71px, #2A2722 71px, #2A2722 72px)",
+            "repeating-linear-gradient(to bottom, transparent, transparent 47px, #2A2722 47px, #2A2722 48px)",
         }}
         aria-hidden="true"
       />
 
-      <div
-        className="pointer-events-none absolute -left-32 top-1/3 h-72 w-72 rounded-full bg-green/8 blur-3xl"
+      {/* ── Logo watermark — large, soft, bottom-right ─────────────
+          Sits well behind the type. Reads as a publisher mark. */}
+      <OnceMotion.div
+        seenId="books-hero-logo-watermark"
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 2.4, delay: 0.2, ease: "easeOut" }}
+        className="pointer-events-none absolute -right-[22%] -bottom-[14%] md:-right-[14%] md:-bottom-[10%] lg:-right-[18%] xl:-right-[22%] w-[80vw] max-w-[640px] aspect-square select-none"
         aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute -right-32 bottom-1/4 h-80 w-80 rounded-full bg-charcoal/[0.04] blur-3xl"
-        aria-hidden="true"
-      />
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.4, delay: 0.1, ease: "easeOut" }}
-        className="pointer-events-none absolute inset-4 border border-charcoal/12 md:inset-8 lg:inset-10"
-        aria-hidden="true"
-      />
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.6, delay: 0.4, ease: "easeOut" }}
-        className="pointer-events-none absolute inset-6 border border-charcoal/8 md:inset-12 lg:inset-14"
-        aria-hidden="true"
-      />
-
-      <div className="relative z-10 mx-auto w-full max-w-2xl px-8 py-16 text-center md:px-12 md:py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
-          className="mx-auto mb-10 flex w-fit items-center justify-center md:mb-14"
+      >
+        {/* Surrounding lens rings — each band a slightly different
+            tonal shade, deepening toward the centre. */}
+        <svg
+          viewBox="0 0 600 600"
+          className="absolute inset-0 w-full h-full"
+          aria-hidden="true"
         >
-          <Image
-            src="/images/perception-47-logo.png"
-            alt="Perception 47"
-            width={56}
-            height={56}
-            className="h-10 w-auto opacity-80 md:h-12"
-            priority
+          {/* Outermost band — palest */}
+          <circle
+            cx="300"
+            cy="300"
+            r="296"
+            fill="#2A2722"
+            fillOpacity="0.012"
+            stroke="#2A2722"
+            strokeOpacity="0.15"
+            strokeWidth="0.5"
           />
-        </motion.div>
+          {/* Second band — a touch warmer */}
+          <circle
+            cx="300"
+            cy="300"
+            r="240"
+            fill="#2A2722"
+            fillOpacity="0.022"
+            stroke="#2A2722"
+            strokeOpacity="0.15"
+            strokeWidth="0.5"
+          />
+          {/* Third band — deeper still */}
+          <circle
+            cx="300"
+            cy="300"
+            r="180"
+            fill="#2A2722"
+            fillOpacity="0.035"
+            stroke="#2A2722"
+            strokeOpacity="0.18"
+            strokeWidth="0.5"
+          />
+          {/* Innermost circle — soft green tint, holds the logo */}
+          <circle
+            cx="300"
+            cy="300"
+            r="120"
+            fill="#3D5948"
+            fillOpacity="0.05"
+            stroke="#3D5948"
+            strokeOpacity="0.55"
+            strokeWidth="0.6"
+          />
+        </svg>
 
-        <motion.p
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.45, ease: "easeOut" }}
-          className="font-body text-[10.5px] tracking-[0.32em] uppercase text-charcoal-muted mb-8 md:mb-10"
-        >
-          Books · The Collection
-        </motion.p>
+        <Image
+          src="/images/perception-47-logo.png"
+          alt=""
+          fill
+          priority
+          sizes="(max-width: 768px) 80vw, 640px"
+          className="object-contain opacity-[0.07] p-[32%]"
+        />
+      </OnceMotion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, filter: "blur(12px)", y: 6 }}
+      {/* ── CONTENT ─────────────────────────────────────────────── */}
+      <div className="relative z-10 mx-auto w-full max-w-5xl">
+
+        {/* ── Masthead — logo lockup left, indicator right ──────── */}
+        <FadeInView>
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 border-b border-charcoal/15 pb-3 mb-6 md:mb-10">
+            {/* Logo lockup */}
+            <OnceMotion.div
+              seenId="books-hero-logo-mark"
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1.1, delay: 0.1, ease: EASE }}
+              className="flex items-center gap-3"
+            >
+              {/* Logo ringed like a press seal */}
+              <div className="relative h-8 w-8 md:h-10 md:w-10 flex items-center justify-center">
+                <span
+                  className="absolute inset-0 rounded-full border border-green/45"
+                  aria-hidden="true"
+                />
+                <span
+                  className="absolute inset-[3px] rounded-full border border-charcoal/10"
+                  aria-hidden="true"
+                />
+                <div className="relative h-4 w-4 md:h-5 md:w-5">
+                  <Image
+                    src="/images/perception-47-logo.png"
+                    alt="Perception 47"
+                    fill
+                    sizes="20px"
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+
+              {/* Brand text */}
+              <div className="leading-tight">
+                <p className="font-body text-[9px] md:text-[10px] tracking-[0.3em] uppercase text-charcoal-muted">
+                  Perception 47
+                </p>
+                <p className="font-heading italic text-xs md:text-sm text-charcoal/85 -mt-0.5">
+                  The Library
+                </p>
+              </div>
+            </OnceMotion.div>
+
+            {/* Right-hand indicator */}
+            <OnceMotion.p
+              seenId="books-hero-masthead-right"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.3, ease: EASE }}
+              className="font-body text-[9px] md:text-[10px] tracking-[0.22em] uppercase text-charcoal-muted"
+            >
+              Three Books · Sam Murgatroyd
+            </OnceMotion.p>
+          </div>
+        </FadeInView>
+
+        {/* Hero title */}
+        <OnceMotion.h1
+          seenId="books-hero-title"
+          initial={{ opacity: 0, filter: "blur(14px)", y: 10 }}
           animate={{ opacity: 1, filter: "blur(0px)", y: 0 }}
-          transition={{ duration: 1.3, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="font-heading font-normal text-[clamp(2.2rem,8.4vw,3.75rem)] leading-[1.06] text-charcoal mb-9 md:mb-11"
+          transition={{ duration: 1.4, delay: 0.4, ease: EASE }}
+          className="font-heading text-charcoal leading-[1.05] tracking-[-0.015em] text-[clamp(1.55rem,5.8vw,3.5rem)] max-w-3xl"
         >
-          Three books.{" "}
-          <em className="italic text-green">
-            One question running through all of them.
-          </em>
-        </motion.h1>
+          The books are where{" "}
+          <em className="not-italic text-green">this work</em>{" "}
+          was first written down.
+        </OnceMotion.h1>
 
-        <motion.div
+        {/* Divider */}
+        <OnceMotion.div
+          seenId="books-hero-divider"
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
-          transition={{ duration: 1.1, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
-          className="mx-auto mb-8 h-px w-14 bg-charcoal/30 md:mb-10"
+          transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}
+          style={{ originX: 0 }}
+          className="mt-4 mb-4 h-px w-12 bg-green"
           aria-hidden="true"
         />
 
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 1.2, ease: "easeOut" }}
-          className="font-body text-[15px] md:text-base text-charcoal-mid leading-relaxed mb-7 md:mb-8 max-w-md mx-auto"
-        >
-          Identity, honesty, belonging, performance — and what becomes
-          possible when we stop living as the version of ourselves the
-          world taught us to be.
-        </motion.p>
+        {/* Lede */}
+        <div className="grid gap-4 md:grid-cols-12 md:gap-8">
+          <OnceMotion.p
+            seenId="books-hero-lede"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 1.4, ease: "easeOut" }}
+            className="font-body text-sm md:text-base text-charcoal-mid leading-[1.6] md:col-span-7 max-w-prose"
+          >
+            Before there was a coaching practice, there were three quiet
+            books. Each one is its own story. Together they trace the same
+            underlying argument — about{" "}
+            <span className="text-charcoal">identity</span>,{" "}
+            <span className="text-charcoal">honesty</span>, and{" "}
+            <span className="text-charcoal">what it means to belong to
+            yourself first</span>.
+          </OnceMotion.p>
 
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 1.35, ease: "easeOut" }}
-          className="font-heading italic text-[16px] md:text-lg text-charcoal/85 leading-snug max-w-sm mx-auto"
-        >
-          The books sit behind the coaching. They are where much of it began.
-        </motion.p>
+          <OnceMotion.div
+            seenId="books-hero-meta"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 1.55, ease: "easeOut" }}
+            className="md:col-span-5 md:pl-6 md:border-l md:border-charcoal/10"
+          >
+            <p className="font-heading italic text-sm md:text-base text-charcoal leading-snug mb-1">
+              Amazon Bestseller
+            </p>
+            <p className="font-body text-xs md:text-sm text-charcoal-mid leading-snug">
+              Signed copies included in selected coaching packages.
+            </p>
+          </OnceMotion.div>
+        </div>
 
-        <motion.div
+        {/* Scroll hint */}
+        <OnceMotion.div
+          seenId="books-hero-scroll-hint"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.9, delay: 1.65 }}
-          className="mt-10 flex flex-col items-center gap-2 md:mt-14"
+          transition={{ duration: 1, delay: 1.95, ease: "easeOut" }}
+          className="mt-6 md:mt-8 flex items-center gap-3"
         >
-          <span className="font-body text-[10px] tracking-[0.3em] uppercase text-charcoal-muted/80">
-            Sam Murgatroyd
-          </span>
-          <span className="h-2 w-px bg-charcoal-muted/40" aria-hidden="true" />
-        </motion.div>
+          <span className="block h-px w-8 bg-charcoal/25" aria-hidden="true" />
+          <p className="font-body text-[10px] tracking-[0.3em] uppercase text-charcoal-muted">
+            Begin with the first
+          </p>
+        </OnceMotion.div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: -6 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 1.8 }}
-        className="pointer-events-none absolute bottom-7 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-        aria-hidden="true"
-      >
-        <span className="font-body text-[9.5px] tracking-[0.3em] uppercase text-charcoal-muted/70">
-          Read on
-        </span>
-        <motion.span
-          animate={{ y: [0, 4, 0] }}
-          transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-          className="block h-4 w-px bg-charcoal-muted/50"
-        />
-      </motion.div>
     </section>
   );
 }
