@@ -7,6 +7,9 @@ import { BOOKS, bookList } from "@/lib/books";
 import {
   AUTHOR_NAME,
   DEFAULT_SOCIAL_IMAGE,
+  DEFAULT_SOCIAL_IMAGE_ALT,
+  DEFAULT_SOCIAL_IMAGE_HEIGHT,
+  DEFAULT_SOCIAL_IMAGE_WIDTH,
   SITE_NAME,
   SITE_URL,
 } from "@/lib/site";
@@ -14,22 +17,22 @@ import {
 export const metadata: Metadata = {
   title: "Books | Perception 47 — Sam Murgatroyd",
   description:
-    "Three books by Sam Murgatroyd exploring identity, honesty, belonging, and what becomes possible when you stop living as the version of yourself the world taught you to be.",
+    "Books by Sam Murgatroyd on identity, honesty and belonging. Explore the stories behind Perception 47 Coaching and the work of becoming yourself.",
   alternates: {
     canonical: "/books",
   },
   openGraph: {
     title: "Books | Perception 47 — Sam Murgatroyd",
     description:
-      "Three books exploring identity, honesty, and belonging — the work behind the coaching.",
+      "Three books on identity, honesty and belonging - the deeper story behind Perception 47 Coaching.",
     type: "website",
     url: "/books",
     images: [
       {
         url: DEFAULT_SOCIAL_IMAGE,
-        width: 1200,
-        height: 1200,
-        alt: AUTHOR_NAME,
+        width: DEFAULT_SOCIAL_IMAGE_WIDTH,
+        height: DEFAULT_SOCIAL_IMAGE_HEIGHT,
+        alt: DEFAULT_SOCIAL_IMAGE_ALT,
       },
     ],
   },
@@ -37,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Books | Perception 47 — Sam Murgatroyd",
     description:
-      "Three books exploring identity, honesty, and belonging — the work behind the coaching.",
+      "Three books on identity, honesty and belonging - the deeper story behind Perception 47 Coaching.",
     images: [DEFAULT_SOCIAL_IMAGE],
   },
 };

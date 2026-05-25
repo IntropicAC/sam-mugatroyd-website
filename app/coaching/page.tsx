@@ -10,6 +10,9 @@ import CoachingFinalCTA from "@/components/coaching/CoachingFinalCTA";
 import {
   AUTHOR_NAME,
   DEFAULT_SOCIAL_IMAGE,
+  DEFAULT_SOCIAL_IMAGE_ALT,
+  DEFAULT_SOCIAL_IMAGE_HEIGHT,
+  DEFAULT_SOCIAL_IMAGE_WIDTH,
   SITE_NAME,
   SITE_URL,
 } from "@/lib/site";
@@ -17,22 +20,22 @@ import {
 export const metadata: Metadata = {
   title: "Coaching | Perception 47 — Sam Murgatroyd",
   description:
-    "Life coaching that changes the way you see the world and in turn changes the world you see. Book a free 20-minute discovery call.",
+    "One-to-one life coaching with Sam Murgatroyd for overthinking, people pleasing, confidence, burnout and living with more honesty.",
   alternates: {
     canonical: "/coaching",
   },
   openGraph: {
     title: "Coaching | Perception 47 — Sam Murgatroyd",
     description:
-      "Life coaching that begins with a conversation. Book your free 20-minute discovery call.",
+      "A calm one-to-one coaching space to understand your patterns, build self-trust and make braver decisions.",
     type: "website",
     url: "/coaching",
     images: [
       {
         url: DEFAULT_SOCIAL_IMAGE,
-        width: 1200,
-        height: 1200,
-        alt: AUTHOR_NAME,
+        width: DEFAULT_SOCIAL_IMAGE_WIDTH,
+        height: DEFAULT_SOCIAL_IMAGE_HEIGHT,
+        alt: DEFAULT_SOCIAL_IMAGE_ALT,
       },
     ],
   },
@@ -40,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Coaching | Perception 47 — Sam Murgatroyd",
     description:
-      "Life coaching that begins with a conversation. Book your free 20-minute discovery call.",
+      "A calm one-to-one coaching space to understand your patterns, build self-trust and make braver decisions.",
     images: [DEFAULT_SOCIAL_IMAGE],
   },
 };

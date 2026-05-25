@@ -3,27 +3,32 @@ import Image from "next/image";
 import Link from "next/link";
 import { articleEntries, CALENDLY_URL } from "@/lib/journal";
 import JournalCard from "@/components/journal/JournalCard";
-import { AUTHOR_NAME, DEFAULT_SOCIAL_IMAGE } from "@/lib/site";
+import {
+  DEFAULT_SOCIAL_IMAGE,
+  DEFAULT_SOCIAL_IMAGE_ALT,
+  DEFAULT_SOCIAL_IMAGE_HEIGHT,
+  DEFAULT_SOCIAL_IMAGE_WIDTH,
+} from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Articles | Perception 47 - Sam Murgatroyd",
   description:
-    "Articles by Sam Murgatroyd on overthinking, people pleasing, burnout, disconnection, confidence, and the patterns underneath honest change.",
+    "Articles by Sam Murgatroyd on overthinking, people pleasing, burnout, confidence and self-trust, written to help you understand what is underneath.",
   alternates: {
     canonical: "/articles",
   },
   openGraph: {
     title: "Articles | Perception 47 - Sam Murgatroyd",
     description:
-      "Question-led articles on the patterns underneath overthinking, burnout, people pleasing, and self-trust.",
+      "Question-led articles on overthinking, people pleasing, burnout, confidence and the patterns underneath honest change.",
     type: "website",
     url: "/articles",
     images: [
       {
         url: DEFAULT_SOCIAL_IMAGE,
-        width: 1200,
-        height: 1200,
-        alt: AUTHOR_NAME,
+        width: DEFAULT_SOCIAL_IMAGE_WIDTH,
+        height: DEFAULT_SOCIAL_IMAGE_HEIGHT,
+        alt: DEFAULT_SOCIAL_IMAGE_ALT,
       },
     ],
   },
@@ -31,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Articles | Perception 47 - Sam Murgatroyd",
     description:
-      "Question-led articles on the patterns underneath overthinking, burnout, people pleasing, and self-trust.",
+      "Question-led articles on overthinking, people pleasing, burnout, confidence and the patterns underneath honest change.",
     images: [DEFAULT_SOCIAL_IMAGE],
   },
 };

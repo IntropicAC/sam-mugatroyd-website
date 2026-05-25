@@ -7,7 +7,15 @@ import Footer from "@/components/layout/Footer";
 import StickyMobileCTA from "@/components/layout/StickyMobileCTA";
 import PageAnimationProvider from "@/components/layout/PageAnimationProvider";
 import ChatWidget from "@/components/chat/ChatWidget";
-import { AUTHOR_NAME, SITE_NAME, SITE_URL } from "@/lib/site";
+import {
+  AUTHOR_NAME,
+  DEFAULT_SOCIAL_IMAGE,
+  DEFAULT_SOCIAL_IMAGE_ALT,
+  DEFAULT_SOCIAL_IMAGE_HEIGHT,
+  DEFAULT_SOCIAL_IMAGE_WIDTH,
+  SITE_NAME,
+  SITE_URL,
+} from "@/lib/site";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -29,10 +37,34 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
   title: "Perception 47 Coaching | Sam Murgatroyd",
   description:
-    "Sam Murgatroyd is a Life Coach and Author helping people understand the patterns they have been living inside. Book a free 20-minute discovery call.",
+    "Life coaching with Sam Murgatroyd for overthinking, people pleasing and burnout. Understand the patterns behind how you feel, decide and live.",
   authors: [{ name: AUTHOR_NAME }],
   creator: AUTHOR_NAME,
   publisher: SITE_NAME,
+  openGraph: {
+    title: "Perception 47 Coaching | Sam Murgatroyd",
+    description:
+      "Understand the patterns you have been living inside and start moving through life with more honesty, confidence and self-trust.",
+    type: "website",
+    url: "/",
+    siteName: SITE_NAME,
+    locale: "en_GB",
+    images: [
+      {
+        url: DEFAULT_SOCIAL_IMAGE,
+        width: DEFAULT_SOCIAL_IMAGE_WIDTH,
+        height: DEFAULT_SOCIAL_IMAGE_HEIGHT,
+        alt: DEFAULT_SOCIAL_IMAGE_ALT,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Perception 47 Coaching | Sam Murgatroyd",
+    description:
+      "Understand the patterns you have been living inside and start moving through life with more honesty, confidence and self-trust.",
+    images: [DEFAULT_SOCIAL_IMAGE],
+  },
   appleWebApp: {
     title: SITE_NAME,
   },

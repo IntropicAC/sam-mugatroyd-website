@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { bookList } from "@/lib/books";
 import { articleEntries } from "@/lib/journal";
-import { SITE_URL } from "@/lib/site";
+import { LOGO_IMAGE_PATH, SITE_URL } from "@/lib/site";
 
 const lastModified = new Date("2026-05-25");
 
@@ -16,31 +16,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 1,
-      images: [
-        imageUrl("/images/sam-headshot.jpg"),
-        imageUrl("/images/perception-47-logo.png"),
-      ],
+      images: [imageUrl(LOGO_IMAGE_PATH)],
     },
     {
       url: `${SITE_URL}/coaching`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.95,
-      images: [imageUrl("/images/sam-headshot.jpg")],
+      images: [imageUrl(LOGO_IMAGE_PATH)],
     },
     {
       url: `${SITE_URL}/articles`,
       lastModified,
       changeFrequency: "weekly",
       priority: 0.85,
-      images: [imageUrl("/images/sam-headshot.jpg")],
+      images: [imageUrl(LOGO_IMAGE_PATH)],
     },
     {
       url: `${SITE_URL}/books`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.75,
-      images: bookList.map((book) => imageUrl(book.coverImage)),
+      images: [
+        imageUrl(LOGO_IMAGE_PATH),
+        ...bookList.map((book) => imageUrl(book.coverImage)),
+      ],
     },
     {
       url: `${SITE_URL}/contact`,
@@ -53,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
-      images: [imageUrl("/images/sam-headshot.jpg")],
+      images: [imageUrl(LOGO_IMAGE_PATH)],
     },
     {
       url: `${SITE_URL}/testimonials`,
@@ -80,7 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified,
     changeFrequency: "monthly",
     priority: 0.72,
-    images: [imageUrl("/images/sam-headshot.jpg")],
+    images: [imageUrl(LOGO_IMAGE_PATH)],
   }));
 
   return [...staticRoutes, ...articleRoutes];

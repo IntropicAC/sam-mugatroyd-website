@@ -5,6 +5,10 @@ import {
   AUTHOR_NAME,
   CALENDLY_URL,
   DEFAULT_SOCIAL_IMAGE,
+  DEFAULT_SOCIAL_IMAGE_ALT,
+  DEFAULT_SOCIAL_IMAGE_HEIGHT,
+  DEFAULT_SOCIAL_IMAGE_WIDTH,
+  PERSON_IMAGE,
   SITE_NAME,
   SITE_URL,
 } from "@/lib/site";
@@ -12,22 +16,22 @@ import {
 export const metadata: Metadata = {
   title: "About Sam Murgatroyd | Perception 47 Coaching",
   description:
-    "Learn about Sam Murgatroyd, the life coach and author behind Perception 47 Coaching, and the lived experience behind his books and coaching.",
+    "Meet Sam Murgatroyd, life coach and author behind Perception 47 Coaching, and learn how lived experience shapes his work with identity and change.",
   alternates: {
     canonical: "/about",
   },
   openGraph: {
     title: "About Sam Murgatroyd | Perception 47 Coaching",
     description:
-      "The story behind Perception 47 Coaching, Sam's books, and his work around identity, honesty, and authenticity.",
+      "The story behind Sam's coaching, books and work around identity, honesty, belonging and self-trust.",
     type: "profile",
     url: "/about",
     images: [
       {
         url: DEFAULT_SOCIAL_IMAGE,
-        width: 1200,
-        height: 1200,
-        alt: AUTHOR_NAME,
+        width: DEFAULT_SOCIAL_IMAGE_WIDTH,
+        height: DEFAULT_SOCIAL_IMAGE_HEIGHT,
+        alt: DEFAULT_SOCIAL_IMAGE_ALT,
       },
     ],
   },
@@ -35,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "About Sam Murgatroyd | Perception 47 Coaching",
     description:
-      "The story behind Perception 47 Coaching, Sam's books, and his work around identity, honesty, and authenticity.",
+      "The story behind Sam's coaching, books and work around identity, honesty, belonging and self-trust.",
     images: [DEFAULT_SOCIAL_IMAGE],
   },
 };
@@ -51,7 +55,7 @@ const aboutJsonLd = {
     "@id": `${SITE_URL}/#sam-murgatroyd`,
     name: AUTHOR_NAME,
     url: SITE_URL,
-    image: DEFAULT_SOCIAL_IMAGE,
+    image: PERSON_IMAGE,
     jobTitle: "Life Coach and Author",
     worksFor: {
       "@type": "Organization",

@@ -2,31 +2,33 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { testimonials } from "@/lib/testimonials";
 import {
-  AUTHOR_NAME,
   CALENDLY_URL,
   DEFAULT_SOCIAL_IMAGE,
+  DEFAULT_SOCIAL_IMAGE_ALT,
+  DEFAULT_SOCIAL_IMAGE_HEIGHT,
+  DEFAULT_SOCIAL_IMAGE_WIDTH,
   SITE_URL,
 } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Testimonials | Perception 47 Coaching",
   description:
-    "Read what coaching clients and parents say about working with Sam Murgatroyd and Perception 47 Coaching.",
+    "Read coaching testimonials from people who worked with Sam Murgatroyd and Perception 47 Coaching to build clarity, confidence and self-trust.",
   alternates: {
     canonical: "/testimonials",
   },
   openGraph: {
     title: "Testimonials | Perception 47 Coaching",
     description:
-      "Coaching testimonials from people who have worked with Sam Murgatroyd.",
+      "Coaching testimonials from people who worked with Sam Murgatroyd to build clarity, confidence and self-trust.",
     type: "website",
     url: "/testimonials",
     images: [
       {
         url: DEFAULT_SOCIAL_IMAGE,
-        width: 1200,
-        height: 1200,
-        alt: AUTHOR_NAME,
+        width: DEFAULT_SOCIAL_IMAGE_WIDTH,
+        height: DEFAULT_SOCIAL_IMAGE_HEIGHT,
+        alt: DEFAULT_SOCIAL_IMAGE_ALT,
       },
     ],
   },
@@ -34,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Testimonials | Perception 47 Coaching",
     description:
-      "Coaching testimonials from people who have worked with Sam Murgatroyd.",
+      "Coaching testimonials from people who worked with Sam Murgatroyd to build clarity, confidence and self-trust.",
     images: [DEFAULT_SOCIAL_IMAGE],
   },
 };

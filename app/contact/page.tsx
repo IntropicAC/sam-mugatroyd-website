@@ -9,6 +9,9 @@ import {
   CONTACT_EMAIL,
   CONTACT_PHONE_E164,
   DEFAULT_SOCIAL_IMAGE,
+  DEFAULT_SOCIAL_IMAGE_ALT,
+  DEFAULT_SOCIAL_IMAGE_HEIGHT,
+  DEFAULT_SOCIAL_IMAGE_WIDTH,
   SITE_NAME,
   SITE_URL,
 } from "@/lib/site";
@@ -16,22 +19,22 @@ import {
 export const metadata: Metadata = {
   title: "Contact | Perception 47 — Sam Murgatroyd",
   description:
-    "Book a free 20-minute discovery call with Sam Murgatroyd, Authenticity Coach and Author. No pressure, no pitch — just a conversation.",
+    "Book a free 20-minute discovery call with Sam Murgatroyd or send a message about one-to-one life coaching. No pressure, just a conversation.",
   alternates: {
     canonical: "/contact",
   },
   openGraph: {
     title: "Contact | Perception 47 — Sam Murgatroyd",
     description:
-      "Book a free 20-minute discovery call or send Sam a message. No application required.",
+      "Book a free 20-minute discovery call or send Sam a message about one-to-one life coaching.",
     type: "website",
     url: "/contact",
     images: [
       {
         url: DEFAULT_SOCIAL_IMAGE,
-        width: 1200,
-        height: 1200,
-        alt: AUTHOR_NAME,
+        width: DEFAULT_SOCIAL_IMAGE_WIDTH,
+        height: DEFAULT_SOCIAL_IMAGE_HEIGHT,
+        alt: DEFAULT_SOCIAL_IMAGE_ALT,
       },
     ],
   },
@@ -39,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Contact | Perception 47 — Sam Murgatroyd",
     description:
-      "Book a free 20-minute discovery call or send Sam a message. No application required.",
+      "Book a free 20-minute discovery call or send Sam a message about one-to-one life coaching.",
     images: [DEFAULT_SOCIAL_IMAGE],
   },
 };

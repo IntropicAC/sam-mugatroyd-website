@@ -13,6 +13,9 @@ import {
 import {
   AUTHOR_NAME,
   DEFAULT_SOCIAL_IMAGE,
+  DEFAULT_SOCIAL_IMAGE_ALT,
+  DEFAULT_SOCIAL_IMAGE_HEIGHT,
+  DEFAULT_SOCIAL_IMAGE_WIDTH,
   LOGO_IMAGE,
   SITE_NAME,
   SITE_URL,
@@ -58,12 +61,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       authors: [AUTHOR_NAME],
       images: [
         {
-          url: "/images/sam-headshot.jpg",
-          width: 1200,
-          height: 1200,
-          alt: AUTHOR_NAME,
+          url: DEFAULT_SOCIAL_IMAGE,
+          width: DEFAULT_SOCIAL_IMAGE_WIDTH,
+          height: DEFAULT_SOCIAL_IMAGE_HEIGHT,
+          alt: DEFAULT_SOCIAL_IMAGE_ALT,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: entry.metaTitle,
+      description: entry.metaDescription,
+      images: [DEFAULT_SOCIAL_IMAGE],
     },
   };
 }

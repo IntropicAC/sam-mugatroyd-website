@@ -10,7 +10,11 @@ import FinalCTA from "@/components/home/FinalCTA";
 import {
   AUTHOR_NAME,
   DEFAULT_SOCIAL_IMAGE,
+  DEFAULT_SOCIAL_IMAGE_ALT,
+  DEFAULT_SOCIAL_IMAGE_HEIGHT,
+  DEFAULT_SOCIAL_IMAGE_WIDTH,
   LOGO_IMAGE,
+  PERSON_IMAGE,
   SITE_NAME,
   SITE_URL,
 } from "@/lib/site";
@@ -18,22 +22,22 @@ import {
 export const metadata: Metadata = {
   title: "Perception 47 Coaching | Sam Murgatroyd",
   description:
-    "Life coaching with Sam Murgatroyd for overthinking, people pleasing, confidence, burnout, and living more honestly. Book a free 20-minute call.",
+    "Life coaching with Sam Murgatroyd for overthinking, people pleasing, confidence and burnout. Understand your patterns and book a free discovery call.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Perception 47 Coaching | Sam Murgatroyd",
     description:
-      "Life coaching that helps you understand the patterns you have been living inside.",
+      "Understand the patterns you have been living inside and start moving through life with more honesty, confidence and self-trust.",
     type: "website",
     url: "/",
     images: [
       {
         url: DEFAULT_SOCIAL_IMAGE,
-        width: 1200,
-        height: 1200,
-        alt: AUTHOR_NAME,
+        width: DEFAULT_SOCIAL_IMAGE_WIDTH,
+        height: DEFAULT_SOCIAL_IMAGE_HEIGHT,
+        alt: DEFAULT_SOCIAL_IMAGE_ALT,
       },
     ],
   },
@@ -41,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Perception 47 Coaching | Sam Murgatroyd",
     description:
-      "Life coaching that helps you understand the patterns you have been living inside.",
+      "Understand the patterns you have been living inside and start moving through life with more honesty, confidence and self-trust.",
     images: [DEFAULT_SOCIAL_IMAGE],
   },
 };
@@ -54,7 +58,7 @@ const homeJsonLd = {
       "@id": `${SITE_URL}/#sam-murgatroyd`,
       name: AUTHOR_NAME,
       url: SITE_URL,
-      image: DEFAULT_SOCIAL_IMAGE,
+      image: PERSON_IMAGE,
       jobTitle: "Life Coach and Author",
       worksFor: {
         "@id": `${SITE_URL}/#organization`,
