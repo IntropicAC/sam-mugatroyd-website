@@ -61,7 +61,7 @@ export default function BooksThread() {
           className="font-body text-sm md:text-base text-cream/50 leading-relaxed max-w-md mb-6 md:mb-8"
         >
           Each book reads on its own. But underneath all three, the same
-          quiet argument keeps surfacing.
+          same argument keeps surfacing.
         </OnceMotion.p>
 
         <OnceMotion.p

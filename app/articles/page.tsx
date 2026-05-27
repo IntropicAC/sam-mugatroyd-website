@@ -80,7 +80,7 @@ export default function ArticlesPage() {
                 Articles / Perception 47
               </p>
               <h1 className="mt-5 max-w-3xl font-heading text-[2.35rem] font-normal leading-[1.05] text-charcoal sm:text-5xl md:text-[4.2rem] lg:text-[5rem]">
-                Questions people bring to this work.
+                The questions that keep coming back.
               </h1>
               <p className="mt-6 max-w-xl font-body text-sm leading-relaxed text-charcoal-mid md:text-base">
                 Sam writes about the patterns underneath overthinking, people pleasing,

@@ -54,10 +54,10 @@ const books = [
     title: "The Policy",
     themes: ["Honesty", "Performance", "Reckoning"],
     forWhom:
-      "For anyone living quietly out of step with themselves.",
+      "For anyone out of step with themselves.",
     paragraphs: [
       "Most people are performing a version of themselves without realising it. The Policy follows one man's moment of reckoning and the single conversation that changes the way he sees everything.",
-      "It is a book about honesty — the quiet, expensive kind of dishonesty that runs underneath an ordinary life. The kind nobody can see from the outside, including the person living it.",
+      "It is a book about honesty, the expensive kind of dishonesty that runs underneath an ordinary life. The kind nobody can see from the outside, including the person living it.",
     ],
     pullQuote:
       "You can spend a whole life inside a version of yourself that was never really you.",
@@ -73,7 +73,7 @@ const books = [
     forWhom:
       "For anyone who has spent years looking for belonging in the wrong rooms.",
     paragraphs: [
-      "Robin's Bench is for anyone who has ever felt like they do not quite belong anywhere. It is about belonging — not to a place, not to a group, not to other people — but to yourself.",
+      "Robin's Bench is for anyone who has ever felt like they do not quite belong anywhere. It is about belonging, not to a place, not to a group, not to other people, but to yourself.",
       "It is the slow argument that healing only begins the moment you stop running from who you actually are, and stop looking for permission to be that person in rooms that were never going to give it.",
     ],
     pullQuote:
@@ -88,10 +88,10 @@ const books = [
     title: "Alienated",
     themes: ["Identity", "Difference", "Permission"],
     forWhom:
-      "For the quiet outsiders who learned to hide a part of themselves to be acceptable.",
+      "For the outsiders who learned to hide a part of themselves to be acceptable.",
     paragraphs: [
       "Alienated is for the people who see the world differently and have spent years wondering if that is a problem. It is not.",
-      "This is the book that argues, gently and steadily, that the difference was never the problem. The problem was the room you were measured in. The work is not in becoming someone more acceptable — it is in finding the place where the way you already are stops being a thing you have to apologise for.",
+      "This is the book that argues, gently and steadily, that the difference was never the problem. The problem was the room you were measured in. The work is not in becoming someone more acceptable, it is in finding the place where the way you already are stops being a thing you have to apologise for.",
     ],
     pullQuote:
       "You were not built wrong. You were just measured against the wrong room.",

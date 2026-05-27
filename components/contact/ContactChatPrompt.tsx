@@ -55,7 +55,7 @@ export default function ContactChatPrompt() {
               </h2>
               <p className="font-body text-sm md:text-base text-charcoal-mid leading-relaxed mb-8">
                 You can ask a question first. Sam&apos;s chat guide is built around
-                his writing, books, coaching approach, and course material — so
+                his writing, books, coaching approach, and course material, so
                 you can understand the work before booking.
               </p>
               <button

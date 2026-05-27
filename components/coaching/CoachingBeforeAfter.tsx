@@ -8,7 +8,7 @@ const before = [
   "Performing a slightly different version of yourself in every room",
   "Measuring your worth by what others expect of you",
   "Exhaustion that has no clear source",
-  "A quiet sense that the life you are living is not quite yours",
+  "A sense that the life you are living is not quite yours",
 ];
 
 const after = [

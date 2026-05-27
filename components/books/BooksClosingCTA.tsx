@@ -51,7 +51,7 @@ export default function BooksClosingCTA() {
           className="font-heading text-charcoal leading-[1.08] tracking-[-0.015em] text-[clamp(1.65rem,4.5vw,2.75rem)] max-w-2xl mb-4"
         >
           If something here landed,{" "}
-          <em className="not-italic text-green">there are two quiet ways in.</em>
+          <em className="not-italic text-green">there are two ways in.</em>
         </OnceMotion.h2>
 
         <FadeInView delay={0.1}>
@@ -140,7 +140,7 @@ export default function BooksClosingCTA() {
             </h3>
 
             <p className="relative font-body text-sm text-cream/60 leading-relaxed mb-6 flex-1">
-              Twenty minutes on a call. No pitch, no agenda — just an honest
+              Twenty minutes on a call. No pitch, no agenda, just an honest
               conversation about where you are and whether this might fit.
             </p>
 

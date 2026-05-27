@@ -162,9 +162,8 @@ export default function BooksHero() {
           transition={{ duration: 1.4, delay: 0.4, ease: EASE }}
           className="font-heading text-charcoal leading-[1.05] tracking-[-0.015em] text-[clamp(1.55rem,5.8vw,3.5rem)] max-w-3xl"
         >
-          The books are where{" "}
-          <em className="not-italic text-green">this work</em>{" "}
-          was first written down.
+          Fiction that does what{" "}
+          <em className="not-italic text-green">therapy can&apos;t name</em>.
         </OnceMotion.h1>
 
         {/* Divider */}
@@ -187,9 +186,9 @@ export default function BooksHero() {
             transition={{ duration: 0.9, delay: 1.4, ease: "easeOut" }}
             className="font-body text-sm md:text-base text-charcoal-mid leading-[1.6] md:col-span-7 max-w-prose"
           >
-            Before there was a coaching practice, there were three quiet
-            books. Each one is its own story. Together they trace the same
-            underlying argument — about{" "}
+            Before there was a coaching practice, there were three books. Each
+            one is its own story. Together they trace the same underlying
+            argument, about{" "}
             <span className="text-charcoal">identity</span>,{" "}
             <span className="text-charcoal">honesty</span>, and{" "}
             <span className="text-charcoal">what it means to belong to

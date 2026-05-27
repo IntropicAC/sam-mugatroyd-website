@@ -14,13 +14,13 @@ const stages = [
     number: "2",
     title: "The Lens Work",
     description:
-      "We examine the lens you have been looking through — where it came from, what it has cost you, and why it made complete sense at the time.",
+      "We examine the lens you have been looking through, where it came from, what it has cost you, and why it made complete sense at the time.",
   },
   {
     number: "3",
     title: "The Shift",
     description:
-      "Something clicks into place. Not a technique you apply on a good day — a genuine, permanent change in how you see yourself and the world.",
+      "Something clicks into place. Not a technique you apply on a good day, a genuine, permanent change in how you see yourself and the world.",
   },
   {
     number: "4",

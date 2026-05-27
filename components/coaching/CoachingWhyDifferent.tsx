@@ -95,7 +95,7 @@ export default function CoachingWhyDifferent() {
                   {[
                     "I am not going to give you a morning routine.",
                     "I am not going to tell you to journal your limiting beliefs or repeat affirmations until something shifts.",
-                    "I am not interested in a version of you that feels good for three weeks and then quietly drifts back to the same patterns with a different name.",
+                    "I am not interested in a version of you that feels good for three weeks and then drifts back to the same patterns with a different name.",
                   ].map((item, i) => (
                     <OnceMotion.div
                       key={i}
