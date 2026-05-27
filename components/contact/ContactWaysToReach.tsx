@@ -5,6 +5,10 @@ import Link from "next/link";
 import FadeInView from "@/components/ui/FadeInView";
 
 const CALENDLY_URL = "https://calendly.com/samuel-a-murg/free-discovery-call";
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const MAX_NAME_LENGTH = 120;
+const MAX_EMAIL_LENGTH = 254;
+const MAX_MESSAGE_LENGTH = 4000;
 
 function IconCalendar() {
   return (
@@ -69,6 +73,7 @@ const contactMethods = [
 
 type ContactApiResponse = {
   error?: string;
+  message?: string;
   success?: boolean;
 };
 
@@ -95,7 +100,17 @@ function getSubmitErrorMessage(error?: string) {
   return error || "Something went wrong. Please try again or email Sam directly.";
 }
 
-export default function ContactWaysToReach() {
+type ContactWaysToReachProps = {
+  contactEmailSubject: string;
+  contactFromName: string;
+  web3FormsAccessKey: string;
+};
+
+export default function ContactWaysToReach({
+  contactEmailSubject,
+  contactFromName,
+  web3FormsAccessKey,
+}: ContactWaysToReachProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submissionState, setSubmissionState] = useState(initialSubmissionState);
 
@@ -113,18 +128,47 @@ export default function ContactWaysToReach() {
     }
 
     const formData = new FormData(form);
+    const email = getFormValue(formData, "email");
+    const message = getFormValue(formData, "message");
+    const name = getFormValue(formData, "name");
+    const website = getFormValue(formData, "website");
+
     setIsSubmitting(true);
     setSubmissionState(initialSubmissionState);
 
     try {
-      const response = await fetch("/api/contact", {
+      if (website) {
+        form.reset();
+        setSubmissionState({
+          kind: "success",
+          message: "Thanks, your message has been sent. Sam will reply as soon as he can.",
+        });
+        return;
+      }
+
+      if (!web3FormsAccessKey) {
+        throw new Error("The contact form is not configured yet. Please email Sam directly instead.");
+      }
+
+      if (
+        name.length > MAX_NAME_LENGTH ||
+        email.length > MAX_EMAIL_LENGTH ||
+        message.length > MAX_MESSAGE_LENGTH
+      ) {
+        throw new Error("Please shorten your message and try again.");
+      }
+
+      const response = await fetch(WEB3FORMS_ENDPOINT, {
         body: JSON.stringify({
-          email: getFormValue(formData, "email"),
-          message: getFormValue(formData, "message"),
-          name: getFormValue(formData, "name"),
-          website: getFormValue(formData, "website"),
+          access_key: web3FormsAccessKey,
+          email,
+          from_name: contactFromName,
+          message,
+          name,
+          subject: contactEmailSubject,
         }),
         headers: {
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
         method: "POST",
@@ -133,7 +177,7 @@ export default function ContactWaysToReach() {
       const data = (await response.json().catch(() => ({}))) as ContactApiResponse;
 
       if (!response.ok || data.success !== true) {
-        throw new Error(getSubmitErrorMessage(data.error));
+        throw new Error(getSubmitErrorMessage(data.message || data.error));
       }
 
       form.reset();
@@ -278,6 +322,7 @@ export default function ContactWaysToReach() {
                     name="name"
                     type="text"
                     autoComplete="name"
+                    maxLength={MAX_NAME_LENGTH}
                     required
                     className="w-full bg-transparent border-0 border-b border-border focus:border-charcoal focus:outline-none px-0 py-3 font-body text-sm text-charcoal placeholder:text-charcoal-muted/50 transition-colors duration-300"
                     placeholder="Your full name"
@@ -296,6 +341,7 @@ export default function ContactWaysToReach() {
                     name="email"
                     type="email"
                     autoComplete="email"
+                    maxLength={MAX_EMAIL_LENGTH}
                     required
                     className="w-full bg-transparent border-0 border-b border-border focus:border-charcoal focus:outline-none px-0 py-3 font-body text-sm text-charcoal placeholder:text-charcoal-muted/50 transition-colors duration-300"
                     placeholder="your@email.com"
@@ -313,6 +359,7 @@ export default function ContactWaysToReach() {
                     id="contact-message"
                     name="message"
                     rows={4}
+                    maxLength={MAX_MESSAGE_LENGTH}
                     required
                     className="w-full bg-transparent border-0 border-b border-border focus:border-charcoal focus:outline-none px-0 py-3 font-body text-sm text-charcoal placeholder:text-charcoal-muted/50 transition-colors duration-300 resize-none"
                     placeholder="How can I help you?"

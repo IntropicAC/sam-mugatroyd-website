@@ -47,6 +47,11 @@ export const metadata: Metadata = {
   },
 };
 
+const web3FormsAccessKey =
+  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || process.env.WEB3FORMS_ACCESS_KEY || "";
+const contactEmailSubject = process.env.CONTACT_EMAIL_SUBJECT || "New Website Message";
+const contactFromName = process.env.CONTACT_FROM_NAME || "Perception 47 Website";
+
 const contactJsonLd = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
@@ -78,7 +83,11 @@ export default function ContactPage() {
         }}
       />
       <ContactHero />
-      <ContactWaysToReach />
+      <ContactWaysToReach
+        contactEmailSubject={contactEmailSubject}
+        contactFromName={contactFromName}
+        web3FormsAccessKey={web3FormsAccessKey}
+      />
       <ContactChatPrompt />
       <ContactFindSam />
       <ContactFinalCTA />

@@ -57,7 +57,6 @@ export default function Header() {
                   fill
                   className={`object-contain transition-all duration-500 ${light ? "brightness-0 invert" : ""}`}
                   sizes="36px"
-                  priority
                 />
               </div>
               <span className={`font-body text-sm font-medium tracking-wide hidden sm:block transition-colors duration-500 ${light ? "text-cream/80 group-hover:text-cream" : "text-charcoal group-hover:text-green"}`}>

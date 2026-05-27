@@ -127,7 +127,6 @@ export default function ArticlesPage() {
                       fill
                       className="object-cover"
                       sizes="88px"
-                      priority
                     />
                   </div>
                   <div className="self-center">

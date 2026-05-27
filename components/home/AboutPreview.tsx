@@ -7,14 +7,11 @@ import CTAButton from "@/components/ui/CTAButton";
 import { OnceMotion } from "@/components/ui/OnceMotion";
 
 const bioParagraphs = [
-  `Sam grew up feeling like he never quite fit in. He saw the world differently to the people around him and spent years wondering if that was something to fix. He was what he describes as a “why” kid, someone who could never simply accept the way things were because that is how they had always been. That feeling of being slightly outside of everything, of observing the world rather than just living in it, was uncomfortable for a long time.`,
-  `He started writing at twelve years old, not because he had ambitions to be a writer but because he could not keep what he was thinking bottled up any longer. Writing was the only place it made sense.`,
-  `That curiosity eventually led him into work that most people would find difficult. Psychiatric hospitals, probation services, children’s care homes, SEN schools, drug and alcohol rehabilitation. Years spent working alongside people across almost all of those environments at their lowest points and darkest times. What he saw in almost all of those environments was the same thing. People who had spent so long becoming who they thought they had to be that they had completely lost sight of who they actually were.`,
-  `At some point Sam recognised that story in himself too. The performing, the adapting, the slow drift away from his own instincts in favour of what seemed more acceptable. That drift took a real toll. Losing touch with who he actually was left him feeling low, lost and disconnected from everything that had once felt natural and his own. It was one of the hardest periods of his life.`,
-  `But it was also the most important. Because understanding why it had happened, really understanding it at a level that went beyond surface realisation, changed everything. That shift in perspective was so fundamental and so permanent that it could not be unfelt. And the moment it landed, two things became clear. He needed to keep writing. And he needed to help other people find the same thing.`,
+  `Sam grew up feeling like he never quite fit in. He saw the world differently to the people around him and spent years wondering if that was something to fix. That outsider perspective eventually became the lens at the heart of his work.`,
+  `Psychiatric hospitals, probation services, children’s care homes, drug and alcohol rehabilitation. Years spent alongside people at their lowest points. What he saw across all of it was the same pattern: people who had lost sight of who they actually were.`,
 ];
 
-const closingLine = `The books came from that place. The coaching came from that place. All of it is rooted in something real, something lived, not something learned from a course or lifted from a textbook. That is why it works the way it does.`;
+const closingLine = `The books came from that place. The coaching came from that place. All of it is rooted in something lived, not something learned from a textbook.`;
 
 export default function AboutPreview() {
   return (
@@ -129,7 +126,7 @@ export default function AboutPreview() {
 
             <FadeInView delay={0.15} className="mt-8">
               <CTAButton href="/about" variant="ghost">
-                Read Sam&apos;s story
+                Learn more about Sam
               </CTAButton>
             </FadeInView>
           </div>

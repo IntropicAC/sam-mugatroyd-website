@@ -184,7 +184,6 @@ export default function CoachingHero() {
                       src="/images/perception-47-logo.png"
                       alt=""
                       fill
-                      priority
                       className="object-contain p-8 opacity-90"
                       sizes="208px"
                     />

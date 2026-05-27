@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
 import ForYouIfSection from "@/components/home/ForYouIfSection";
 import LensSection from "@/components/home/LensSection";
+import MeetSamSection from "@/components/home/MeetSamSection";
 import AboutPreview from "@/components/home/AboutPreview";
 import BooksSection from "@/components/home/BooksSection";
 import CoachingPackages from "@/components/home/CoachingPackages";
@@ -13,6 +14,8 @@ import {
   DEFAULT_SOCIAL_IMAGE_ALT,
   DEFAULT_SOCIAL_IMAGE_HEIGHT,
   DEFAULT_SOCIAL_IMAGE_WIDTH,
+  INTRO_VIDEO,
+  INTRO_VIDEO_TRANSCRIPT,
   LOGO_IMAGE,
   PERSON_IMAGE,
   SITE_NAME,
@@ -94,6 +97,24 @@ const homeJsonLd = {
         "@id": `${SITE_URL}/#organization`,
       },
     },
+    {
+      "@type": "VideoObject",
+      "@id": `${SITE_URL}/#intro-video`,
+      name: INTRO_VIDEO.title,
+      description: INTRO_VIDEO.description,
+      thumbnailUrl: INTRO_VIDEO.thumbnailUrl,
+      uploadDate: INTRO_VIDEO.uploadDate,
+      duration: INTRO_VIDEO.durationIso,
+      contentUrl: INTRO_VIDEO.contentUrl,
+      embedUrl: INTRO_VIDEO.embedUrl,
+      transcript: INTRO_VIDEO_TRANSCRIPT,
+      publisher: {
+        "@id": `${SITE_URL}/#organization`,
+      },
+      creator: {
+        "@id": `${SITE_URL}/#sam-murgatroyd`,
+      },
+    },
   ],
 };
 
@@ -109,6 +130,7 @@ export default function HomePage() {
       <Hero />
       <ForYouIfSection />
       <LensSection />
+      <MeetSamSection />
       <AboutPreview />
       <BooksSection />
       <CoachingPackages />

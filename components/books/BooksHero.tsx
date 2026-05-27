@@ -89,7 +89,6 @@ export default function BooksHero() {
           src="/images/perception-47-logo.png"
           alt=""
           fill
-          priority
           sizes="(max-width: 768px) 80vw, 640px"
           className="object-contain opacity-[0.07] p-[32%]"
         />
