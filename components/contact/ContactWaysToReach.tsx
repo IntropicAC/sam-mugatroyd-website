@@ -1,5 +1,6 @@
 'use client';
 
+import { type FormEvent, useState } from "react";
 import Link from "next/link";
 import FadeInView from "@/components/ui/FadeInView";
 
@@ -66,7 +67,93 @@ const contactMethods = [
   },
 ];
 
+type ContactApiResponse = {
+  error?: string;
+  success?: boolean;
+};
+
+type SubmissionState = {
+  kind: "error" | "idle" | "success";
+  message: string;
+};
+
+const initialSubmissionState: SubmissionState = {
+  kind: "idle",
+  message: "",
+};
+
+function getFormValue(formData: FormData, name: string) {
+  const value = formData.get(name);
+  return typeof value === "string" ? value.trim() : "";
+}
+
+function getSubmitErrorMessage(error?: string) {
+  if (error && /quota|limit/i.test(error)) {
+    return "The contact form is temporarily unavailable. Please email Sam directly instead.";
+  }
+
+  return error || "Something went wrong. Please try again or email Sam directly.";
+}
+
 export default function ContactWaysToReach() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionState, setSubmissionState] = useState(initialSubmissionState);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    if (isSubmitting) {
+      return;
+    }
+
+    const formData = new FormData(form);
+    setIsSubmitting(true);
+    setSubmissionState(initialSubmissionState);
+
+    try {
+      const response = await fetch("/api/contact", {
+        body: JSON.stringify({
+          email: getFormValue(formData, "email"),
+          message: getFormValue(formData, "message"),
+          name: getFormValue(formData, "name"),
+          website: getFormValue(formData, "website"),
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      });
+
+      const data = (await response.json().catch(() => ({}))) as ContactApiResponse;
+
+      if (!response.ok || data.success !== true) {
+        throw new Error(getSubmitErrorMessage(data.error));
+      }
+
+      form.reset();
+      setSubmissionState({
+        kind: "success",
+        message: "Thanks, your message has been sent. Sam will reply as soon as he can.",
+      });
+    } catch (error) {
+      setSubmissionState({
+        kind: "error",
+        message:
+          error instanceof Error
+            ? error.message
+            : "Something went wrong. Please try again or email Sam directly.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <section
       id="contact-form"
@@ -165,11 +252,20 @@ export default function ContactWaysToReach() {
               <form
                 noValidate
                 aria-label="Send Sam a message"
-                onSubmit={(e) => {
-                  e.preventDefault();
-                }}
+                onSubmit={handleSubmit}
                 className="space-y-7"
               >
+                <div className="hidden" aria-hidden="true">
+                  <label htmlFor="contact-website">Website</label>
+                  <input
+                    id="contact-website"
+                    name="website"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 <div>
                   <label
                     htmlFor="contact-name"
@@ -226,9 +322,10 @@ export default function ContactWaysToReach() {
                 <div className="pt-2">
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-3 bg-charcoal text-cream px-7 py-3.5 font-body text-sm font-medium tracking-wide hover:bg-ink transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green group"
+                    disabled={isSubmitting}
+                    className="inline-flex items-center gap-3 bg-charcoal text-cream px-7 py-3.5 font-body text-sm font-medium tracking-wide hover:bg-ink disabled:cursor-not-allowed disabled:opacity-60 transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green group"
                   >
-                    Send message
+                    {isSubmitting ? "Sending..." : "Send message"}
                     <span
                       className="inline-block transition-transform duration-300 group-hover:translate-x-1"
                       aria-hidden="true"
@@ -236,6 +333,17 @@ export default function ContactWaysToReach() {
                       →
                     </span>
                   </button>
+                  {submissionState.message ? (
+                    <p
+                      id="contact-form-status"
+                      className={`mt-4 font-body text-sm leading-relaxed ${
+                        submissionState.kind === "success" ? "text-green" : "text-charcoal-mid"
+                      }`}
+                      role={submissionState.kind === "error" ? "alert" : "status"}
+                    >
+                      {submissionState.message}
+                    </p>
+                  ) : null}
                 </div>
               </form>
             </FadeInView>
