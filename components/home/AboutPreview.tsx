@@ -48,7 +48,7 @@ export default function AboutPreview() {
               Sam Murgatroyd
             </h2>
             <p className="font-body text-sm text-charcoal-mid mt-1">
-              Life Coach and Author
+              Mindset Coach and Author
             </p>
             <p className="font-body text-xs text-green mt-1">
               Amazon Bestselling Author
@@ -71,7 +71,7 @@ export default function AboutPreview() {
             <div className="relative w-full aspect-[3/4] overflow-hidden">
               <Image
                 src="/images/sam-headshot.jpg"
-                alt="Sam Murgatroyd — Life Coach and Author"
+                alt="Sam Murgatroyd — Mindset Coach and Author"
                 fill
                 className="object-cover object-top grayscale-[15%]"
                 sizes="(max-width: 1024px) 33vw, 25vw"
@@ -83,7 +83,7 @@ export default function AboutPreview() {
             <div className="mt-5">
               <h2 className="font-heading text-xl text-charcoal">Sam Murgatroyd</h2>
               <p className="font-body text-sm text-charcoal-mid mt-1">
-                Life Coach and Author
+                Mindset Coach and Author
               </p>
               <p className="font-body text-xs text-green mt-1.5">
                 Amazon Bestselling Author

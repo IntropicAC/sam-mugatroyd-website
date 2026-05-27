@@ -56,7 +56,7 @@ export default function Footer() {
               Sam Murgatroyd
             </p>
             <p className="font-body text-xs text-charcoal-muted mb-6">
-              Life Coach and Author
+              Mindset Coach and Author
             </p>
 
             <div className="space-y-1.5">

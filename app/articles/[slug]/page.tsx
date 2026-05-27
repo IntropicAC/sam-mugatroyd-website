@@ -218,7 +218,7 @@ export default async function ArticlePage({ params }: Props) {
                     {AUTHOR_NAME}
                   </p>
                   <p className="font-body text-xs text-charcoal-muted">
-                    Life Coach and Author
+                    Mindset Coach and Author
                   </p>
                 </div>
               </div>

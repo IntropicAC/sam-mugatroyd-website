@@ -20,7 +20,7 @@ import {
 export const metadata: Metadata = {
   title: "Coaching | Perception 47 — Sam Murgatroyd",
   description:
-    "One-to-one life coaching with Sam Murgatroyd for overthinking, people pleasing, confidence, burnout and living with more honesty.",
+    "One-to-one mindset coaching with Sam Murgatroyd for overthinking, people pleasing, confidence, burnout and living with more honesty.",
   alternates: {
     canonical: "/coaching",
   },
@@ -52,8 +52,8 @@ const coachingJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   "@id": `${SITE_URL}/coaching#service`,
-  name: "One-to-one life coaching with Sam Murgatroyd",
-  serviceType: "Life coaching",
+  name: "One-to-one mindset coaching with Sam Murgatroyd",
+  serviceType: "Mindset coaching",
   url: `${SITE_URL}/coaching`,
   description:
     "One-to-one coaching for overthinking, people pleasing, confidence, burnout, identity, and living more honestly.",

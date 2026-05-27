@@ -19,14 +19,14 @@ import {
 export const metadata: Metadata = {
   title: "Contact | Perception 47 — Sam Murgatroyd",
   description:
-    "Book a free 20-minute discovery call with Sam Murgatroyd or send a message about one-to-one life coaching. No pressure, just a conversation.",
+    "Book a free 20-minute discovery call with Sam Murgatroyd or send a message about one-to-one mindset coaching. No pressure, just a conversation.",
   alternates: {
     canonical: "/contact",
   },
   openGraph: {
     title: "Contact | Perception 47 — Sam Murgatroyd",
     description:
-      "Book a free 20-minute discovery call or send Sam a message about one-to-one life coaching.",
+      "Book a free 20-minute discovery call or send Sam a message about one-to-one mindset coaching.",
     type: "website",
     url: "/contact",
     images: [
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Contact | Perception 47 — Sam Murgatroyd",
     description:
-      "Book a free 20-minute discovery call or send Sam a message about one-to-one life coaching.",
+      "Book a free 20-minute discovery call or send Sam a message about one-to-one mindset coaching.",
     images: [DEFAULT_SOCIAL_IMAGE],
   },
 };

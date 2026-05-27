@@ -25,7 +25,7 @@ import {
 export const metadata: Metadata = {
   title: "Perception 47 Coaching | Sam Murgatroyd",
   description:
-    "Life coaching with Sam Murgatroyd for overthinking, people pleasing, confidence and burnout. Understand your patterns and book a free discovery call.",
+    "Mindset coaching with Sam Murgatroyd for overthinking, people pleasing, confidence and burnout. Understand your patterns and book a free discovery call.",
   alternates: {
     canonical: "/",
   },
@@ -62,7 +62,7 @@ const homeJsonLd = {
       name: AUTHOR_NAME,
       url: SITE_URL,
       image: PERSON_IMAGE,
-      jobTitle: "Life Coach and Author",
+      jobTitle: "Mindset Coach and Author",
       worksFor: {
         "@id": `${SITE_URL}/#organization`,
       },

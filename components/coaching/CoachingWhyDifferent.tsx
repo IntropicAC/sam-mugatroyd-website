@@ -304,7 +304,7 @@ export default function CoachingWhyDifferent() {
               <div className="relative aspect-[3/4] overflow-hidden">
                 <Image
                   src="/images/sam-headshot.jpg"
-                  alt="Sam Murgatroyd - Life Coach and Author"
+                  alt="Sam Murgatroyd - Mindset Coach and Author"
                   fill
                   className="object-cover object-top"
                   sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, (max-width: 1024px) 176px, 208px"
@@ -320,7 +320,7 @@ export default function CoachingWhyDifferent() {
                   Sam Murgatroyd
                 </p>
                 <p className="font-body text-[10px] text-cream/45 mt-0.5 leading-snug">
-                  Life Coach · Author
+                  Mindset Coach · Author
                 </p>
                 <p className="font-body text-[10px] text-green-hover mt-1 leading-snug">
                   Amazon Bestseller

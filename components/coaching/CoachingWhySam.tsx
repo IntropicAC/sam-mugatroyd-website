@@ -45,7 +45,7 @@ export default function CoachingWhySam() {
               <div className="relative overflow-hidden">
                 <Image
                   src="/images/sam-headshot.jpg"
-                  alt="Sam Murgatroyd - Life Coach and Author"
+                  alt="Sam Murgatroyd - Mindset Coach and Author"
                   width={640}
                   height={800}
                   className="h-auto w-full object-cover object-top"
@@ -63,7 +63,7 @@ export default function CoachingWhySam() {
                 Sam Murgatroyd
               </p>
               <p className="mt-1 font-body text-[10px] leading-snug text-cream/45 md:text-xs">
-                Life Coach &middot; Author
+                Mindset Coach &middot; Author
               </p>
               <p className="mt-1 font-body text-[10px] leading-snug text-green-hover md:text-xs">
                 Amazon Bestseller

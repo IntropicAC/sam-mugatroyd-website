@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
   title: "Perception 47 Coaching | Sam Murgatroyd",
   description:
-    "Life coaching with Sam Murgatroyd for overthinking, people pleasing and burnout. Understand the patterns behind how you feel, decide and live.",
+    "Mindset coaching with Sam Murgatroyd for overthinking, people pleasing and burnout. Understand the patterns behind how you feel, decide and live.",
   authors: [{ name: AUTHOR_NAME }],
   creator: AUTHOR_NAME,
   publisher: SITE_NAME,

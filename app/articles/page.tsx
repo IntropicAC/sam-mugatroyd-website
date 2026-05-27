@@ -137,7 +137,7 @@ export default function ArticlesPage() {
                       Sam Murgatroyd
                     </p>
                     <p className="mt-2 font-body text-xs leading-relaxed text-charcoal-muted">
-                      Life coach and author writing about honesty, identity, and the
+                      Mindset coach and author writing about honesty, identity, and the
                       patterns that keep people stuck.
                     </p>
                   </div>

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import VideoEmbed from "@/components/ui/VideoEmbed";
 import {
   AUTHOR_NAME,
   CALENDLY_URL,
@@ -9,8 +8,6 @@ import {
   DEFAULT_SOCIAL_IMAGE_ALT,
   DEFAULT_SOCIAL_IMAGE_HEIGHT,
   DEFAULT_SOCIAL_IMAGE_WIDTH,
-  INTRO_VIDEO,
-  INTRO_VIDEO_TRANSCRIPT,
   PERSON_IMAGE,
   SITE_NAME,
   SITE_URL,
@@ -19,7 +16,7 @@ import {
 export const metadata: Metadata = {
   title: "About Sam Murgatroyd | Perception 47 Coaching",
   description:
-    "Meet Sam Murgatroyd, life coach and author behind Perception 47 Coaching, and learn how lived experience shapes his work with identity and change.",
+    "Meet Sam Murgatroyd, mindset coach and author behind Perception 47 Coaching, and learn how lived experience shapes his work with identity and change.",
   alternates: {
     canonical: "/about",
   },
@@ -61,27 +58,12 @@ const aboutJsonLd = {
         name: AUTHOR_NAME,
         url: SITE_URL,
         image: PERSON_IMAGE,
-        jobTitle: "Life Coach and Author",
+        jobTitle: "Mindset Coach and Author",
         worksFor: {
           "@type": "Organization",
           name: SITE_NAME,
           url: SITE_URL,
         },
-      },
-    },
-    {
-      "@type": "VideoObject",
-      "@id": `${SITE_URL}/#intro-video`,
-      name: INTRO_VIDEO.title,
-      description: INTRO_VIDEO.description,
-      thumbnailUrl: INTRO_VIDEO.thumbnailUrl,
-      uploadDate: INTRO_VIDEO.uploadDate,
-      duration: INTRO_VIDEO.durationIso,
-      contentUrl: INTRO_VIDEO.contentUrl,
-      embedUrl: INTRO_VIDEO.embedUrl,
-      transcript: INTRO_VIDEO_TRANSCRIPT,
-      creator: {
-        "@id": `${SITE_URL}/#sam-murgatroyd`,
       },
     },
   ],
@@ -117,7 +99,7 @@ export default function AboutPage() {
           </div>
           <div className="md:col-span-5">
             <p className="max-w-xl font-body text-base leading-relaxed text-charcoal-mid">
-              Sam Murgatroyd is a life coach and author. His work is rooted in
+              Sam Murgatroyd is a mindset coach and author. His work is rooted in
               identity, honesty, belonging, and the gap between who people have
               learned to be and who they actually are.
             </p>
@@ -125,44 +107,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section
-        className="px-5 py-14 md:px-8 md:py-20 lg:px-12"
-        aria-label="Short introduction video"
-      >
-        <div className="mx-auto max-w-4xl">
-          <div className="mb-8 flex items-baseline justify-between gap-6 md:mb-10">
-            <p className="font-body text-xs uppercase tracking-[0.2em] text-charcoal-muted">
-              In his own words
-            </p>
-            <p className="font-body text-xs uppercase tracking-[0.2em] text-charcoal-muted">
-              2:46
-            </p>
-          </div>
-
-          <VideoEmbed
-            youtubeId={INTRO_VIDEO.youtubeId}
-            title={INTRO_VIDEO.title}
-            thumbnailUrl={INTRO_VIDEO.thumbnailUrl}
-          />
-
-          <details className="group mt-8 border-t border-border pt-5">
-            <summary className="flex cursor-pointer list-none items-center justify-between font-body text-xs uppercase tracking-[0.2em] text-charcoal-muted transition-colors hover:text-charcoal">
-              <span>Read the transcript</span>
-              <span
-                aria-hidden="true"
-                className="ml-3 inline-block transition-transform duration-300 group-open:rotate-45"
-              >
-                +
-              </span>
-            </summary>
-            <div className="mt-5 space-y-4 font-body text-sm leading-relaxed text-charcoal-mid md:text-base">
-              {INTRO_VIDEO_TRANSCRIPT.split("\n\n").map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
-            </div>
-          </details>
-        </div>
-      </section>
 
       <section className="px-5 py-14 md:px-8 md:py-20 lg:px-12">
         <div className="mx-auto grid max-w-7xl gap-12 md:grid-cols-12">
@@ -171,7 +115,7 @@ export default function AboutPage() {
               <div className="relative mx-auto aspect-[4/5] max-w-[220px] overflow-hidden bg-surface md:mx-0 md:max-w-[260px]">
                 <Image
                   src="/images/sam-headshot.jpg"
-                  alt="Sam Murgatroyd - Life Coach and Author"
+                  alt="Sam Murgatroyd - Mindset Coach and Author"
                   fill
                   className="object-cover object-top grayscale-[15%]"
                   sizes="(max-width: 768px) 220px, 260px"
@@ -182,7 +126,7 @@ export default function AboutPage() {
                   {AUTHOR_NAME}
                 </p>
                 <p className="mt-1 font-body text-sm text-charcoal-muted">
-                  Life Coach and Author
+                  Mindset Coach and Author
                 </p>
                 <p className="mt-1.5 font-body text-xs text-green">
                   Amazon Bestselling Author

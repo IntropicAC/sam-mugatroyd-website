@@ -103,7 +103,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
           className="font-body text-xs text-charcoal-muted tracking-[0.18em] uppercase mb-4 md:mb-5"
         >
-          Life Coaching
+          Mindset Coaching
         </OnceMotion.p>
 
         {/* Headline */}
