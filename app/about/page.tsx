@@ -141,9 +141,9 @@ export default function AboutPage() {
                 Sam grew up feeling like he never quite fit in. He saw the world
                 differently to the people around him and spent years wondering
                 if that was something to fix. He was what he describes as a
-                &ldquo;why&rdquo; kid &mdash; someone who could never simply
-                accept the way things were because that was how they had always
-                been. That feeling of being slightly outside of everything, of
+                &ldquo;why&rdquo; kid, someone who could never simply accept
+                the way things were because that was how they had always been.
+                That feeling of being slightly outside of everything, of
                 observing the world rather than just living in it, was
                 uncomfortable for a long time.
               </p>
@@ -160,9 +160,9 @@ export default function AboutPage() {
                 alcohol rehabilitation. Years spent working alongside people
                 across almost all of those environments at their lowest points
                 and darkest times. What he saw across the board was the same
-                thing &mdash; people who had spent so long becoming who they
-                thought they had to be that they had completely lost sight of
-                who they actually were.
+                thing. People who had spent so long becoming who they thought
+                they had to be that they had completely lost sight of who they
+                actually were.
               </p>
               <p>
                 At some point Sam recognised that story in himself too. The
@@ -176,11 +176,9 @@ export default function AboutPage() {
               <p>
                 But it was also the most important. Because understanding why
                 it had happened, really understanding it at a level that went
-                beyond surface realisation, changed everything. That shift in
-                perspective was so fundamental and so permanent that it could
-                not be unfelt. And the moment it landed, two things became
-                clear. He needed to keep writing. And he needed to help other
-                people find the same thing.
+                beyond surface realisation, changed everything. And the moment
+                it landed, two things became clear. He needed to keep writing.
+                And he needed to help other people find the same thing.
               </p>
             </div>
 
@@ -199,9 +197,9 @@ export default function AboutPage() {
               </h2>
               <p className="mt-3 max-w-2xl font-body text-sm leading-relaxed text-charcoal-mid">
                 Years of frontline work shaped how Sam sees people and
-                problems. The thread running through it: change is rarely
-                about adding more &mdash; it is about helping someone see
-                clearly.
+                problems. The thread running through all of it: change is
+                rarely about adding something new. It is about helping
+                someone see clearly.
               </p>
               <ul className="mt-6 grid gap-3 sm:grid-cols-2">
                 {experience.map((item) => (
@@ -223,15 +221,15 @@ export default function AboutPage() {
                 <p>
                   Sam does not deep-dive issue by issue the way a therapist
                   might. He takes a wider view. Instead of unpicking each
-                  problem in isolation, he works at the level of perception
-                  &mdash; the lens you are looking through &mdash; because
-                  almost everything else downstream of that is a symptom.
+                  problem in isolation, he works at the level of perception,
+                  the lens you are looking through, because almost everything
+                  else downstream of that is a symptom.
                 </p>
                 <p>
                   The work tends to suit people who feel quietly stuck despite
                   a life that looks right on paper. The numbness, the burnout,
-                  the sense that something does not sit right &mdash; those
-                  are the signals that the lens is no longer your own.
+                  the sense that something does not sit right. Those are the
+                  signals that the lens is no longer your own.
                 </p>
                 <p>
                   Coaching is one-to-one, honest, and direct. Sessions move at
@@ -247,17 +245,16 @@ export default function AboutPage() {
               </h2>
               <div className="mt-5 space-y-5 font-body text-base leading-relaxed text-charcoal-mid">
                 <p>
-                  Sam is the author of three books &mdash; <em>Alienated</em>,{" "}
-                  <em>Robin&rsquo;s Bench</em> and <em>The Policy</em>{" "}
-                  &mdash; all Amazon bestsellers. The fiction sits next to the
-                  coaching for a reason: the same questions about identity,
+                  Sam is the author of three books: <em>Alienated</em>,{" "}
+                  <em>Robin&rsquo;s Bench</em> and <em>The Policy</em>,
+                  all Amazon bestsellers. The fiction sits next to the
+                  coaching for a reason. The same questions about identity,
                   belonging and self-trust run through both.
                 </p>
                 <p>
-                  He also writes regularly &mdash; long-form essays,
-                  reflections and breakdowns of the patterns he sees in his
-                  work &mdash; published in the journal on this site and on
-                  Substack.
+                  He also writes regularly. Long-form essays, reflections and
+                  breakdowns of the patterns he sees in his work, published
+                  in the journal on this site and on Substack.
                 </p>
               </div>
             </div>
