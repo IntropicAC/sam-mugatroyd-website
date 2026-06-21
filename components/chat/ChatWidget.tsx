@@ -855,8 +855,8 @@ export default function ChatWidget() {
         className={styles.panel}
         role="dialog"
         aria-label="Sam AI chat guide"
-        aria-modal="false"
-        aria-hidden={!isOpen}
+        aria-modal={isOpen ? "true" : "false"}
+        inert={!isOpen}
       >
         <header className={styles.header}>
           <div className={styles.titleWrap}>
@@ -1004,6 +1004,7 @@ export default function ChatWidget() {
             ref={inputRef}
             className={styles.input}
             type="text"
+            suppressHydrationWarning
             value={input}
             maxLength={MAX_INPUT_CHARS}
             onChange={(event) => setInput(event.target.value.slice(0, MAX_INPUT_CHARS))}
@@ -1015,6 +1016,7 @@ export default function ChatWidget() {
             ref={honeypotRef}
             className={styles.honeypot}
             type="text"
+            suppressHydrationWarning
             name="website"
             tabIndex={-1}
             autoComplete="off"

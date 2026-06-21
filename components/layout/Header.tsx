@@ -98,7 +98,7 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`inline-flex h-9 shrink-0 items-center whitespace-nowrap px-2.5 font-body text-xs font-medium transition-colors duration-500 sm:px-3 md:hidden ${light ? "text-cream/75 border border-cream/40 hover:bg-cream/15" : "text-green border border-green hover:bg-green hover:text-cream"}`}
-                aria-label="Book a free discovery call"
+                aria-label="Book a call - free discovery call"
               >
                 Book a call
               </Link>

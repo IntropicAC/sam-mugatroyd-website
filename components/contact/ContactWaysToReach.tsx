@@ -305,6 +305,7 @@ export default function ContactWaysToReach({
                     id="contact-website"
                     name="website"
                     type="text"
+                    suppressHydrationWarning
                     tabIndex={-1}
                     autoComplete="off"
                   />
@@ -321,6 +322,7 @@ export default function ContactWaysToReach({
                     id="contact-name"
                     name="name"
                     type="text"
+                    suppressHydrationWarning
                     autoComplete="name"
                     maxLength={MAX_NAME_LENGTH}
                     required
@@ -340,6 +342,7 @@ export default function ContactWaysToReach({
                     id="contact-email"
                     name="email"
                     type="email"
+                    suppressHydrationWarning
                     autoComplete="email"
                     maxLength={MAX_EMAIL_LENGTH}
                     required
@@ -358,6 +361,7 @@ export default function ContactWaysToReach({
                   <textarea
                     id="contact-message"
                     name="message"
+                    suppressHydrationWarning
                     rows={4}
                     maxLength={MAX_MESSAGE_LENGTH}
                     required
