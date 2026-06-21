@@ -11,7 +11,7 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Articles | Perception 47 - Sam Murgatroyd",
+  title: "Articles on Overthinking, Burnout & Confidence | Sam Murgatroyd",
   description:
     "Articles by Sam Murgatroyd on overthinking, people pleasing, burnout, confidence and self-trust, written to help you understand what is underneath.",
   alternates: {

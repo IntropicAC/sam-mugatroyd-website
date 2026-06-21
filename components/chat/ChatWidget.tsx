@@ -855,7 +855,7 @@ export default function ChatWidget() {
         className={styles.panel}
         role="dialog"
         aria-label="Sam AI chat guide"
-        aria-modal={isOpen ? "true" : "false"}
+        aria-modal={isOpen ? "true" : undefined}
         inert={!isOpen}
       >
         <header className={styles.header}>

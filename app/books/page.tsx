@@ -15,7 +15,7 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Books | Perception 47 — Sam Murgatroyd",
+  title: "Books by Sam Murgatroyd | Identity, Honesty & Belonging",
   description:
     "Books by Sam Murgatroyd on identity, honesty and belonging. Explore the stories behind Perception 47 Coaching and the work of becoming yourself.",
   alternates: {

@@ -82,6 +82,8 @@ export default function Hero() {
             src="/images/perception-47-logo.png"
             alt=""
             fill
+            fetchPriority="high"
+            loading="eager"
             className="object-contain"
             sizes="(max-width: 768px) 80vw, 40vw"
           />

@@ -14,7 +14,7 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About Sam Murgatroyd | Perception 47 Coaching",
+  title: "About Sam Murgatroyd | Mindset Coach & Author",
   description:
     "Meet Sam Murgatroyd, mindset coach and author behind Perception 47 Coaching, and learn how lived experience shapes his work with identity and change.",
   alternates: {

@@ -35,7 +35,7 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   applicationName: SITE_NAME,
-  title: "Perception 47 Coaching | Sam Murgatroyd",
+  title: "Sam Murgatroyd | Mindset Coaching for Overthinking & Burnout",
   description:
     "Mindset coaching with Sam Murgatroyd for overthinking, people pleasing and burnout. Understand the patterns behind how you feel, decide and live.",
   authors: [{ name: AUTHOR_NAME }],

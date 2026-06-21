@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import { useState, useId } from "react";
 
 interface VideoEmbedProps {
@@ -39,7 +40,6 @@ export default function VideoEmbed({
         <>
           <link rel="preconnect" href="https://www.youtube-nocookie.com" />
           <link rel="preconnect" href="https://www.google.com" />
-          <link rel="preconnect" href="https://i.ytimg.com" />
         </>
       )}
 
@@ -57,24 +57,14 @@ export default function VideoEmbed({
             Play video: {title}
           </span>
 
-          {/* Thumbnail — using <img> not next/image: the asset is served from
-              YouTube's CDN, sits below the fold (lazy-loaded), and is swapped
-              out for the iframe on click, so the optimizer cycle adds cost
-              without payoff. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          {/* Local poster stays cacheable and responsive before the iframe is requested. */}
+          <Image
             src={thumbnailUrl}
             alt=""
+            fill
             loading="lazy"
-            decoding="async"
+            sizes="(max-width: 768px) calc(100vw - 40px), 896px"
             className={`absolute inset-0 h-full w-full object-cover ${objectPosition} transition-transform duration-700 group-hover:scale-[1.02]`}
-            onError={(e) => {
-              const img = e.currentTarget;
-              if (!img.dataset.fallback) {
-                img.dataset.fallback = "1";
-                img.src = `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`;
-              }
-            }}
           />
 
           {/* Subtle dark overlay for legibility of the play button */}

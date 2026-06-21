@@ -62,13 +62,13 @@ export default function Footer() {
             <div className="space-y-1.5">
               <a
                 href="mailto:samuel.a.murg@gmail.com"
-                className="block font-body text-xs text-charcoal-mid hover:text-green transition-colors duration-300"
+                className="flex min-h-6 items-center font-body text-xs text-charcoal-mid hover:text-green transition-colors duration-300"
               >
                 samuel.a.murg@gmail.com
               </a>
               <a
                 href="tel:07804743725"
-                className="block font-body text-xs text-charcoal-mid hover:text-green transition-colors duration-300"
+                className="flex min-h-6 items-center font-body text-xs text-charcoal-mid hover:text-green transition-colors duration-300"
               >
                 07804 743 725
               </a>

@@ -18,9 +18,9 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Coaching | Perception 47 — Sam Murgatroyd",
+  title: "Mindset Coaching for Burnout & People Pleasing | Sam Murgatroyd",
   description:
-    "One-to-one mindset coaching with Sam Murgatroyd for overthinking, people pleasing, confidence, burnout and living with more honesty.",
+    "Mindset coaching for people who look fine on paper but feel numb or burnt out. Understand why you feel this way and how to change it. Book a free discovery call.",
   alternates: {
     canonical: "/coaching",
   },

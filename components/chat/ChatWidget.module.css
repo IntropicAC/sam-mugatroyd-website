@@ -40,15 +40,22 @@
   opacity: 0;
   pointer-events: none;
   transform: translateY(18px) scale(0.98);
+  visibility: hidden;
   transition:
     opacity 240ms ease,
-    transform 240ms ease;
+    transform 240ms ease,
+    visibility 0s linear 240ms;
 }
 
 .root[data-open="true"] .panel {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0) scale(1);
+  visibility: visible;
+  transition:
+    opacity 240ms ease,
+    transform 240ms ease,
+    visibility 0s linear 0s;
 }
 
 .root[data-open="true"] .backdrop {

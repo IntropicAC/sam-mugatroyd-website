@@ -60,7 +60,7 @@ export default function MeetSamSection() {
           <VideoEmbed
             youtubeId={INTRO_VIDEO.youtubeId}
             title={INTRO_VIDEO.title}
-            thumbnailUrl={INTRO_VIDEO.thumbnailUrl}
+            thumbnailUrl={INTRO_VIDEO.posterImage}
           />
         </OnceMotion.div>
 

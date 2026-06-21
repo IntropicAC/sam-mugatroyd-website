@@ -11,7 +11,7 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Testimonials | Perception 47 Coaching",
+  title: "Client Testimonials | Sam Murgatroyd Coaching",
   description:
     "Read coaching testimonials from people who worked with Sam Murgatroyd and Perception 47 Coaching to build clarity, confidence and self-trust.",
   alternates: {

@@ -17,7 +17,7 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact | Perception 47 — Sam Murgatroyd",
+  title: "Contact Sam Murgatroyd | Book a Free Discovery Call",
   description:
     "Book a free 20-minute discovery call with Sam Murgatroyd or send a message about one-to-one mindset coaching. No pressure, just a conversation.",
   alternates: {

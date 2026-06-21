@@ -24,7 +24,8 @@ export const INTRO_VIDEO = {
     "Sam Murgatroyd explains how he helps people who feel numb, burnt out or quietly lost despite a life that looks right on paper, by changing the lens through which they see the world.",
   durationIso: "PT2M46S",
   uploadDate: "2026-05-27",
-  thumbnailUrl: "https://i.ytimg.com/vi/eph71hlmWDk/maxresdefault.jpg",
+  posterImage: "/images/sam-intro-video-poster.jpg",
+  thumbnailUrl: `${SITE_URL}/images/sam-intro-video-poster.jpg`,
   contentUrl: "https://youtu.be/eph71hlmWDk",
   embedUrl: "https://www.youtube-nocookie.com/embed/eph71hlmWDk",
 } as const;
