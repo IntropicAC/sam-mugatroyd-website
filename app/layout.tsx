@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import StickyMobileCTA from "@/components/layout/StickyMobileCTA";
 import PageAnimationProvider from "@/components/layout/PageAnimationProvider";
 import ChatWidget from "@/components/chat/ChatWidget";
+import CookieConsent from "@/components/analytics/CookieConsent";
 import {
   AUTHOR_NAME,
   DEFAULT_SOCIAL_IMAGE,
@@ -125,6 +126,7 @@ export default function RootLayout({
         <Footer />
         <StickyMobileCTA />
         <ChatWidget />
+        <CookieConsent />
       </body>
     </html>
   );

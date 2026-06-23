@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
 import ForYouIfSection from "@/components/home/ForYouIfSection";
 import LensSection from "@/components/home/LensSection";
+import ArticlePathways from "@/components/home/ArticlePathways";
 import MeetSamSection from "@/components/home/MeetSamSection";
-import AboutPreview from "@/components/home/AboutPreview";
 import BooksSection from "@/components/home/BooksSection";
-import CoachingPackages from "@/components/home/CoachingPackages";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import FinalCTA from "@/components/home/FinalCTA";
 import {
@@ -131,9 +130,8 @@ export default function HomePage() {
       <ForYouIfSection />
       <LensSection />
       <MeetSamSection />
-      <AboutPreview />
+      <ArticlePathways />
       <BooksSection />
-      <CoachingPackages />
       <TestimonialsSection />
       <FinalCTA />
     </>

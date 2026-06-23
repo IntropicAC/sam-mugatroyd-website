@@ -1,5 +1,6 @@
 'use client';
 
+import Link from "next/link";
 import VideoEmbed from "@/components/ui/VideoEmbed";
 import { OnceMotion } from "@/components/ui/OnceMotion";
 import { INTRO_VIDEO, INTRO_VIDEO_TRANSCRIPT } from "@/lib/site";
@@ -7,7 +8,7 @@ import { INTRO_VIDEO, INTRO_VIDEO_TRANSCRIPT } from "@/lib/site";
 export default function MeetSamSection() {
   return (
     <section
-      className="bg-cream-deep px-5 py-20 md:px-8 md:py-28 lg:px-12"
+      className="bg-cream-deep px-5 pb-10 pt-20 md:px-8 md:pb-14 md:pt-28 lg:px-12"
       aria-label="Meet Sam — short introduction video"
     >
       <div className="mx-auto max-w-4xl">
@@ -89,6 +90,22 @@ export default function MeetSamSection() {
               ))}
             </div>
           </details>
+        </OnceMotion.div>
+
+        <OnceMotion.div
+          seenId="home-meet-sam-about-cta"
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.55, ease: "easeOut" }}
+          viewport={{ once: true, margin: "-60px" }}
+          className="mt-8 text-center"
+        >
+          <Link
+            href="/about"
+            className="inline-flex min-h-11 items-center justify-center border border-border px-6 py-3 font-body text-sm font-medium tracking-wide text-charcoal transition-colors duration-300 hover:border-charcoal hover:bg-cream focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green"
+          >
+            Learn more about Sam
+          </Link>
         </OnceMotion.div>
       </div>
     </section>

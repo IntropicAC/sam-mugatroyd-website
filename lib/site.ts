@@ -3,6 +3,8 @@ export const SITE_URL = "https://www.sam-murgatroyd.co.uk";
 export const CALENDLY_URL =
   "https://calendly.com/samuel-a-murg/free-discovery-call";
 
+export const GA_MEASUREMENT_ID = "G-F3092QNS30";
+
 export const SITE_NAME = "Perception 47 Coaching";
 export const AUTHOR_NAME = "Sam Murgatroyd";
 export const CONTACT_EMAIL = "samuel.a.murg@gmail.com";

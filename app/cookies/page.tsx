@@ -12,8 +12,8 @@ export const metadata: Metadata = {
 
 const sections = [
   {
-    title: "Cookies used by this site",
-    body: "The current site does not intentionally set analytics, advertising, or tracking cookies.",
+    title: "Analytics cookies",
+    body: "With your consent, this site uses Google Analytics (GA4) to understand how visitors find and use it. These cookies are set only after you choose Accept on the cookie banner, and never if you decline. No advertising cookies are used.",
   },
   {
     title: "Chat storage",
