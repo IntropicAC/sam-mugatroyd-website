@@ -7,8 +7,6 @@ const featuredSlugs = [
   "why-do-i-feel-lost-in-life",
   "how-do-i-stop-people-pleasing",
   "how-to-recover-from-burnout",
-  "why-do-i-feel-like-a-fraud",
-  "why-do-i-feel-exhausted-by-people",
 ];
 
 const featuredArticles = featuredSlugs
