@@ -25,6 +25,10 @@ const sections = [
     body: "The chat guide sends your messages to the site's chat service and AI provider so it can generate a reply. Do not enter sensitive personal, medical, financial, or emergency information into the chat.",
   },
   {
+    title: "Analytics",
+    body: "With your consent, this site uses Google Analytics and Microsoft Clarity to understand how the site is used. Clarity collects anonymised usage data, including session replays and heatmaps, with typed input and sensitive content masked by default. These tools only run after you choose Accept on the cookie banner. See the cookie policy for details.",
+  },
+  {
     title: "External links",
     body: "Links to Amazon, Substack, Facebook, and other external services take you away from this site. Those services have their own privacy policies and data practices.",
   },

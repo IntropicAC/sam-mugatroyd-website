@@ -5,6 +5,8 @@ export const CALENDLY_URL =
 
 export const GA_MEASUREMENT_ID = "G-F3092QNS30";
 
+export const CLARITY_PROJECT_ID = "xbqnoej9j3";
+
 export const SITE_NAME = "Perception 47 Coaching";
 export const AUTHOR_NAME = "Sam Murgatroyd";
 export const CONTACT_EMAIL = "samuel.a.murg@gmail.com";

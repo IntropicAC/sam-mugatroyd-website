@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const sections = [
   {
     title: "Analytics cookies",
-    body: "With your consent, this site uses Google Analytics (GA4) to understand how visitors find and use it. These cookies are set only after you choose Accept on the cookie banner, and never if you decline. No advertising cookies are used.",
+    body: "With your consent, this site uses Google Analytics (GA4) and Microsoft Clarity to understand how visitors find and use it. Microsoft Clarity also records anonymised session replays and heatmaps that show how pages are used, with typed input and sensitive content masked by default. These cookies are set only after you choose Accept on the cookie banner, and never if you decline. No advertising cookies are used.",
   },
   {
     title: "Chat storage",

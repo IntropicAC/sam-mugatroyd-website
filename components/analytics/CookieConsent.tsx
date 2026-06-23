@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import GoogleAnalytics from "./GoogleAnalytics";
+import MicrosoftClarity from "./MicrosoftClarity";
 
 const STORAGE_KEY = "p47-cookie-consent";
 
@@ -43,7 +44,12 @@ export default function CookieConsent() {
 
   return (
     <>
-      {consent === "accepted" && <GoogleAnalytics />}
+      {consent === "accepted" && (
+        <>
+          <GoogleAnalytics />
+          <MicrosoftClarity />
+        </>
+      )}
 
       {consent === null && (
         <div
