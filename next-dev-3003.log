@@ -1,0 +1,15 @@
+
+> p47-next@0.1.0 dev
+> next dev -p 3003
+
+▲ Next.js 16.2.5 (Turbopack)
+- Local:         http://localhost:3003
+- Network:       http://192.168.0.17:3003
+- Environments: .env.local
+✓ Ready in 3.1s
+Creating turbopack project {
+  dir: 'C:\\Users\\User\\projects\\sam-mugatroyd-website',
+  testMode: true
+}
+- Cache Components enabled
+
