@@ -6,61 +6,48 @@ import { OnceMotion } from "@/components/ui/OnceMotion";
 
 const CALENDLY_URL = "https://calendly.com/samuel-a-murg/free-discovery-call";
 
-const packages = [
+const waysToWork = [
   {
-    title: "Block Booking",
-    price: "\u00a3120",
-    priceNote: "Five sessions \u00b7 fifth session free",
-    description: "The full programme \u2014 the most transformative way to work with Sam.",
-    features: [
-      "\u00a330 per session",
-      "Three signed copies of Sam's books",
-      "Email summary after every session",
-      "Midweek email check-in",
-      "Full written programme reflection",
-    ],
+    audience: "For individuals",
+    title: "Individual Coaching",
+    description:
+      "One-to-one online sessions built around you. Programme length and structure are discussed at your free discovery call.",
+    detail:
+      "A focused, private space to understand what is holding you back and make changes that feel true to you.",
+    reassurance: "Free 20-minute discovery call. No pressure, no commitment.",
+    cta: "Book your free discovery call",
+    href: CALENDLY_URL,
+    external: true,
+    featured: false,
+  },
+  {
+    audience: "For teams and organisations",
+    title: "Corporate & Team Coaching",
+    description:
+      "Tailored programmes for teams, organisations and businesses. Workshops, ongoing coaching and bespoke delivery available.",
+    detail:
+      "We will start by understanding your people, your goals and the kind of change you want to create together.",
+    reassurance: "Pricing on enquiry.",
+    cta: "Enquire about team coaching",
+    href: "/contact#contact-form",
+    external: false,
     featured: true,
-  },
-  {
-    title: "Pay As You Go",
-    price: "\u00a335",
-    priceNote: "Per session \u00b7 no commitment",
-    description: "Flexible and honest \u2014 come when you need it, stop when you don't.",
-    features: [
-      "Free cancellation at any time",
-      "Signed book gifted after the third session",
-      "Email check-ins between sessions",
-      "Free fifth session",
-    ],
-    featured: false,
-  },
-  {
-    title: "Monthly Maintenance",
-    price: "\u00a330",
-    priceNote: "Per month \u00b7 after completing a programme",
-    description: "Keep the lens clear. One monthly session to review and stay honest.",
-    features: [
-      "One monthly one-to-one session",
-      "Review progress and what has come up",
-      "No minimum commitment",
-      "Cancel any time",
-    ],
-    featured: false,
   },
 ];
 
 export default function CoachingPackagesSection() {
   return (
     <section
-      className="relative py-20 md:py-32 px-5 md:px-8 lg:px-12 bg-cream-deep overflow-hidden"
-      aria-label="Coaching packages"
+      id="ways-to-work"
+      className="relative overflow-hidden bg-cream-deep px-5 py-20 md:px-8 md:py-32 lg:px-12"
+      aria-label="Ways to work together"
     >
       <div
         className="pointer-events-none absolute -left-24 top-20 h-72 w-72 rounded-full bg-green/10 blur-3xl"
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute right-0 bottom-0 h-[28rem] w-[28rem] translate-x-1/3 translate-y-1/3 rounded-full border border-green/15"
+        className="pointer-events-none absolute bottom-0 right-0 h-[28rem] w-[28rem] translate-x-1/3 translate-y-1/3 rounded-full border border-green/15"
         aria-hidden="true"
       />
       <div
@@ -73,136 +60,123 @@ export default function CoachingPackagesSection() {
         aria-hidden="true"
       />
 
-      <div className="relative max-w-7xl mx-auto">
-        <FadeInView>
-          <p className="font-body text-xs text-charcoal-muted tracking-[0.18em] uppercase mb-10 md:mb-14">
-            Packages
-          </p>
-        </FadeInView>
+      <div className="relative mx-auto max-w-6xl">
+        <div className="mb-12 max-w-2xl md:mb-16">
+          <FadeInView>
+            <p className="mb-5 font-body text-xs uppercase tracking-[0.18em] text-charcoal-muted">
+              Ways to work together
+            </p>
+          </FadeInView>
+          <FadeInView delay={0.08}>
+            <h2 className="mb-5 font-heading text-3xl leading-tight text-charcoal md:text-5xl">
+              The right support starts with the right conversation.
+            </h2>
+          </FadeInView>
+          <FadeInView delay={0.16}>
+            <p className="font-body text-sm leading-relaxed text-charcoal-mid md:text-base">
+              Whether you are looking for personal change or support for your
+              team, we will begin by understanding what you need before
+              deciding what working together looks like.
+            </p>
+          </FadeInView>
+        </div>
 
-        <div className="grid gap-5 lg:grid-cols-3 lg:items-stretch">
-          {packages.map((pkg, i) => (
-            <OnceMotion.div
-              key={pkg.title}
-              seenId={`coaching-package-${pkg.title}`}
-              initial={{ opacity: 0, y: 22 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: i * 0.1,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              viewport={{ once: true, margin: "-60px" }}
-              className={`relative flex h-full min-h-full flex-col overflow-hidden border px-5 py-6 md:px-7 md:py-8 ${
-                pkg.featured
-                  ? "border-green/45 bg-charcoal text-cream shadow-[0_24px_70px_rgba(42,39,34,0.18)]"
-                  : "border-border bg-cream/80 text-charcoal"
-              }`}
-            >
-              {pkg.featured && (
-                <div
-                  className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full border border-green/30"
-                  aria-hidden="true"
-                />
-              )}
+        <div className="grid gap-5 lg:grid-cols-2 lg:gap-6">
+          {waysToWork.map((option, index) => {
+            const linkProps = option.external
+              ? { target: "_blank" as const, rel: "noopener noreferrer" }
+              : {};
 
-              <div className="relative flex items-start justify-between gap-5 border-b border-current/10 pb-6">
-                <div>
-                  <div className="flex flex-wrap items-center gap-3 mb-2">
-                    <h3
-                      className={`font-heading text-2xl leading-tight ${
-                        pkg.featured ? "text-cream" : "text-charcoal"
-                      }`}
-                    >
-                      {pkg.title}
-                    </h3>
-                    {pkg.featured && (
-                      <span className="font-body text-[10px] text-green-hover border border-green-hover/70 px-2 py-1 tracking-wide">
-                        Popular
-                      </span>
-                    )}
-                  </div>
+            return (
+              <OnceMotion.article
+                key={option.title}
+                seenId={`coaching-way-to-work-${index}`}
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.8,
+                  delay: index * 0.1,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                viewport={{ once: true, margin: "-60px" }}
+                className={`relative flex min-h-[28rem] flex-col overflow-hidden border p-6 md:min-h-[30rem] md:p-9 ${
+                  option.featured
+                    ? "border-green/45 bg-charcoal text-cream shadow-[0_24px_70px_rgba(42,39,34,0.18)]"
+                    : "border-border bg-cream/80 text-charcoal"
+                }`}
+              >
+                {option.featured && (
+                  <>
+                    <div
+                      className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full border border-green/30"
+                      aria-hidden="true"
+                    />
+                    <div
+                      className="pointer-events-none absolute bottom-0 right-0 h-56 w-56 translate-x-1/3 translate-y-1/3 rounded-full border border-cream/10"
+                      aria-hidden="true"
+                    />
+                  </>
+                )}
+
+                <div className="relative border-b border-current/10 pb-7">
                   <p
-                    className={`font-body text-xs leading-snug ${
-                      pkg.featured ? "text-cream/42" : "text-charcoal-muted"
+                    className={`mb-4 font-body text-[10px] uppercase tracking-[0.2em] ${
+                      option.featured ? "text-green-hover" : "text-charcoal-muted"
                     }`}
                   >
-                    {pkg.priceNote}
+                    {option.audience}
                   </p>
+                  <h3 className="font-heading text-3xl leading-tight md:text-4xl">
+                    {option.title}
+                  </h3>
                 </div>
-                <span
-                  className={`font-heading text-4xl leading-none ${
-                    pkg.featured ? "text-cream" : "text-charcoal"
-                  }`}
-                >
-                  {pkg.price}
-                </span>
-              </div>
 
-              <div className="relative flex flex-1 flex-col pt-6">
-                <p
-                  className={`font-body text-sm leading-relaxed mb-6 ${
-                    pkg.featured ? "text-cream/62" : "text-charcoal-mid"
-                  }`}
-                >
-                  {pkg.description}
-                </p>
+                <div className="relative flex flex-1 flex-col pt-7">
+                  <p
+                    className={`mb-5 font-body text-base leading-relaxed md:text-lg ${
+                      option.featured ? "text-cream/78" : "text-charcoal-mid"
+                    }`}
+                  >
+                    {option.description}
+                  </p>
+                  <p
+                    className={`font-body text-sm leading-relaxed ${
+                      option.featured ? "text-cream/52" : "text-charcoal-muted"
+                    }`}
+                  >
+                    {option.detail}
+                  </p>
 
-                <ul className="space-y-3 mb-8" aria-label={`${pkg.title} features`}>
-                  {pkg.features.map((feature) => (
-                    <li
-                      key={feature}
-                      className={`flex items-start gap-3 ${
-                        pkg.featured ? "text-cream/56" : "text-charcoal-muted"
+                  <div className="mt-auto pt-10">
+                    <p
+                      className={`mb-5 font-body text-xs leading-relaxed ${
+                        option.featured ? "text-green-hover" : "text-charcoal-muted"
                       }`}
                     >
+                      {option.reassurance}
+                    </p>
+                    <Link
+                      href={option.href}
+                      className={`group inline-flex w-full items-center justify-center gap-2 px-5 py-4 font-body text-sm font-medium tracking-wide transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green ${
+                        option.featured
+                          ? "bg-green text-cream hover:bg-green-hover"
+                          : "bg-charcoal text-cream hover:bg-ink"
+                      }`}
+                      {...linkProps}
+                    >
+                      {option.cta}
                       <span
-                        className={`mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full ${
-                          pkg.featured ? "bg-green-hover" : "bg-green/70"
-                        }`}
+                        className="inline-block transition-transform duration-300 group-hover:translate-x-1"
                         aria-hidden="true"
-                      />
-                      <span className="font-body text-xs leading-relaxed">
-                        {feature}
+                      >
+                        &rarr;
                       </span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Link
-                  href={CALENDLY_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`mt-auto inline-flex w-full items-center justify-center gap-2 px-5 py-3.5 font-body text-xs font-medium tracking-wide transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green group ${
-                    pkg.featured
-                      ? "bg-green text-cream hover:bg-green-hover"
-                      : "border border-border text-charcoal hover:border-charcoal hover:bg-cream"
-                  }`}
-                >
-                  Book a free call first
-                  <span
-                    className="inline-block transition-transform duration-300 group-hover:translate-x-0.5"
-                    aria-hidden="true"
-                  >
-                    {"\u2192"}
-                  </span>
-                </Link>
-              </div>
-
-              {!pkg.featured && (
-                <div
-                  className="pointer-events-none absolute right-5 top-5 opacity-[0.06]"
-                  aria-hidden="true"
-                >
-                  <svg viewBox="0 0 64 64" className="h-16 w-16" fill="none">
-                    <circle cx="32" cy="32" r="29" stroke="currentColor" strokeWidth="0.8" />
-                    <circle cx="32" cy="32" r="18" stroke="currentColor" strokeWidth="0.6" />
-                    <circle cx="32" cy="32" r="5" fill="currentColor" />
-                  </svg>
+                    </Link>
+                  </div>
                 </div>
-              )}
-            </OnceMotion.div>
-          ))}
+              </OnceMotion.article>
+            );
+          })}
         </div>
       </div>
     </section>

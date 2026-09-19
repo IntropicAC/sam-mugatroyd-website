@@ -19,14 +19,14 @@ import {
 export const metadata: Metadata = {
   title: "Contact Sam Murgatroyd | Book a Free Discovery Call",
   description:
-    "Book a free 20-minute discovery call with Sam Murgatroyd or send a message about one-to-one mindset coaching. No pressure, just a conversation.",
+    "Book a free 20-minute discovery call with Sam Murgatroyd or enquire about individual, corporate and team coaching. No pressure, just a conversation.",
   alternates: {
     canonical: "/contact",
   },
   openGraph: {
     title: "Contact | Perception 47 — Sam Murgatroyd",
     description:
-      "Book a free 20-minute discovery call or send Sam a message about one-to-one mindset coaching.",
+      "Book a free 20-minute discovery call or enquire about individual, corporate and team coaching.",
     type: "website",
     url: "/contact",
     images: [
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Contact | Perception 47 — Sam Murgatroyd",
     description:
-      "Book a free 20-minute discovery call or send Sam a message about one-to-one mindset coaching.",
+      "Book a free 20-minute discovery call or enquire about individual, corporate and team coaching.",
     images: [DEFAULT_SOCIAL_IMAGE],
   },
 };
@@ -59,7 +59,7 @@ const contactJsonLd = {
   name: `Contact ${AUTHOR_NAME}`,
   url: `${SITE_URL}/contact`,
   description:
-    "Book a free discovery call, email, or phone Sam Murgatroyd about one-to-one coaching.",
+    "Book a free discovery call, email, or phone Sam Murgatroyd about individual, corporate and team coaching.",
   about: {
     "@type": "Person",
     name: AUTHOR_NAME,

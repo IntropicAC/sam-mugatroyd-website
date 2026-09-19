@@ -57,7 +57,7 @@ export default function CoachingHero() {
               transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
               className="font-body text-[10px] text-cream/35 tracking-[0.22em] uppercase mb-[clamp(1.25rem,4svh,2rem)]"
             >
-              One-to-One Coaching · Perception 47 · Sam Murgatroyd
+              Mindset Coaching for People &amp; Teams &middot; Perception 47 &middot; Sam Murgatroyd
             </OnceMotion.p>
 
             <OnceMotion.h1
@@ -110,23 +110,38 @@ export default function CoachingHero() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 1.65, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row items-start sm:items-center gap-5"
+              className="flex flex-col items-start gap-3"
             >
-              <Link
-                href={CALENDLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-green text-cream px-7 py-3.5 md:px-8 md:py-4 font-body text-sm font-medium tracking-wide hover:bg-green-hover transition-colors duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green group"
-              >
-                Book your free 20-minute call
-                <span
-                  className="inline-block transition-transform duration-300 group-hover:translate-x-1"
-                  aria-hidden="true"
+              <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:items-center">
+                <Link
+                  href={CALENDLY_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex min-h-12 w-full items-center justify-center gap-3 bg-green px-6 py-3.5 font-body text-sm font-medium tracking-wide text-cream shadow-[0_12px_28px_rgba(61,89,72,0.22)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-green-hover hover:shadow-[0_16px_34px_rgba(61,89,72,0.3)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green sm:w-auto md:px-7"
                 >
-                  →
-                </span>
-              </Link>
-              <span className="font-body text-xs text-cream/30 tracking-wide">
+                  Book your free 20-minute call
+                  <span
+                    className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+                    aria-hidden="true"
+                  >
+                    &rarr;
+                  </span>
+                </Link>
+                <Link
+                  href="#ways-to-work"
+                  className="group inline-flex min-h-12 w-full items-center justify-center gap-3 border border-cream/30 bg-cream/[0.04] px-6 py-3.5 font-body text-sm font-medium tracking-wide text-cream/85 transition-all duration-300 hover:-translate-y-0.5 hover:border-green-hover/80 hover:bg-green/20 hover:text-cream focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green sm:w-auto md:px-7"
+                  aria-label="Explore corporate and team coaching"
+                >
+                  For teams and organisations
+                  <span
+                    className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+                    aria-hidden="true"
+                  >
+                    &rarr;
+                  </span>
+                </Link>
+              </div>
+              <span className="font-body text-xs tracking-wide text-cream/35">
                 No pitch. Just a conversation.
               </span>
             </OnceMotion.div>

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import CoachingHero from "@/components/coaching/CoachingHero";
-import CoachingPullQuote from "@/components/coaching/CoachingPullQuote";
 import CoachingLensMovement from "@/components/coaching/CoachingLensMovement";
-import CoachingPracticeFlow from "@/components/coaching/CoachingPracticeFlow";
 import CoachingTerritoriesSection from "@/components/coaching/CoachingTerritoriesSection";
 import CoachingWhySam from "@/components/coaching/CoachingWhySam";
 import CoachingPackagesSection from "@/components/coaching/CoachingPackagesSection";
@@ -18,16 +16,16 @@ import {
 } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Mindset Coaching for Burnout & People Pleasing | Sam Murgatroyd",
+  title: "Individual & Team Mindset Coaching | Sam Murgatroyd",
   description:
-    "Mindset coaching for people who look fine on paper but feel numb or burnt out. Understand why you feel this way and how to change it. Book a free discovery call.",
+    "Individual mindset coaching and tailored programmes for teams and organisations. Start with a free discovery call or make a corporate enquiry.",
   alternates: {
     canonical: "/coaching",
   },
   openGraph: {
     title: "Coaching | Perception 47 — Sam Murgatroyd",
     description:
-      "A calm one-to-one coaching space to understand your patterns, build self-trust and make braver decisions.",
+      "Individual coaching and tailored team programmes to build self-trust, clarity and more honest ways of working.",
     type: "website",
     url: "/coaching",
     images: [
@@ -43,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Coaching | Perception 47 — Sam Murgatroyd",
     description:
-      "A calm one-to-one coaching space to understand your patterns, build self-trust and make braver decisions.",
+      "Individual coaching and tailored team programmes to build self-trust, clarity and more honest ways of working.",
     images: [DEFAULT_SOCIAL_IMAGE],
   },
 };
@@ -52,11 +50,11 @@ const coachingJsonLd = {
   "@context": "https://schema.org",
   "@type": "Service",
   "@id": `${SITE_URL}/coaching#service`,
-  name: "One-to-one mindset coaching with Sam Murgatroyd",
-  serviceType: "Mindset coaching",
+  name: "Individual and team mindset coaching with Sam Murgatroyd",
+  serviceType: "Individual and team mindset coaching",
   url: `${SITE_URL}/coaching`,
   description:
-    "One-to-one coaching for overthinking, people pleasing, confidence, burnout, identity, and living more honestly.",
+    "One-to-one coaching for overthinking, people pleasing, confidence, burnout, identity and living more honestly, plus tailored workshops and coaching for teams and organisations.",
   areaServed: "GB",
   provider: {
     "@type": "Person",
@@ -80,12 +78,10 @@ export default function CoachingPage() {
         }}
       />
       <CoachingHero />
-      <CoachingPullQuote />
+      <CoachingPackagesSection />
       <CoachingLensMovement />
       <CoachingTerritoriesSection />
-      <CoachingPracticeFlow />
       <CoachingWhySam />
-      <CoachingPackagesSection />
       <CoachingFinalCTA />
     </>
   );

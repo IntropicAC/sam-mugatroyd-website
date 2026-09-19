@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
 import GoogleAnalytics from "./GoogleAnalytics";
 import MicrosoftClarity from "./MicrosoftClarity";
@@ -46,7 +46,9 @@ export default function CookieConsent() {
     <>
       {consent === "accepted" && (
         <>
-          <GoogleAnalytics />
+          <Suspense fallback={null}>
+            <GoogleAnalytics />
+          </Suspense>
           <MicrosoftClarity />
         </>
       )}

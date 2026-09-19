@@ -13,3 +13,4 @@ Creating turbopack project {
 }
 - Cache Components enabled
 
+ GET / 200 in 2.8s (next.js: 1232ms, application-code: 1560ms)

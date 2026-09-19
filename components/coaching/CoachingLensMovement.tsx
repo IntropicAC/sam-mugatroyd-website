@@ -138,7 +138,7 @@ export default function CoachingLensMovement() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-cream px-5 py-24 md:px-8 md:py-28"
+      className="relative overflow-hidden bg-cream px-5 py-16 md:px-8 md:py-20"
       aria-label="You are not broken"
     >
       {/* Faint focus field */}
@@ -222,7 +222,7 @@ export default function CoachingLensMovement() {
         </header>
 
         {/* HERO TYPOGRAPHY — centred */}
-        <div className="mt-16 md:mt-20">
+        <div className="mt-12 md:mt-14">
           <h2 className="text-center font-heading text-charcoal">
             <OnceMotion.span
               seenId="coaching-lens-title-you-are"
@@ -294,7 +294,7 @@ export default function CoachingLensMovement() {
         </div>
 
         {/* REFLECTIVE BODY — single cohesive reading column */}
-        <div className="mx-auto mt-24 max-w-[40rem] md:mt-28">
+        <div className="mx-auto mt-14 max-w-[40rem] md:mt-16">
           <OnceMotion.div
             seenId="coaching-lens-field-note"
             initial={{ opacity: 0 }}
@@ -340,7 +340,7 @@ export default function CoachingLensMovement() {
 
         {/* SHIFTS — text stays centred, markers alternate sides on
             BOTH mobile and desktop so the trace moves left-right. */}
-        <div className="relative mx-auto mt-24 max-w-[40rem] space-y-16 md:mt-28 md:space-y-20">
+        <div className="relative mx-auto mt-16 max-w-[40rem] space-y-12 md:mt-20 md:space-y-16">
           {STEPS.map((step, i) => {
             const dotOnLeft = i !== 1;
             const dotRef = i === 0 ? firstDotRef : i === 1 ? secondDotRef : thirdDotRef;
@@ -392,7 +392,7 @@ export default function CoachingLensMovement() {
         </div>
 
         {/* CLOSING — focus point + reflection */}
-        <div className="mt-24 text-center md:mt-28">
+        <div className="mt-16 text-center md:mt-20">
           <div className="relative mx-auto flex h-20 w-20 items-center justify-center">
             {!reduceMotion && (
               <OnceMotion.span
