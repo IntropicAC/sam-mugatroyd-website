@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Fragment } from "react";
+import MindsetIcon from "@/components/ui/MindsetIcon";
+import { lensCheckHref } from "@/lib/lens-check/progress";
 import {
   articleEntries,
   CALENDLY_URL,
@@ -281,6 +283,27 @@ export default async function ArticlePage({ params }: Props) {
 
           <aside className="md:col-span-4">
             <div className="sticky top-28 space-y-8">
+              <section className="border border-green/40 p-5" aria-label="The Mindset Test">
+                <p className="mb-3 flex items-center gap-2 font-body text-[10px] uppercase tracking-[0.24em] text-green">
+                  <MindsetIcon className="h-3.5 w-3.5 shrink-0" />
+                  The Mindset Test
+                </p>
+                <h2 className="font-heading text-xl leading-tight text-charcoal">
+                  Which lens are you looking through?
+                </h2>
+                <p className="mt-2 font-body text-xs leading-relaxed text-charcoal-mid">
+                  A free reflection: short statements about how things are for you these days, and the
+                  pattern your answers sit closest to.
+                </p>
+                <Link
+                  href={lensCheckHref({ from: entry.slug })}
+                  className="mt-5 inline-flex items-center gap-2 bg-green px-5 py-3 font-body text-sm font-medium tracking-wide text-cream transition-colors duration-300 hover:bg-green-hover focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-green"
+                >
+                  Take the Mindset Test
+                  <span aria-hidden="true">{"->"}</span>
+                </Link>
+              </section>
+
               {book && (
                 <section className="border border-border bg-cream-deep p-5" aria-label="Related book">
                   <p className="mb-4 font-body text-[10px] uppercase tracking-[0.24em] text-charcoal-muted">

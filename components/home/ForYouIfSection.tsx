@@ -13,16 +13,16 @@ const statements = [
 
 export default function ForYouIfSection() {
   return (
-    <section className="pt-8 pb-20 md:pt-12 md:pb-28 px-5 md:px-8 lg:px-12" aria-label="Who this is for">
+    <section className="bg-charcoal py-20 md:py-28 px-5 md:px-8 lg:px-12" aria-label="Who this is for">
       <div className="max-w-7xl mx-auto">
         <div className="max-w-2xl">
           <FadeInView>
-            <p className="font-body text-xs text-charcoal-muted tracking-[0.18em] uppercase mb-6">
+            <p className="font-body text-xs text-cream/60 tracking-[0.18em] uppercase mb-6">
               This is for you if…
             </p>
           </FadeInView>
 
-          <div className="space-y-0 divide-y divide-border/60">
+          <div className="space-y-0 divide-y divide-cream/10">
             {statements.map((statement, i) => (
               <OnceMotion.div
                 key={i}
@@ -40,8 +40,8 @@ export default function ForYouIfSection() {
                 <p
                   className={`font-heading text-lg md:text-xl leading-snug transition-colors duration-300 ${
                     i === statements.length - 1
-                      ? "text-green font-medium italic"
-                      : "text-charcoal group-hover:text-charcoal-mid"
+                      ? "text-sage font-medium italic"
+                      : "text-cream group-hover:text-cream/75"
                   }`}
                 >
                   {statement}

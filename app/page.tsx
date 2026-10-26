@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
 import ForYouIfSection from "@/components/home/ForYouIfSection";
-import LensSection from "@/components/home/LensSection";
-import ArticlePathways from "@/components/home/ArticlePathways";
 import MeetSamSection from "@/components/home/MeetSamSection";
-import BooksSection from "@/components/home/BooksSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import FinalCTA from "@/components/home/FinalCTA";
+import { activeQuestionnaire, getPublicQuestionnaire } from "@/lib/lens-check/content";
 import {
   AUTHOR_NAME,
   DEFAULT_SOCIAL_IMAGE,
@@ -20,6 +18,8 @@ import {
   SITE_NAME,
   SITE_URL,
 } from "@/lib/site";
+// The hero runs the Mindset Test's logo reveal, which is styled there.
+import "./lens-check/lens-check.css";
 
 export const metadata: Metadata = {
   title: "Sam Murgatroyd | Mindset Coaching for Overthinking & Burnout",
@@ -118,6 +118,11 @@ const homeJsonLd = {
 };
 
 export default function HomePage() {
+  const questionnaire = getPublicQuestionnaire();
+  const statements = questionnaire.parts.reduce((n, part) => n + part.questions.length, 0);
+  // Only the names: what each lens means stays with the result.
+  const lenses = activeQuestionnaire.archetypes.map(({ id, title }) => ({ id, title }));
+
   return (
     <>
       <script
@@ -126,12 +131,9 @@ export default function HomePage() {
           __html: JSON.stringify(homeJsonLd).replace(/</g, "\\u003c"),
         }}
       />
-      <Hero />
+      <Hero statements={statements} version={questionnaire.version} lenses={lenses} />
       <ForYouIfSection />
-      <LensSection />
       <MeetSamSection />
-      <ArticlePathways />
-      <BooksSection />
       <TestimonialsSection />
       <FinalCTA />
     </>

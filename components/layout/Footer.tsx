@@ -6,6 +6,7 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Coaching", href: "/coaching" },
+  { label: "The Mindset Test", href: "/lens-check" },
   { label: "Articles", href: "/articles" },
   { label: "Books", href: "/books" },
   { label: "Testimonials", href: "/testimonials" },

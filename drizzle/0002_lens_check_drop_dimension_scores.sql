@@ -1,0 +1,1 @@
+ALTER TABLE "lens_check_responses" DROP COLUMN "dimension_scores";

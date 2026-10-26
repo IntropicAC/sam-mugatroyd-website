@@ -1,0 +1,5 @@
+{
+  "crons": [
+    { "path": "/api/lens-check/admin/maintenance", "schedule": "15 3 * * *" }
+  ]
+}

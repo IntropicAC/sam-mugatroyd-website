@@ -1,0 +1,31 @@
+.accountNav { position: relative; display: flex; align-items: center; gap: 14px; padding-left: 16px; border-left: 1px solid var(--color-border); color: var(--color-green); }
+.light { color: var(--color-cream); border-color: #f5f0ea40; }
+.link, .action { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 42px; white-space: nowrap; font-family: var(--font-dm-sans), sans-serif; font-size: 14px; font-weight: 400; letter-spacing: .025em; text-decoration: none; transition: opacity .2s, background .2s; }
+.link:hover, .action:hover { opacity: .7; }
+.link:focus-visible, .action:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+.action { cursor: pointer; background: none; border: 0; padding: 0; }
+.action:disabled { opacity: .55; cursor: wait; }
+.userIcon { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.4; stroke-linecap: round; }
+.accountLink { display: flex; flex: none; width: 40px; height: 40px; min-height: 40px; border: 1px solid currentColor; border-radius: 50%; opacity: .65; }
+.archetypeLink { opacity: 1; border-color: var(--color-border); background: var(--color-cream); }
+.archetypeIcon { display: block; flex: none; width: 36px; height: 36px; object-fit: contain; }
+.error { position: absolute; right: 0; top: 100%; margin-top: 8px; width: 220px; border: 1px solid var(--color-border); background: var(--color-cream); padding: 12px; color: var(--color-charcoal); font-size: 13px; box-shadow: 0 8px 24px #2a272210; }
+.mobileMenu { display: grid; gap: 8px; border-left: 0; padding: 0; }
+.mobileMenu .resultsLink { justify-content: flex-start; border-bottom: 1px solid var(--color-border); }
+.mobileMenu .action, .mobileMenu > .link:last-of-type { justify-content: flex-start; }
+.mobileMenu .accountLink { display: flex; justify-content: flex-start; width: auto; height: auto; border: 0; border-radius: 0; opacity: 1; }
+.mobileMenu .archetypeLink { background: none; }
+@media (max-width: 767px) {
+  .accountNav:not(.mobileMenu) { border-left: 0; padding-left: 0; gap: 0; }
+  .accountNav:not(.mobileMenu) .resultsLink, .accountNav:not(.mobileMenu) .accountLink { display: none; }
+  .accountNav:not(.mobileMenu) .link, .accountNav:not(.mobileMenu) .action { font-size: var(--header-btn-text); gap: 5px; padding: 0 2px; }
+  .accountNav:not(.mobileMenu) .accountLink.archetypeLink { display: inline-flex; padding: 0; }
+  .accountNav:not(.mobileMenu):has(.archetypeLink) .action { display: none; }
+}
+@media (max-width: 359px) {
+  .accountNav:not(.mobileMenu) .link, .accountNav:not(.mobileMenu) .action { font-size: 12px; }
+}
+@media (min-width: 768px) and (max-width: 1050px) {
+  .accountNav { gap: 10px; padding-left: 12px; }
+  .accountNav:not(.mobileMenu) .accountLink:not(.archetypeLink) { display: none; }
+}

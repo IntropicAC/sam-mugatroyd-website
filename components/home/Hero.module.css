@@ -1,0 +1,84 @@
+/* Homepage hero. Phones and tablets: one centred column that fits the screen
+   below the header. From 1024px: the text takes about two thirds on the left
+   and the character stands large on the right. Sizes follow the viewport
+   height too, so short laptop screens still show the buttons. */
+
+.hero {
+  position: relative;
+  /* Keeps the faint background logo (z-index -1) inside the hero. */
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.inner {
+  min-height: 100vh;
+  min-height: 100dvh;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: calc(var(--header-h) + clamp(10px, 2.2dvh, 24px)) 24px clamp(18px, 3.5dvh, 40px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.cast {
+  width: 100%;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.title {
+  margin-top: clamp(10px, 2.4dvh, 26px);
+}
+
+.lede {
+  margin-top: clamp(8px, 1.8dvh, 16px);
+}
+
+.actions {
+  margin-top: clamp(16px, 3.2dvh, 30px);
+}
+
+.meta {
+  margin-top: clamp(10px, 1.6dvh, 14px);
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding: calc(5rem + clamp(12px, 3dvh, 32px)) 40px clamp(24px, 5dvh, 52px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    max-width: 78rem;
+    padding-inline: 64px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.85fr) minmax(0, 1.15fr);
+    align-items: center;
+    column-gap: clamp(24px, 4vw, 64px);
+    text-align: left;
+  }
+
+  .copy {
+    grid-column: 1;
+    grid-row: 1;
+    align-items: flex-start;
+  }
+
+  .cast {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .title {
+    margin-top: 0;
+  }
+}

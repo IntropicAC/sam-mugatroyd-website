@@ -1,17 +1,32 @@
 'use client';
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import GoogleAnalytics from "./GoogleAnalytics";
 import MicrosoftClarity from "./MicrosoftClarity";
+import { usePathname } from "next/navigation";
 
 const STORAGE_KEY = "p47-cookie-consent";
 
 type Consent = "accepted" | "declined";
 
 export default function CookieConsent() {
+  const pathname = usePathname();
+  const privatePage = pathname.startsWith("/lens-check");
+  const previousPrivatePage = useRef(privatePage);
   const [consent, setConsent] = useState<Consent | null>(null);
   const [ready, setReady] = useState(false);
+  useEffect(() => {
+    // Clear scripts only when this document crosses from public to private.
+    // A fresh private document must never reload itself, even if a browser
+    // extension defines an analytics global. Private-to-private navigation
+    // and ordinary refreshes also leave this boundary alone.
+    const enteredPrivatePage = !previousPrivatePage.current && privatePage;
+    previousPrivatePage.current = privatePage;
+    if (enteredPrivatePage && (window.__p47GaInitialized || "clarity" in window)) {
+      window.location.replace(window.location.href);
+    }
+  }, [privatePage]);
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -38,7 +53,7 @@ export default function CookieConsent() {
     setConsent(value);
   };
 
-  if (!ready) {
+  if (!ready || privatePage) {
     return null;
   }
 

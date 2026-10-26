@@ -26,6 +26,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       images: [imageUrl(LOGO_IMAGE_PATH)],
     },
     {
+      url: `${SITE_URL}/lens-check`,
+      lastModified: new Date("2026-10-25"),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${SITE_URL}/articles`,
       lastModified,
       changeFrequency: "weekly",

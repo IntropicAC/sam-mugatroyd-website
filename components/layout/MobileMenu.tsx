@@ -3,6 +3,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useEffect } from "react";
+import MindsetIcon from "@/components/ui/MindsetIcon";
+import { lensCheckHref } from "@/lib/lens-check/progress";
+import AccountNavigation from "./AccountNavigation";
 
 const CALENDLY_URL = "https://calendly.com/samuel-a-murg/free-discovery-call";
 
@@ -17,9 +20,10 @@ const navLinks = [
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
+  authEnabled?: boolean;
 }
 
-export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
+export default function MobileMenu({ isOpen, onClose, authEnabled = false }: MobileMenuProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -68,7 +72,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               </button>
             </div>
 
-            <div className="flex-1 flex flex-col px-6 py-8 gap-1">
+            <div className="flex-1 flex flex-col overflow-y-auto px-6 py-8 gap-1">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -91,14 +95,23 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.4 }}
-              className="px-6 py-8 border-t border-border"
+              className="px-6 py-8 border-t border-border grid gap-3"
             >
+              {authEnabled && <AccountNavigation mobileMenu onNavigate={onClose} />}
+              <Link
+                href={lensCheckHref()}
+                onClick={onClose}
+                className="flex w-full items-center justify-center gap-2 bg-green text-cream py-4 px-4 font-body text-xs font-medium tracking-wide hover:bg-green-hover transition-colors duration-300"
+              >
+                <MindsetIcon className="h-4 w-4 shrink-0" />
+                Take the Mindset Test
+              </Link>
               <Link
                 href={CALENDLY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={onClose}
-                className="block w-full bg-green text-cream text-center py-4 px-4 font-body text-xs font-medium tracking-wide hover:bg-green-hover transition-colors duration-300"
+                className="block w-full border border-green text-green text-center py-4 px-4 font-body text-xs font-medium tracking-wide hover:bg-green hover:text-cream transition-colors duration-300"
               >
                 Book your free 20-minute call
               </Link>

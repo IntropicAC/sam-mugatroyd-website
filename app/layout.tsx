@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, DM_Sans } from "next/font/google";
 import Script from "next/script";
+import { Suspense } from "react";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -8,6 +9,8 @@ import StickyMobileCTA from "@/components/layout/StickyMobileCTA";
 import PageAnimationProvider from "@/components/layout/PageAnimationProvider";
 import ChatWidget from "@/components/chat/ChatWidget";
 import CookieConsent from "@/components/analytics/CookieConsent";
+import HideOnLensCheck from "@/components/layout/HideOnLensCheck";
+import { getAuthConfig } from "@/lib/lens-check/auth-config";
 import {
   AUTHOR_NAME,
   DEFAULT_SOCIAL_IMAGE,
@@ -119,13 +122,17 @@ export default function RootLayout({
             })();
           `}
         </Script>
-        <Header />
+        <Header authEnabled={Boolean(getAuthConfig())} />
         <main className="flex-1 pb-16 md:pb-0">
           <PageAnimationProvider>{children}</PageAnimationProvider>
         </main>
         <Footer />
-        <StickyMobileCTA />
-        <ChatWidget />
+        <Suspense fallback={null}>
+          <HideOnLensCheck>
+            <StickyMobileCTA />
+            <ChatWidget />
+          </HideOnLensCheck>
+        </Suspense>
         <CookieConsent />
       </body>
     </html>

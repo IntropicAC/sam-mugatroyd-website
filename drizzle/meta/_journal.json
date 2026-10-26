@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1792339045847,
+      "tag": "0000_lens_check",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792497985680,
+      "tag": "0001_lens_check_v0_2_scoring",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792498007588,
+      "tag": "0002_lens_check_drop_dimension_scores",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1792968172860,
+      "tag": "0003_lens_check_accounts",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1792982875721,
+      "tag": "0004_opposite_captain_marvel",
+      "breakpoints": true
+    }
+  ]
+}

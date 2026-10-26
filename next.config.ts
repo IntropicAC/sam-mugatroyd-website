@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   cacheComponents: true,
+  // Preserve this existing app's prefetch behavior during the security update.
+  // Adopt the newer Partial Prefetching behavior as a separate navigation review.
+  partialPrefetching: false,
   turbopack: {
     root: __dirname,
   },

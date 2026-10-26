@@ -1,0 +1,1916 @@
+{
+  "schemaVersion": "1.0",
+  "questionnaireVersion": "perception47-14-types-0.2",
+  "language": "en-GB",
+  "status": "research_informed_unvalidated_prototype",
+  "created": "2026-10-20",
+  "introduction": "Think about the past four weeks. How true has each statement been of you? Consider situations that actually happened. Use Not applicable if there was no relevant opportunity. You can skip a statement.",
+  "responseSets": {
+    "truth5": [
+      {
+        "value": 0,
+        "label": "Not at all true of me"
+      },
+      {
+        "value": 1,
+        "label": "Slightly true of me"
+      },
+      {
+        "value": 2,
+        "label": "Somewhat true of me"
+      },
+      {
+        "value": 3,
+        "label": "Mostly true of me"
+      },
+      {
+        "value": 4,
+        "label": "Very true of me"
+      }
+    ]
+  },
+  "missingResponses": [
+    {
+      "value": null,
+      "label": "Not applicable / no relevant opportunity"
+    },
+    {
+      "value": null,
+      "label": "Prefer not to answer"
+    }
+  ],
+  "scoring": {
+    "calibrationStatus": "unvalidated_engineering_defaults",
+    "minCoreAnswered": 40,
+    "minItemsPerProfile": 3,
+    "signatureMinNormalized": 0.75,
+    "minCandidateIndex": 65,
+    "clearCoreMargin": 12,
+    "clarifierWeight": 0.1,
+    "clearRefinedMargin": 6,
+    "maxFollowupQuestions": 6
+  },
+  "presentationOrder": [
+    "Q07",
+    "Q10",
+    "Q13",
+    "Q16",
+    "Q19",
+    "Q22",
+    "Q01",
+    "Q06",
+    "Q28",
+    "Q31",
+    "Q35",
+    "Q38",
+    "Q41",
+    "Q44",
+    "Q02",
+    "Q48",
+    "Q08",
+    "Q11",
+    "Q14",
+    "Q17",
+    "Q20",
+    "Q23",
+    "Q03",
+    "Q25",
+    "Q29",
+    "Q32",
+    "Q36",
+    "Q39",
+    "Q42",
+    "Q45",
+    "Q04",
+    "Q49",
+    "Q09",
+    "Q12",
+    "Q15",
+    "Q18",
+    "Q21",
+    "Q24",
+    "Q05",
+    "Q26",
+    "Q30",
+    "Q34",
+    "Q37",
+    "Q40",
+    "Q43",
+    "Q46",
+    "Q33",
+    "Q50",
+    "Q27",
+    "Q47"
+  ],
+  "questions": [
+    {
+      "id": "Q01",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I postponed a personally important step even when it was practical for me to take it.",
+      "mechanism": "Postponed valued action",
+      "sourceIds": [
+        "goals"
+      ],
+      "evidenceBasis": "custom_discriminator",
+      "archetypeMapping": [
+        {
+          "archetypeId": "reluctant_hero",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "archetypeId": "sleeping_giant",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q02",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I wanted a clearer direction for myself than I currently had.",
+      "mechanism": "Wanted direction gap",
+      "sourceIds": [
+        "goals",
+        "authenticity"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "wandering_scholar",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "archetypeId": "navigator",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q03",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "Other people's needs took priority over needs of my own that I wanted to address.",
+      "mechanism": "Unwanted self-neglect",
+      "sourceIds": [
+        "care"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "loyal_guard",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "archetypeId": "lighthouse",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q04",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "After focusing on other people's situations, I gave little attention to my own reactions.",
+      "mechanism": "Outward focus and limited personal reflection",
+      "sourceIds": [
+        "reflection"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "alchemist",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "archetypeId": "observer",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q05",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I held back a personal preference to match what a group seemed to expect.",
+      "mechanism": "Self-suppression",
+      "sourceIds": [
+        "authenticity"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "method_actor",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "archetypeId": "undercurrent",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q06",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I felt at ease even when I did not know how a situation would turn out.",
+      "mechanism": "Ease with uncertainty",
+      "sourceIds": [
+        "worry",
+        "curiosity"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "storm_watcher",
+          "reverse": true,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q07",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I kept preparing for a personally important step because I did not feel ready to begin.",
+      "mechanism": "Readiness hesitation",
+      "sourceIds": [
+        "goals"
+      ],
+      "evidenceBasis": "custom_discriminator",
+      "archetypeMapping": [
+        {
+          "archetypeId": "reluctant_hero",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q08",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I was willing to start something important before I felt fully ready.",
+      "mechanism": "Action before full readiness",
+      "sourceIds": [
+        "goals"
+      ],
+      "evidenceBasis": "custom_discriminator",
+      "archetypeMapping": [
+        {
+          "archetypeId": "reluctant_hero",
+          "reverse": true,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q09",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I delayed showing my work or ideas because I worried about being judged.",
+      "mechanism": "Hesitation about evaluation",
+      "sourceIds": [
+        "authenticity",
+        "goals"
+      ],
+      "evidenceBasis": "custom_discriminator",
+      "archetypeMapping": [
+        {
+          "archetypeId": "reluctant_hero",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q10",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I explored a new subject simply because it interested me.",
+      "mechanism": "Curiosity-led exploration",
+      "sourceIds": [
+        "curiosity"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "wandering_scholar",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q11",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I moved to a new possibility before deciding what I wanted to build from the previous one.",
+      "mechanism": "Switching between possibilities",
+      "sourceIds": [
+        "curiosity",
+        "goals"
+      ],
+      "evidenceBasis": "custom_discriminator",
+      "archetypeMapping": [
+        {
+          "archetypeId": "wandering_scholar",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q12",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I felt comfortable choosing one direction while leaving other possibilities unexplored.",
+      "mechanism": "Willingness to commit to one direction",
+      "sourceIds": [
+        "goals"
+      ],
+      "evidenceBasis": "custom_discriminator",
+      "archetypeMapping": [
+        {
+          "archetypeId": "wandering_scholar",
+          "reverse": true,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q13",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I accepted a request when helping left too little time for my own needs.",
+      "mechanism": "Cost of accepting requests",
+      "sourceIds": [
+        "care"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "loyal_guard",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q14",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I could decline a request when helping would leave me overstretched.",
+      "mechanism": "Protection of personal resources",
+      "sourceIds": [
+        "care",
+        "authenticity"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "loyal_guard",
+          "reverse": true,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q15",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I felt guilty giving my own needs priority over another person's request.",
+      "mechanism": "Guilt about prioritising own needs",
+      "sourceIds": [
+        "care"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "loyal_guard",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q16",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "People asked me to put a complicated interaction into words they could understand.",
+      "mechanism": "Reported explaining role",
+      "sourceIds": [
+        "reflection"
+      ],
+      "evidenceBasis": "custom_role_marker",
+      "archetypeMapping": [
+        {
+          "archetypeId": "alchemist",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q17",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I put as much effort into understanding my own reactions as I did into explaining other people's.",
+      "mechanism": "Personal reflection alongside explaining",
+      "sourceIds": [
+        "reflection"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "alchemist",
+          "reverse": true,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q18",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I could explain what was happening between other people more easily than what was happening within me.",
+      "mechanism": "Explaining others versus personal insight",
+      "sourceIds": [
+        "reflection"
+      ],
+      "evidenceBasis": "custom_discriminator",
+      "archetypeMapping": [
+        {
+          "archetypeId": "alchemist",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q19",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I held back from doing more because it might become the new level others expected.",
+      "mechanism": "Anticipated escalation of expectations",
+      "sourceIds": [
+        "goals"
+      ],
+      "evidenceBasis": "custom_discriminator",
+      "archetypeMapping": [
+        {
+          "archetypeId": "sleeping_giant",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q20",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I felt comfortable letting a successful effort lead to greater expectations.",
+      "mechanism": "Comfort with increasing expectations",
+      "sourceIds": [
+        "goals"
+      ],
+      "evidenceBasis": "custom_discriminator",
+      "archetypeMapping": [
+        {
+          "archetypeId": "sleeping_giant",
+          "reverse": true,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q21",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "Even when I felt able to do more, I avoided commitments that might be hard to step back from.",
+      "mechanism": "Anticipated commitment burden",
+      "sourceIds": [
+        "goals"
+      ],
+      "evidenceBasis": "custom_discriminator",
+      "archetypeMapping": [
+        {
+          "archetypeId": "sleeping_giant",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q22",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I stayed in a familiar role because people relied on me to remain their steady point.",
+      "mechanism": "Anchoring to a relied-upon role",
+      "sourceIds": [
+        "care",
+        "goals"
+      ],
+      "evidenceBasis": "custom_role_marker",
+      "archetypeMapping": [
+        {
+          "archetypeId": "lighthouse",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q23",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I felt free to change direction even if other people would need to adjust to it.",
+      "mechanism": "Freedom to change a familiar role",
+      "sourceIds": [
+        "goals",
+        "authenticity"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "lighthouse",
+          "reverse": true,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q24",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "Being the reliable person for others left little room to ask what I wanted next.",
+      "mechanism": "Role-related direction cost",
+      "sourceIds": [
+        "care",
+        "goals"
+      ],
+      "evidenceBasis": "custom_discriminator",
+      "archetypeMapping": [
+        {
+          "archetypeId": "lighthouse",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q25",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "Before an ordinary opportunity, I focused first on the ways it might go wrong.",
+      "mechanism": "Future-oriented threat focus",
+      "sourceIds": [
+        "worry"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "storm_watcher",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q26",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I could take a reasonable next step without checking every possible downside.",
+      "mechanism": "Action despite remaining uncertainty",
+      "sourceIds": [
+        "worry"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "storm_watcher",
+          "reverse": true,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q27",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "Anticipating problems led me to pass up something I otherwise wanted to try.",
+      "mechanism": "Cost of threat anticipation",
+      "sourceIds": [
+        "worry",
+        "goals"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "storm_watcher",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q28",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "After adapting to a group, I found it hard to identify my own preference.",
+      "mechanism": "Uncertainty about own preferences after adapting",
+      "sourceIds": [
+        "authenticity"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "method_actor",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q29",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I could tell which views were mine even when I changed how I expressed them.",
+      "mechanism": "Clarity while adapting expression",
+      "sourceIds": [
+        "authenticity"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "method_actor",
+          "reverse": true,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q30",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "When nobody needed anything from me, I found it hard to say what I wanted for myself.",
+      "mechanism": "Preference uncertainty outside social demands",
+      "sourceIds": [
+        "authenticity"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "method_actor",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q31",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "A path I was following still reflected expectations other people had set for me.",
+      "mechanism": "Externally influenced path",
+      "sourceIds": [
+        "goals"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "heir",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q32",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I was unsure I would choose the same path without other people's approval.",
+      "mechanism": "Questioned personal endorsement",
+      "sourceIds": [
+        "goals",
+        "authenticity"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "heir",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q33",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I personally endorsed the goals I was working towards, regardless of who first suggested them.",
+      "mechanism": "Current endorsement of goals",
+      "sourceIds": [
+        "goals"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "heir",
+          "reverse": true,
+          "weight": 1
+        },
+        {
+          "archetypeId": "waymaker",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q34",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I kept pursuing a goal partly because changing it would disappoint people important to me.",
+      "mechanism": "Goal maintenance through anticipated disapproval",
+      "sourceIds": [
+        "goals",
+        "authenticity"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "heir",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q35",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I spent more time watching an interaction than joining in.",
+      "mechanism": "Reported observational role",
+      "sourceIds": [
+        "reflection"
+      ],
+      "evidenceBasis": "custom_role_marker",
+      "archetypeMapping": [
+        {
+          "archetypeId": "observer",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q36",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I examined my own part in a situation as readily as I examined other people's.",
+      "mechanism": "Reflection on personal participation",
+      "sourceIds": [
+        "reflection"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "observer",
+          "reverse": true,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q37",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "Understanding other people's behaviour came before asking what I was feeling.",
+      "mechanism": "Priority given to outward interpretation",
+      "sourceIds": [
+        "reflection"
+      ],
+      "evidenceBasis": "custom_discriminator",
+      "archetypeMapping": [
+        {
+          "archetypeId": "observer",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q38",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I knew what I wanted to say but held it back to keep an interaction smooth.",
+      "mechanism": "Clear preference with inhibited expression",
+      "sourceIds": [
+        "authenticity"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "undercurrent",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q39",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I expressed a view that mattered to me even when others might disagree.",
+      "mechanism": "Expression despite possible disagreement",
+      "sourceIds": [
+        "authenticity"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "undercurrent",
+          "reverse": true,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q40",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I left a conversation wishing I had voiced a view that mattered to me.",
+      "mechanism": "Reported cost of withheld expression",
+      "sourceIds": [
+        "authenticity"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "undercurrent",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q41",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "Others asked me to help them decide which step to take next.",
+      "mechanism": "Reported guiding role",
+      "sourceIds": [
+        "reflection",
+        "goals"
+      ],
+      "evidenceBasis": "custom_role_marker",
+      "archetypeMapping": [
+        {
+          "archetypeId": "navigator",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q42",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I had a direction for myself that was as clear as the options I could outline for others.",
+      "mechanism": "Personal direction alongside guiding others",
+      "sourceIds": [
+        "reflection",
+        "goals"
+      ],
+      "evidenceBasis": "custom_discriminator",
+      "archetypeMapping": [
+        {
+          "archetypeId": "navigator",
+          "reverse": true,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q43",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I helped others plan their next steps while leaving my own direction unresolved.",
+      "mechanism": "Guiding others with unresolved own direction",
+      "sourceIds": [
+        "reflection",
+        "goals"
+      ],
+      "evidenceBasis": "custom_discriminator",
+      "archetypeMapping": [
+        {
+          "archetypeId": "navigator",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q44",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I could see other people's strengths more readily than my own.",
+      "mechanism": "Self-other difference in recognising strengths",
+      "sourceIds": [
+        "criticism"
+      ],
+      "evidenceBasis": "custom_discriminator",
+      "archetypeMapping": [
+        {
+          "archetypeId": "hesitant_believer",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q45",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I could accept that I had made a good contribution.",
+      "mechanism": "Accepting personal positives",
+      "sourceIds": [
+        "criticism"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "hesitant_believer",
+          "reverse": true,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q46",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I gave other people more understanding for a mistake than I gave myself for a similar one.",
+      "mechanism": "Self-other difference in responding to mistakes",
+      "sourceIds": [
+        "criticism"
+      ],
+      "evidenceBasis": "custom_discriminator",
+      "archetypeMapping": [
+        {
+          "archetypeId": "hesitant_believer",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q47",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "After doing something well, I looked for reasons it did not really count.",
+      "mechanism": "Discounting a positive contribution",
+      "sourceIds": [
+        "criticism"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "hesitant_believer",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q48",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I could identify which choices reflected what mattered to me.",
+      "mechanism": "Clarity about personally held values",
+      "sourceIds": [
+        "authenticity",
+        "goals"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "waymaker",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q49",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I set aside my own priorities mainly to follow someone else's idea of success.",
+      "mechanism": "Action directed by externally defined success",
+      "sourceIds": [
+        "authenticity",
+        "goals"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "waymaker",
+          "reverse": true,
+          "weight": 1
+        }
+      ]
+    },
+    {
+      "id": "Q50",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "My day-to-day decisions reflected the direction I wanted for myself.",
+      "mechanism": "Action consistent with personally endorsed direction",
+      "sourceIds": [
+        "authenticity",
+        "goals"
+      ],
+      "evidenceBasis": "concept_informed",
+      "archetypeMapping": [
+        {
+          "archetypeId": "waymaker",
+          "reverse": false,
+          "weight": 1
+        }
+      ]
+    }
+  ],
+  "archetypes": [
+    {
+      "id": "reluctant_hero",
+      "label": "The Reluctant Hero",
+      "family": "Hesitation to act",
+      "workingDefinition": "Putting off a wanted first step through feeling unready or anticipating evaluation.",
+      "boundary": "Separate from anticipated obligations after doing more; the items do not prove exceptional ability.",
+      "markers": [
+        {
+          "questionId": "Q01",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q07",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q08",
+          "reverse": true,
+          "weight": 1
+        },
+        {
+          "questionId": "Q09",
+          "reverse": false,
+          "weight": 1
+        }
+      ],
+      "requiredEvidence": [
+        "Q07",
+        "Q09"
+      ],
+      "descriptionStatus": "existing_sam_copy",
+      "descriptionMarkdown": "*You are someone with far more to offer than you are currently letting the world see.*\n\nYou are capable, perceptive and exceptional at the things that matter. The people closest to you already know this. You have a depth of understanding, a quality of care and a natural intelligence that surfaces whenever you allow it to. When you step fully into something and give it your all, you are genuinely impressive.\n\nThe tension is that something keeps you one step back from fully committing to your own potential. It isn’t laziness or lack of motivation although from the outside looking in it looks a lot like this. It is more of a sense that the moment is not quite right, that you are not quite ready, that someone might notice and then expect more from you in an area you might no longer want to pursue. You are not in the wings because you lack ability. You are there because stepping onto the stage feels like a risk that has not yet felt worth taking.\n\n*The ability has always been there. What changes next is the decision to stop waiting for the right moment and create it by truly finding who you are, what a path that is your own looks like and then commit to walking it.*",
+      "workingName": false
+    },
+    {
+      "id": "wandering_scholar",
+      "label": "The Wandering Scholar",
+      "family": "Exploration and direction",
+      "workingDefinition": "Curiosity and switching possibilities alongside wanting more direction.",
+      "boundary": "Distinguish searching for direction from acting on a personally meaningful direction. Exploration can also be freely chosen and satisfying.",
+      "markers": [
+        {
+          "questionId": "Q02",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q10",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q11",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q12",
+          "reverse": true,
+          "weight": 1
+        }
+      ],
+      "requiredEvidence": [
+        "Q10",
+        "Q11"
+      ],
+      "descriptionStatus": "existing_sam_copy",
+      "descriptionMarkdown": "You are someone with a genuine curiosity about life that most people lose very early on.\n\nYou are open, exploratory and genuinely interested in the world around you. You ask questions others do not think to ask and you have a quality of aliveness to you that comes from never quite settling into the comfortable and the predictable. This can be misconstrued as difficult or challenging as you struggle to silence this innate desire to ask “Why?” and constantly dive below the surface so many people are happy to bob along on. You have seen more, thought more and experienced more than many people and it shows in the way you engage with things.\n\nThe tension is that the open road is brilliant for discovery and difficult for arrival. You are good at moving and good at exploring but the question of where you actually want to land, what you want to build and who you want to be when the movement stops has not yet been fully answered. Movement and direction are not the same thing and occasionally the freedom of one is being used to avoid the commitment of the other.\n\n*This is not about stopping or silencing that beautiful mind but instead turning those questions inward and through self understanding, discovering which direction you want to be heading.*",
+      "workingName": false
+    },
+    {
+      "id": "loyal_guard",
+      "label": "The Loyal Guard",
+      "family": "Care and responsibility",
+      "workingDefinition": "Accepting requests at a reported personal cost, with difficulty prioritising own needs.",
+      "boundary": "Kindness or freely chosen care alone does not establish this pattern.",
+      "markers": [
+        {
+          "questionId": "Q03",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q13",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q14",
+          "reverse": true,
+          "weight": 1
+        },
+        {
+          "questionId": "Q15",
+          "reverse": false,
+          "weight": 1
+        }
+      ],
+      "requiredEvidence": [
+        "Q13",
+        "Q15"
+      ],
+      "descriptionStatus": "existing_sam_copy",
+      "descriptionMarkdown": "*You are someone who shows up for the people in your life in a way that is becoming exceedingly more rare.*\n\nYou are dependable, generous and the kind of person others feel safe around. You hold things together for others and being a supportive peer comes naturally to you. You remember what matters to people and you show up for them without needing to be asked. The relationships in your life are better because you are in them and the people who know you well feel that deeply.\n\nThe tension is that loyal guards are so focused on protecting and providing for everyone inside the walls that they rarely ask what they themselves need. You give freely and without conditions to the tribe around you but there is a version of generosity that costs more than it should and leaves the person giving it depleted in ways they have learned not to mention.\n\nYou are far too willing to make sure everyone else has a full bucket even if it means you are giving the last scraps from your own to make this happen.\n\n*The question worth sitting with is not how to give less. It is how to make sure that some of what you give so generously to others is also finding its way back to you.*",
+      "workingName": false
+    },
+    {
+      "id": "alchemist",
+      "label": "The Alchemist",
+      "family": "Outward understanding",
+      "workingDefinition": "Taking an explaining role for others while reporting less personal insight.",
+      "boundary": "Separate explaining meaning from observing and from guiding next actions; no claim of superior insight.",
+      "markers": [
+        {
+          "questionId": "Q04",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q16",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q17",
+          "reverse": true,
+          "weight": 1
+        },
+        {
+          "questionId": "Q18",
+          "reverse": false,
+          "weight": 1
+        }
+      ],
+      "requiredEvidence": [
+        "Q16",
+        "Q18"
+      ],
+      "descriptionStatus": "existing_sam_copy",
+      "descriptionMarkdown": "*You are someone with an unusual ability to make sense of things and piece together social puzzles others are left confused by.*\n\nYou are perceptive, articulate and you have a gift for seeing patterns and meaning where others see noise. You understand people quickly and intuitively. You can take something complex and make it clear and that ability has served you and the people around you extraordinarily well. There is a quality to the way your mind works that is unique and necessary to deal with complex social issues.\n\nThe tension is that alchemists spend so much time translating the world for others that they can neglect the work of understanding themselves. You are brilliant at decoding what is happening around you and considerably less practised at turning that same attention inward with the same honesty and precision. You have the tools but have just not fully applied them to yourself yet.\n\n*The most important thing you have not yet translated is the gap between the life you are living and the one you actually want.*",
+      "workingName": false
+    },
+    {
+      "id": "sleeping_giant",
+      "label": "The Sleeping Giant",
+      "family": "Hesitation to act",
+      "workingDefinition": "Holding back a wanted step because doing more may create unwanted expectations or hard-to-reverse commitments.",
+      "boundary": "This is a proposed distinction from readiness hesitation, not proof of hidden potential or the absence of practical barriers.",
+      "markers": [
+        {
+          "questionId": "Q01",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q19",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q20",
+          "reverse": true,
+          "weight": 1
+        },
+        {
+          "questionId": "Q21",
+          "reverse": false,
+          "weight": 1
+        }
+      ],
+      "requiredEvidence": [
+        "Q19",
+        "Q21"
+      ],
+      "descriptionStatus": "existing_sam_copy",
+      "descriptionMarkdown": "*You are someone with a capacity that has not yet been fully met by the life you are living.*\n\nThere is a depth, an energy and a potential in you that surfaces in flashes and then gets pushed back down. The people closest to you have seen it and know what the fullest version of you is truly capable of. You have felt it yourself in the moments when everything aligns and you operate at a level that reminds you what is possible if you do not hold yourself back. Those moments are previews into the giant within waking up and taking the steering wheel.\n\nThe tension is that something keeps the full version of you contained. It isn’t circumstance or lack of ability but rather a reluctance to fully commit to your own potential in case it asks more of you than feels manageable, or draws a level of attention that feels uncomfortable. The better version of you is waiting in the room next door for you to finally give it permission to live on full speed. It is only you that can drop the guard and give it that permission.\n\n*The capacity has always been there. What changes next is the decision to stop treating it as something for later.*",
+      "workingName": false
+    },
+    {
+      "id": "lighthouse",
+      "label": "The Lighthouse",
+      "family": "Care and responsibility",
+      "workingDefinition": "Remaining a relied-upon constant while reporting less freedom to consider personal change.",
+      "boundary": "Separate a persistent role or identity constraint from the cost of accepting individual requests.",
+      "markers": [
+        {
+          "questionId": "Q03",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q22",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q23",
+          "reverse": true,
+          "weight": 1
+        },
+        {
+          "questionId": "Q24",
+          "reverse": false,
+          "weight": 1
+        }
+      ],
+      "requiredEvidence": [
+        "Q22",
+        "Q24"
+      ],
+      "descriptionStatus": "existing_sam_copy",
+      "descriptionMarkdown": "*You are someone that other people navigate by without fully realising it.*\n\nYou are steady, reliable and there is a trustiness that radiates from within that people feel when they are around you. You are the one others come to when they need to think something through, when they need someone to hold the line or when they simply need to feel less alone. That is not common, it is something that reflects a real calm and sturdiness in you that others find comfort in.\n\nThe tension is that lighthouses stay in one place. They guide everyone else to where they are going while remaining fixed at the point they have always occupied. You are brilliant at being a constant for the people around you and considerably less practised at asking where you yourself want to go. Your direction has sometimes been determined by where you are most needed rather than where you most want to be.\n\n*You have been the fixed point for a long time. It is worth asking what it would look like to move.*",
+      "workingName": false
+    },
+    {
+      "id": "storm_watcher",
+      "label": "The Storm Watcher",
+      "family": "Anticipation and uncertainty",
+      "workingDefinition": "Repeated anticipation of problems alongside passing up wanted opportunities.",
+      "boundary": "Predictions are not established as accurate; ordinary planning and high-stakes caution are not automatically problems.",
+      "markers": [
+        {
+          "questionId": "Q06",
+          "reverse": true,
+          "weight": 1
+        },
+        {
+          "questionId": "Q25",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q26",
+          "reverse": true,
+          "weight": 1
+        },
+        {
+          "questionId": "Q27",
+          "reverse": false,
+          "weight": 1
+        }
+      ],
+      "requiredEvidence": [
+        "Q25",
+        "Q27"
+      ],
+      "descriptionStatus": "existing_sam_copy",
+      "descriptionMarkdown": "*You are someone with a sharp and honest relationship with reality that most people lack the courage to develop.*\n\nYou see things clearly including the difficult things and you do not pretend otherwise. There is an honesty to how you engage with life that you find more and more rare in others. You are not someone who gets caught off guard because you have already considered most of what could go wrong. That awareness has protected you more than once and the people around you more than they probably realise.\n\nThe tension is that the same mind that protects you from disappointment can also protect you from possibility. When you are very good at spotting what could go wrong it becomes difficult to fully commit to what could go right. Over time the space between where you are and where you actually want to be slowly widens without you quite noticing it happening.\n\n*The clarity you have about what could go wrong is useful. The work is learning to apply that same sharp intelligence to what could go extraordinarily well and to develop the faith that you can deal with those hurdles you foresee as they come.*",
+      "workingName": false
+    },
+    {
+      "id": "method_actor",
+      "label": "The Method Actor",
+      "family": "Adaptation and self-expression",
+      "workingDefinition": "Adapting to others alongside uncertainty about personal preferences outside those demands.",
+      "boundary": "Adaptation with clear preferences and little unwanted cost should not be described as a lost identity.",
+      "markers": [
+        {
+          "questionId": "Q05",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q28",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q29",
+          "reverse": true,
+          "weight": 1
+        },
+        {
+          "questionId": "Q30",
+          "reverse": false,
+          "weight": 1
+        }
+      ],
+      "requiredEvidence": [
+        "Q28",
+        "Q30"
+      ],
+      "descriptionStatus": "existing_sam_copy",
+      "descriptionMarkdown": "*You are someone who has become exceptionally skilled at showing up in the way each situation requires.*\n\nYou are adaptable, socially intelligent and have an ability to be able to read a room faster than almost anyone. You know what people need from you and you have mastered the art of delivering that seamlessly. In any environment you find a way to fit, to connect and to be received well. That is a skill that has opened doors and built relationships that really matter to you and so you have harnessed it more and more.\n\nThe tension is that when you are this good at being what each situation needs it becomes very difficult to locate what you actually are when nothing is needed from you. The performance is so practised and so natural that the person underneath it has not been asked to fully show up for a while and in turn has drifted away. Meaning that when the crowd disperses you are left feeling lost.\n\n*The mask has never been the problem but rather forgetting that you are wearing one is. You must stop being in a constant state of adaptation to finally find who your true self is.*",
+      "workingName": false
+    },
+    {
+      "id": "heir",
+      "label": "The Heir",
+      "family": "Exploration and direction",
+      "workingDefinition": "Continuing externally influenced goals while questioning personal endorsement and anticipating others' disappointment.",
+      "boundary": "Family-influenced goals that the person freely endorses are not automatically inauthentic.",
+      "markers": [
+        {
+          "questionId": "Q31",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q32",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q33",
+          "reverse": true,
+          "weight": 1
+        },
+        {
+          "questionId": "Q34",
+          "reverse": false,
+          "weight": 1
+        }
+      ],
+      "requiredEvidence": [
+        "Q32",
+        "Q34"
+      ],
+      "descriptionStatus": "existing_sam_copy",
+      "descriptionMarkdown": "*You are someone who has taken what was given to you and made something impressive from it.*\n\nYou are responsible, considered and you have honoured the expectations around you in ways that have had huge positive effects in your life. You work hard, you show up and the life you have built reflects a great deal of genuine effort and commitment. There is real substance to what you have created even though initially you had to adapt to the materials you were handed.\n\nThe tension is that the blueprint you have been following was drawn up before you had any say in the design. The career, the direction, the version of success you have been working towards may have been handed to you before you were old enough to choose it for yourself. You have caught plenty of carrots you were told that you were supposed to be chasing. The question worth sitting with is whether you would have even chased those particular things if you had decided what is important to you in the first place.\n\n*This is not about tearing anything down. It is about asking, perhaps for the first time, what you would build if the choice were entirely yours. If nobody could judge you.*",
+      "workingName": false
+    },
+    {
+      "id": "observer",
+      "label": "The Observer",
+      "family": "Outward understanding",
+      "workingDefinition": "Watching and interpreting interactions while giving less attention to personal participation or feelings.",
+      "boundary": "Observation alone does not establish intelligence, accurate perception, avoidance, or lack of self-awareness.",
+      "markers": [
+        {
+          "questionId": "Q04",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q35",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q36",
+          "reverse": true,
+          "weight": 1
+        },
+        {
+          "questionId": "Q37",
+          "reverse": false,
+          "weight": 1
+        }
+      ],
+      "requiredEvidence": [
+        "Q35",
+        "Q37"
+      ],
+      "descriptionStatus": "existing_sam_copy",
+      "descriptionMarkdown": "*You are someone with an exceptional ability to understand what is happening beneath the surface of things.*\n\nYou are perceptive, intelligent and you see through situations quickly. You pick up on things other people miss and you have a way of making sense of complexity that most people find hard to comprehend. You are rarely fooled and rarely caught off guard as your curiosity often sniffs out most things before they are able to catch you off guard. our ability to read between the lines is one of your most valuable qualities.\n\nThe tension is that observers spend most of their time examining everything around them and relatively little time turning that same sharp attention inward. You can diagnose a situation with remarkable precision and you are considerably less practised at applying that same scrutiny to your own patterns, your own motivations and the gap between who you are presenting yourself as and who you actually are. In other words you have spent so much time looking out and mastering the art of analysing that you have never truly took the time to analyse what is inside yourself.\n\n*You already have the tools, you just have not yet fully turned them on yourself yet.*",
+      "workingName": false
+    },
+    {
+      "id": "undercurrent",
+      "label": "The Undercurrent",
+      "family": "Adaptation and self-expression",
+      "workingDefinition": "Having a clear view, withholding it for harmony, and reporting regret about the omission.",
+      "boundary": "Separate clarity with inhibited expression from being unsure what one wants; no inference that a conviction is morally correct.",
+      "markers": [
+        {
+          "questionId": "Q05",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q38",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q39",
+          "reverse": true,
+          "weight": 1
+        },
+        {
+          "questionId": "Q40",
+          "reverse": false,
+          "weight": 1
+        }
+      ],
+      "requiredEvidence": [
+        "Q38",
+        "Q40"
+      ],
+      "descriptionStatus": "existing_sam_copy",
+      "descriptionMarkdown": "*You are someone whose impact on the world around you is more significant than you typically allow yourself to acknowledge.*\n\nYou are principled, determined and you have a way of moving through the world that shifts things without making a big deal about it. You care deeply about righteous things and that caring is true and rather than orchestrated or over performed for others. When you decide something matters you are extraordinarily committed to it and the people who have seen you fully engaged with something rarely forget it and even take inspiration from your passionate work ethic.\n\nThe tension is that revolutionaries often hold back the full force of what they think and feel in order to keep things smooth. You have strong views, deep convictions and a clarity about what is right that you do not always fully express. Something holds you back from the full volume of yourself and over time that holding back has racked up a cost that is easy to underestimate.\n\n*You have been self-silencing and keeping quiet for a long time but now it is worth asking what would happen if you allowed your unapologetic self to take control.*",
+      "workingName": false
+    },
+    {
+      "id": "navigator",
+      "label": "The Navigator",
+      "family": "Outward understanding",
+      "workingDefinition": "Guiding other people's next steps alongside a wanted gap in personal direction.",
+      "boundary": "Separate action-guiding from explaining meaning and watching interactions; no claim of superior wisdom.",
+      "markers": [
+        {
+          "questionId": "Q02",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q41",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q42",
+          "reverse": true,
+          "weight": 1
+        },
+        {
+          "questionId": "Q43",
+          "reverse": false,
+          "weight": 1
+        }
+      ],
+      "requiredEvidence": [
+        "Q41",
+        "Q43"
+      ],
+      "descriptionStatus": "existing_sam_copy",
+      "descriptionMarkdown": "*You are someone who understands the terrain of life better than most.*\n\nYou are observant, thoughtful and perceptive. You notice things other people walk straight past. You have a natural ability to read situations, understand people and make sense of complexity. People often gravitate towards you because you seem to have a clarity about things that they lack and you rarely disappoint when someone needs a clear head in a complicated moment.\n\nThe tension is that you spend so much time mapping other people’s worlds that you have not yet fully explored your own. You understand the landscape but you have not yet decided which direction you actually want to travel in. You have the tools and the intelligence. You just have not yet drawn your own map yet.\n\n*The next step is not learning more about the world. It is deciding what you actually want from it and then building a route that gets you there.*",
+      "workingName": false
+    },
+    {
+      "id": "hesitant_believer",
+      "label": "The Hesitant Believer",
+      "family": "Self-evaluation",
+      "workingDefinition": "Recognising other people's strengths and allowing their mistakes more readily than one's own, alongside difficulty accepting personal positives.",
+      "boundary": "Require the self-other difference, not only generic self-doubt. This does not establish clinical severity, objective ability or a fixed identity.",
+      "markers": [
+        {
+          "questionId": "Q44",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q45",
+          "reverse": true,
+          "weight": 1
+        },
+        {
+          "questionId": "Q46",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q47",
+          "reverse": false,
+          "weight": 1
+        }
+      ],
+      "requiredEvidence": [
+        "Q44",
+        "Q46"
+      ],
+      "descriptionStatus": "supplied_sam_copy",
+      "descriptionMarkdown": "*You are someone who finds it considerably easier to believe in the potential of others than your own.*\nYou are thoughtful, capable and often generous in the way you see the people around you. You can recognise what someone else brings to a room, encourage them when they are struggling and see the potential in them long before they can see it themselves. You understand that people make mistakes, that nobody gets everything right and that either all or none of us should be judged by our darkest days. You can offer that understanding to others quite naturally, but when it comes to applying it to yourself you feel a resistance.\nThe tension is that you have made yourself the exception to the understanding you extend so freely to everyone else. When something goes well, you find reasons it might not count. When someone recognises your contribution, you wonder whether they have seen the full picture. When you get something wrong, you can turn a perfectly ordinary human experience into a much bigger question about whether you are capable enough, talented enough or deserving enough to be where you are. You are not necessarily lacking confidence in every area of your life but it is more that you struggle to let the evidence of your own worth become something you can actually trust.\nOver time, you can become so accustomed to questioning yourself that even the things you do well begin to feel like things you have somehow gotten away with. You keep working, keep improving and keep trying to become someone you can finally believe in, without realising that the person you are trying to prove yourself to is the one who keeps moving the finish line.\n*The next step is to start looking in, actually recognising the good inside of you and realise that if given the choice you would not choose to be anyone else.*",
+      "workingName": false
+    },
+    {
+      "id": "waymaker",
+      "label": "The Waymaker",
+      "family": "Exploration and direction",
+      "workingDefinition": "Knowing what matters personally and making everyday choices that reflect an endorsed direction.",
+      "boundary": "Require positive evidence of values clarity and action. This can coexist with worry or self-doubt; it is not a default result, an ideal endpoint or merely a relaxed temperament.",
+      "markers": [
+        {
+          "questionId": "Q33",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q48",
+          "reverse": false,
+          "weight": 1
+        },
+        {
+          "questionId": "Q49",
+          "reverse": true,
+          "weight": 1
+        },
+        {
+          "questionId": "Q50",
+          "reverse": false,
+          "weight": 1
+        }
+      ],
+      "requiredEvidence": [
+        "Q48",
+        "Q50"
+      ],
+      "descriptionStatus": "supplied_sam_copy",
+      "descriptionMarkdown": "*You are someone who has taken the time to understand what matters to you and is increasingly building a life that reflects it.*\nYou have developed a clearer sense of who you are, what you value and what you want your life to look like. You are thoughtful about the decisions you make and increasingly comfortable choosing a path that feels right for you, even when it does not look like the one everyone else is following. You have a growing ability to distinguish between what you genuinely want and what you have been told you should want, and that understanding is beginning to show in the way you live. You are not necessarily someone who has everything figured out, but you are becoming someone who knows how to find your own way.\nThe tension is that finding your own way is not a one-time achievement. The life you build today may not be the life that fits you in a few years, and the values, ambitions and priorities that have brought you to this point may evolve as you do. It can be easy to become attached to a version of yourself that you have worked hard to understand, or to assume that because things feel aligned now, they will continue to do so without the same attention and honesty that got you here. There is a difference between knowing your own direction and assuming you no longer need to question it.\nThe opportunity is to trust yourself enough to keep moving, even when the path ahead is not entirely clear. You do not need to follow someone else's blueprint, nor do you need to keep searching for something to fix simply because growth is supposed to be constant. You have the foundations to make decisions that are genuinely your own. The next step is to keep using them to create a life that feels meaningful, rather than one that simply looks right from the outside.\n*You have spent time learning how to find your own way. The only thing left to do now is not lose that self-trust that got you here and dig deeper within whenever the opportunity arises.*",
+      "workingName": false
+    }
+  ],
+  "clarificationQuestions": [
+    {
+      "id": "F01",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "Feeling insufficiently prepared was the main reason I postponed a personally important first step.",
+      "supportsArchetypeId": "reluctant_hero",
+      "pairId": "readiness_or_burden",
+      "evidenceBasis": "custom_discriminator",
+      "note": "Independent support; do not reverse-score this response as evidence against the other archetype."
+    },
+    {
+      "id": "F02",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I felt ready to start, but held back because success could bring commitments I did not want.",
+      "supportsArchetypeId": "sleeping_giant",
+      "pairId": "readiness_or_burden",
+      "evidenceBasis": "custom_discriminator",
+      "note": "Independent support; do not reverse-score this response as evidence against the other archetype."
+    },
+    {
+      "id": "F03",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "The strain came mainly from accepting specific requests that used up my time or energy.",
+      "supportsArchetypeId": "loyal_guard",
+      "pairId": "requests_or_role",
+      "evidenceBasis": "custom_discriminator",
+      "note": "Independent support; do not reverse-score this response as evidence against the other archetype."
+    },
+    {
+      "id": "F04",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "The strain came mainly from feeling I had to remain the same reliable person when I wanted a change.",
+      "supportsArchetypeId": "lighthouse",
+      "pairId": "requests_or_role",
+      "evidenceBasis": "custom_discriminator",
+      "note": "Independent support; do not reverse-score this response as evidence against the other archetype."
+    },
+    {
+      "id": "F05",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I usually became involved by helping people put a complicated experience into words.",
+      "supportsArchetypeId": "alchemist",
+      "pairId": "explaining_or_observing",
+      "evidenceBasis": "custom_discriminator",
+      "note": "Independent support; do not reverse-score this response as evidence against the other archetype."
+    },
+    {
+      "id": "F06",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I usually stayed back to understand what was happening without taking an explaining or guiding role.",
+      "supportsArchetypeId": "observer",
+      "pairId": "explaining_or_observing",
+      "evidenceBasis": "custom_discriminator",
+      "note": "Independent support; do not reverse-score this response as evidence against the other archetype."
+    },
+    {
+      "id": "F07",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "When someone brought me a problem, I focused on helping them understand what it meant.",
+      "supportsArchetypeId": "alchemist",
+      "pairId": "meaning_or_next_steps",
+      "evidenceBasis": "custom_discriminator",
+      "note": "Independent support; do not reverse-score this response as evidence against the other archetype."
+    },
+    {
+      "id": "F08",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "When someone brought me a problem, I focused on working out their next steps.",
+      "supportsArchetypeId": "navigator",
+      "pairId": "meaning_or_next_steps",
+      "evidenceBasis": "custom_discriminator",
+      "note": "Independent support; do not reverse-score this response as evidence against the other archetype."
+    },
+    {
+      "id": "F09",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "Watching and interpreting a situation was more typical of me than guiding someone's next decision.",
+      "supportsArchetypeId": "observer",
+      "pairId": "observing_or_guiding",
+      "evidenceBasis": "custom_discriminator",
+      "note": "Independent support; do not reverse-score this response as evidence against the other archetype."
+    },
+    {
+      "id": "F10",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "People specifically relied on me to help choose a direction or sequence of actions.",
+      "supportsArchetypeId": "navigator",
+      "pairId": "observing_or_guiding",
+      "evidenceBasis": "custom_discriminator",
+      "note": "Independent support; do not reverse-score this response as evidence against the other archetype."
+    },
+    {
+      "id": "F11",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "Adapting to others left me unsure which preferences were actually mine.",
+      "supportsArchetypeId": "method_actor",
+      "pairId": "unclear_or_unspoken",
+      "evidenceBasis": "custom_discriminator",
+      "note": "Independent support; do not reverse-score this response as evidence against the other archetype."
+    },
+    {
+      "id": "F12",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "My preferences were clear; the difficulty was expressing them when that might create disagreement.",
+      "supportsArchetypeId": "undercurrent",
+      "pairId": "unclear_or_unspoken",
+      "evidenceBasis": "custom_discriminator",
+      "note": "Independent support; do not reverse-score this response as evidence against the other archetype."
+    },
+    {
+      "id": "F13",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "Keeping my options open felt frustrating because I wanted a direction I could commit to.",
+      "supportsArchetypeId": "wandering_scholar",
+      "pairId": "searching_or_acting_on_direction",
+      "evidenceBasis": "custom_discriminator",
+      "note": "Independent support; do not reverse-score this response as evidence against the other archetype."
+    },
+    {
+      "id": "F14",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "I could choose a personally meaningful next step even without knowing the whole path.",
+      "supportsArchetypeId": "waymaker",
+      "pairId": "searching_or_acting_on_direction",
+      "evidenceBasis": "custom_discriminator",
+      "note": "Independent support; do not reverse-score this response as evidence against the other archetype."
+    },
+    {
+      "id": "F15",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "Feeling unprepared or exposed delayed my first step, even when I could acknowledge my strengths.",
+      "supportsArchetypeId": "reluctant_hero",
+      "pairId": "starting_or_accepting_own_value",
+      "evidenceBasis": "custom_discriminator",
+      "note": "Independent support; do not reverse-score this response as evidence against the other archetype."
+    },
+    {
+      "id": "F16",
+      "type": "single_choice",
+      "responseSet": "truth5",
+      "text": "Even after a good outcome, I struggled to let it change how I judged myself.",
+      "supportsArchetypeId": "hesitant_believer",
+      "pairId": "starting_or_accepting_own_value",
+      "evidenceBasis": "custom_discriminator",
+      "note": "Independent support; do not reverse-score this response as evidence against the other archetype."
+    }
+  ],
+  "clarificationPairs": [
+    {
+      "id": "readiness_or_burden",
+      "archetypeIds": [
+        "reluctant_hero",
+        "sleeping_giant"
+      ],
+      "questionIds": [
+        "F01",
+        "F02"
+      ]
+    },
+    {
+      "id": "requests_or_role",
+      "archetypeIds": [
+        "loyal_guard",
+        "lighthouse"
+      ],
+      "questionIds": [
+        "F03",
+        "F04"
+      ]
+    },
+    {
+      "id": "explaining_or_observing",
+      "archetypeIds": [
+        "alchemist",
+        "observer"
+      ],
+      "questionIds": [
+        "F05",
+        "F06"
+      ]
+    },
+    {
+      "id": "meaning_or_next_steps",
+      "archetypeIds": [
+        "alchemist",
+        "navigator"
+      ],
+      "questionIds": [
+        "F07",
+        "F08"
+      ]
+    },
+    {
+      "id": "observing_or_guiding",
+      "archetypeIds": [
+        "observer",
+        "navigator"
+      ],
+      "questionIds": [
+        "F09",
+        "F10"
+      ]
+    },
+    {
+      "id": "unclear_or_unspoken",
+      "archetypeIds": [
+        "method_actor",
+        "undercurrent"
+      ],
+      "questionIds": [
+        "F11",
+        "F12"
+      ]
+    },
+    {
+      "id": "searching_or_acting_on_direction",
+      "archetypeIds": [
+        "wandering_scholar",
+        "waymaker"
+      ],
+      "questionIds": [
+        "F13",
+        "F14"
+      ]
+    },
+    {
+      "id": "starting_or_accepting_own_value",
+      "archetypeIds": [
+        "reluctant_hero",
+        "hesitant_believer"
+      ],
+      "questionIds": [
+        "F15",
+        "F16"
+      ]
+    }
+  ],
+  "contextQuestions": [
+    {
+      "id": "C01",
+      "text": "Where would you most like this reflection to be useful?",
+      "type": "single_choice",
+      "options": [
+        "Work or study",
+        "Relationships",
+        "Everyday decisions",
+        "Personal direction",
+        "Feeling more at ease",
+        "General curiosity",
+        "I do not currently want a change",
+        "Something else",
+        "Prefer not to answer"
+      ]
+    },
+    {
+      "id": "C02",
+      "text": "How did the pressure of the past four weeks compare with what is usual for you?",
+      "type": "single_choice",
+      "options": [
+        "Much less",
+        "Somewhat less",
+        "About usual",
+        "Somewhat more",
+        "Much more",
+        "Not sure",
+        "Prefer not to answer"
+      ]
+    },
+    {
+      "id": "C03",
+      "text": "What most limited your freedom to act as you wanted?",
+      "type": "single_choice",
+      "options": [
+        "Time, money or responsibilities",
+        "Concern about safety or serious consequences",
+        "Difficulty identifying what I wanted",
+        "Difficulty expressing or acting on what I wanted",
+        "Several things equally",
+        "No particular limit",
+        "Something else",
+        "Not sure",
+        "Prefer not to answer"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "authenticity",
+      "title": "Wood et al. (2008), The Authentic Personality",
+      "url": "https://research.manchester.ac.uk/en/publications/the-authentic-personality-a-theoretical-and-empirical-conceptuali/",
+      "scope": "Authenticity research distinguishes self-alienation, authentic living and accepting external influence. This informs questions about preferences and self-expression; it does not establish any of the 14 archetypes."
+    },
+    {
+      "id": "goals",
+      "title": "Sheldon & Elliot (1999), The self-concordance model",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/10101878/",
+      "scope": "Self-concordance concerns the personal endorsement of goals. It informs goal-ownership questions. The readiness-versus-future-burden distinction is a custom hypothesis, not a finding of this paper."
+    },
+    {
+      "id": "reflection",
+      "title": "Grant et al. (2002), Self-Reflection and Insight Scale",
+      "url": "https://researchers.mq.edu.au/en/publications/the-self-reflection-and-insight-scale-a-new-measure-of-private-se/",
+      "scope": "Reflection and insight were distinguished in the reported studies. This informs separating outward analysis from personal insight. The Alchemist/Observer/Navigator role distinctions remain custom, unvalidated hypotheses."
+    },
+    {
+      "id": "criticism",
+      "title": "Gilbert et al. (2004), Criticizing and reassuring oneself",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/15005905/",
+      "scope": "Research distinguishes forms of self-criticism and self-reassurance. This informs questions about harsh self-evaluation without reproducing the published scale. The self-versus-others comparison in Hesitant Believer is a custom discriminator. The paper does not validate this coaching profile."
+    },
+    {
+      "id": "worry",
+      "title": "Meyer et al. (1990), Penn State Worry Questionnaire development",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/2076086/",
+      "scope": "Worry is a researched construct. This informs asking about repeated anticipation and its effects. It does not establish that feared outcomes are accurate predictions or validate Storm Watcher."
+    },
+    {
+      "id": "curiosity",
+      "title": "Kashdan et al. (2009), Curiosity and Exploration Inventory-II",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/20160913/",
+      "scope": "Curiosity and engagement with uncertainty inform exploration items. Curiosity does not establish avoidance of commitment or prove that exploring different possibilities is a problem."
+    },
+    {
+      "id": "care",
+      "title": "Fritz & Helgeson (1998), Self-neglect and overinvolvement with others",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9686454/",
+      "scope": "The research distinguishes caring from focus on others to the exclusion of the self. This informs asking about cost and neglected needs. It does not validate the Loyal Guard/Lighthouse split."
+    },
+    {
+      "id": "development",
+      "title": "Boateng et al. (2018), Scale development primer",
+      "url": "https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2018.00149/full",
+      "scope": "Supports defining concepts, reviewing content, pretesting and examining structure, reliability and validity. It does not justify the thresholds or weights in this prototype."
+    },
+    {
+      "id": "interviews",
+      "title": "CDC, Cognitive Interviewing",
+      "url": "https://www.cdc.gov/nchs/ccqder/question-evaluation/cognitive-interviewing.html",
+      "scope": "Use interviews to discover what participants understood, recalled and considered when choosing responses."
+    }
+  ]
+}

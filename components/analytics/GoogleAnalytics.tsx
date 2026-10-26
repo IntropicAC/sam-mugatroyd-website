@@ -94,9 +94,12 @@ function ensureGtag() {
 }
 
 function trackPageView(pathname: string, search: string) {
+  if (pathname.startsWith("/lens-check")) return;
   ensureGtag();
 
-  const pagePath = search ? `${pathname}?${search}` : pathname;
+  // Mindset Test result links carry a private code in the query; never send it to GA.
+  const isPrivateResult = pathname.startsWith("/lens-check/result");
+  const pagePath = search && !isPrivateResult ? `${pathname}?${search}` : pathname;
   const pageLocation = `${window.location.origin}${pagePath}`;
 
   if (window.__p47LastPageView === pageLocation) {
@@ -129,9 +132,11 @@ export default function GoogleAnalytics() {
   // Keep click tracking centralized so links added in articles, cards, chat,
   // or future book sections are tracked consistently after analytics consent.
   useEffect(() => {
+    if (window.location.pathname.startsWith("/lens-check")) return;
     ensureGtag();
 
     const handleClick = (event: MouseEvent) => {
+      if (window.location.pathname.startsWith("/lens-check")) return;
       const target = event.target;
 
       if (!(target instanceof Element)) {
@@ -145,8 +150,13 @@ export default function GoogleAnalytics() {
       }
 
       if (anchor.href.includes("calendly.com")) {
+        // Prefilled booking links carry the visitor's name and email in the
+        // query string, which must never reach GA.
+        const linkUrl = new URL(anchor.href);
+        linkUrl.search = "";
         const params = withDebugMode({
-          link_url: anchor.href,
+          link_url: linkUrl.toString(),
+          ...(anchor.dataset.source ? { source: anchor.dataset.source } : {}),
         });
         window.gtag("event", "book_discovery_call", params);
         logAnalyticsDebug("book_discovery_call", params);
