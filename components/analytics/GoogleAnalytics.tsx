@@ -74,8 +74,11 @@ function ensureGtag() {
   window.dataLayer = window.dataLayer || [];
   window.gtag =
     window.gtag ||
-    function gtag(...args: unknown[]) {
-      window.dataLayer.push(args);
+    function gtag() {
+      // gtag.js only acts on `arguments` objects. Pushing an array (as rest
+      // parameters would) is silently ignored, and GA records nothing.
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer.push(arguments);
     };
 
   if (window.__p47GaInitialized) {
